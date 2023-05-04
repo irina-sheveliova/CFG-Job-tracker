@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+#homepagebutton {
+    font-size: large;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
