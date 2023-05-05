@@ -33,34 +33,42 @@ function ContactUs() {
             console.log("Message cannot be empty!")
         }
         else {
-            console.log("Form successfully submitted")
+            alert("Form successfully submitted")
         }
     }
 
-
     return (
 
-        <form>
-            <label htmlFor="Name">Full Name</label>
-            <input id="fullName" name="fullName" type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+        <form className="contact-form">
+            <div className='form-container'>
+                <h2 className="contact-header" >Contact</h2>
+                <h5 className="contact-form-text">If you have any questions, feel free to get in touch!</h5>
 
-            <label htmlFor="emailAddress">Email Address</label>
-            <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} />
-
-            <label htmlFor="message">Message</label>
-            <textarea id="contactUsMessage" name="contactUsMessage" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
-
-            <button className="button" type="submit" onClick={handleSubmit}>
-                Send
-            </button>
-
-            <Link to="/">
-                <button
-                    className="button button-secondary"
-                >
-                    Cancel
-                </button>
-            </Link>
+                <div className="div-section">
+                    <label htmlFor="Name">Full Name</label>
+                    <input id="fullName" name="fullName" type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                </div>
+                <div className="div-section">
+                    <label htmlFor="emailAddress">Email Address</label>
+                    <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} />
+                </div>
+                <div className="div-section">
+                    <label htmlFor="message">Message</label>
+                    <textarea id="contactUsMessage" name="contactUsMessage" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+                </div>
+                <p className="button-container">
+                    <button className="button" type="submit" onClick={handleSubmit}>
+                        Send
+                    </button>
+                </p>
+                {/* <Link to="/">
+                    <button
+                        className="button button-secondary"
+                    >
+                        Cancel
+                    </button>
+                </Link> */}
+            </div>
         </form>
 
 
