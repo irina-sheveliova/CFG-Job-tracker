@@ -10,15 +10,33 @@ function ContactUs() {
     const [fullName, setFullName] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [message, setMessage] = useState('')
-    // const [errors, setErrors] = useState({});
+
+
+    // function using regex to check whether the email address entered is valid
+    // returns true if valid
+    const isEmailValid = (email) => {
+        return /\S+@\S+\.\S+/.test(email);
+    }
 
     //function to submit contact form
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         //preventing default behaviour of the form which would reload the page
         e.preventDefault();
-        alert("Form was successfully submitted!")
 
+        if (!isEmailValid(emailAddress)) {
+            console.log("Email address is incorrect")
+        }
+        if (fullName.trim().length === 0) {
+            console.log("Full Name cannot be empty!")
+        }
+        if (message.trim().length === 0) {
+            console.log("Message cannot be empty!")
+        }
+        else {
+            console.log("Form successfully submitted")
+        }
     }
+
 
     return (
 
@@ -30,7 +48,6 @@ function ContactUs() {
             <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} />
 
             <label htmlFor="message">Message</label>
-            {/* <input id="contactUsMessage" name="contactUsMessage" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />  */}
             <textarea id="contactUsMessage" name="contactUsMessage" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
 
             <button className="button" type="submit" onClick={handleSubmit}>
