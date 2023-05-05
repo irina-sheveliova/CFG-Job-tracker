@@ -82,7 +82,7 @@ h5 {
   cursor: pointer;
 }
 
-.logo img {
+/* .logo img {
   max-width: 100%;
   height: auto;
   position: absolute;
@@ -90,5 +90,11 @@ h5 {
   left: 0;
   margin: 10px;
   width: 100px;
-}
+} */
 
+.logo img {
+    height: 700px;
+    width: 700px;
+    object-fit: cover;
+    border-radius: 50px;
+  }

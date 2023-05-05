@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/About/About";
 import RegistrationPage from "./pages/RegistrationPage";
 import jobflowlogo from './jobflowlogo.jpg';
-import landingpic from './landingpic.jpg';
 import './App.css';
 
 function App() {
@@ -23,10 +22,7 @@ function App() {
                 </div>
               </div>
               <div className="logo">
-                <img src={jobflowlogo} alt="Job Flow logo" />
-              </div>
-              <div className="landing-pic">
-                <img src={landingpic} alt="landing pic" />
+                <img src={jobflowlogo} alt="Job Flow logo pic" />
               </div>
             </div>
           } />
@@ -39,6 +35,5 @@ function App() {
 }
 
 export default App;
-
 
 
