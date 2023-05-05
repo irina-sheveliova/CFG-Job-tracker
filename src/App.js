@@ -1,6 +1,7 @@
 import Nav from "./components/Navigation/Nav";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/About/About";
+import Login from "./components/Login/Login";
 import RegistrationPage from "./pages/RegistrationPage";
 import jobflowlogo from './jobflowlogo.jpg';
 import landingpic from './landingpic.jpg';
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
