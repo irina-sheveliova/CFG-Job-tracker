@@ -41,7 +41,7 @@ function ContactUs() {
 
         <form className="contact-form">
             <div className='form-container'>
-                <h2 className="contact-header" >Contact</h2>
+                <h2 className="contact-header" >Contact Us</h2>
                 <h5 className="contact-form-text">If you have any questions, feel free to get in touch!</h5>
 
                 <div className="div-section">
@@ -56,18 +56,11 @@ function ContactUs() {
                     <label htmlFor="message">Message</label>
                     <textarea id="contactUsMessage" name="contactUsMessage" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
-                <p className="button-container">
+                <div className="button-container">
                     <button className="button" type="submit" onClick={handleSubmit}>
                         Send
                     </button>
-                </p>
-                {/* <Link to="/">
-                    <button
-                        className="button button-secondary"
-                    >
-                        Cancel
-                    </button>
-                </Link> */}
+                </div>
             </div>
         </form>
 
