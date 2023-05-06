@@ -6,7 +6,6 @@ import RegistrationPage from "./pages/RegistrationPage";
 
 import ContactUs from "./components/Contact/ContactUs";
 import jobflowlogo from './jobflowlogo.jpg';
-import landingpic from './landingpic.jpg';
 import './App.css';
 
 
@@ -30,9 +29,6 @@ function App() {
               <div className="logo">
                 <img src={jobflowlogo} alt="Job Flow logo" />
               </div>
-              <div className="landing-pic">
-                <img src={landingpic} alt="landing pic" />
-              </div>
             </div>
           } />
           <Route path="/about" element={<About />} />
@@ -48,4 +44,5 @@ function App() {
 }
 
 export default App;
+
 
