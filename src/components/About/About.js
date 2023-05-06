@@ -1,7 +1,6 @@
 import React from 'react';
 import './About.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 
 function About() {
   return (
@@ -60,3 +59,4 @@ function About() {
 }
 
 export default About;
+
