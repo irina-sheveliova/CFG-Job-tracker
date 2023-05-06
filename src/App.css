@@ -84,13 +84,14 @@ h5 {
 
 .statistic {
   margin-top: 20px;
+  text-align: center; 
 }
 
 .statistic__text {
-  font-size: 3.5rem;
+  font-size: 3rem; 
   font-weight: bold;
   font-style: italic;
-}
+} 
 
 .wide-button {
   width: 200px !important;
