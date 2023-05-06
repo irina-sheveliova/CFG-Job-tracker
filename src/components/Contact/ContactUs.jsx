@@ -1,41 +1,41 @@
 import './ContactUs.css';
-import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import Validation from './Validation';
 
 
 function ContactUs() {
+    // setting state for form fields
+    const [values, setValues] = useState({
+
+        name: '',
+        email: '',
+        message: ''
+
+    })
+    //setting state for errors
+    const [errors, setErrors] = useState({})
 
 
-    //setting state for the contact form
-    const [fullName, setFullName] = useState('');
-    const [emailAddress, setEmailAddress] = useState('');
-    const [message, setMessage] = useState('')
-
-
-    // function using regex to check whether the email address entered is valid
-    // returns true if valid
-    const isEmailValid = (email) => {
-        return /\S+@\S+\.\S+/.test(email);
+    const handleChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value })
     }
 
-    //function to submit contact form
+
+    //function which runs on submit and performs validations
     const handleSubmit = (e) => {
         //preventing default behaviour of the form which would reload the page
         e.preventDefault();
+        setErrors(Validation(values))
 
-        if (!isEmailValid(emailAddress)) {
-            console.log("Email address is incorrect")
-        }
-        if (fullName.trim().length === 0) {
-            console.log("Full Name cannot be empty!")
-        }
-        if (message.trim().length === 0) {
-            console.log("Message cannot be empty!")
-        }
-        else {
-            alert("Form successfully submitted")
-        }
     }
+
+    // // if there are no errors AND the fields aren't blank AND email is valid
+    // // then we can console.log(form submitted) 
+    useEffect(() => {
+        if (Object.keys(errors).length === 0 && (values.name !== "" && values.email !== "" && values.password !== "")) {
+            console.log("Form Submitted");
+        }
+    })
 
     return (
 
@@ -46,15 +46,26 @@ function ContactUs() {
 
                 <div className="div-section">
                     <label htmlFor="Name">Full Name</label>
-                    <input id="fullName" name="fullName" type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                    <input
+                        id="fullName"
+                        name="name"
+                        type="text"
+                        value={values.name}
+                        onChange={handleChange}
+                    />
+
+                    {errors.name && <p style={{ color: "red", fontSize: "13px" }}>{errors.name}</p>}
                 </div>
                 <div className="div-section">
                     <label htmlFor="emailAddress">Email Address</label>
-                    <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} />
+
+                    <input id="emailAddress" name="email" type="email" value={values.email} onChange={handleChange} />
+                    {errors.email && <p style={{ color: "red", fontSize: "13px" }}>{errors.email}</p>}
                 </div>
                 <div className="div-section">
                     <label htmlFor="message">Message</label>
-                    <textarea id="contactUsMessage" name="contactUsMessage" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+                    <textarea id="contactUsMessage" name="message" type="text" value={values.message} onChange={handleChange} />
+                    {errors.message && <p style={{ color: "red", fontSize: "13px" }}>{errors.message}</p>}
                 </div>
                 <div className="button-container">
                     <button className="button" type="submit" onClick={handleSubmit}>
