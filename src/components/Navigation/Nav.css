@@ -1,6 +1,6 @@
 nav {
-  background-color: black;
-  height: 70px;
+  background-color: #333;
+  height: 60px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -58,5 +58,7 @@ nav a:hover {
   position: absolute;
   right: 20px;
 }
+
+
 
 
