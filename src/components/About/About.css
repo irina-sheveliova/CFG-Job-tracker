@@ -1,11 +1,88 @@
-div > h1 {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  text-align: center;
+  background-color:#f2f2f2;
+}
+
+.about-text {
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+.why-helpful {
+  margin-top: 80px;
+}
+
+.why-text {
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+.future-features {
+  margin-top: 50px;
+}
+
+.future-text {
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+.roadmap {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.roadmap h4 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.roadmap p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.arrow {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.arrow i {
+  color: #0077ff;
+}
+
+@media screen and (max-width: 768px) {
+  .about-container {
+    padding: 30px;
+    background-color: #f2f2f2;;
   }
 
-
-div > p {
-    font-size: 16px;
-    line-height: 1.5;
+  .future-features {
+    margin-top: 50px;
   }
+
+  .roadmap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .roadmap > div {
+    display:inline-block;
+    align-items: center;
+    margin-bottom: 50px; /* add margin to separate each roadmap item */
+    padding: 50px; /* add padding to create some space around the item */
+  }
+  
+  .arrow {
+    margin: 10px 0;
+  }
+}
