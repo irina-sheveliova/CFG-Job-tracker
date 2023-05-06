@@ -8,6 +8,12 @@
   color: #282c34;
 }
 
+/* Border for website */
+body {
+  border: 10px solid #333;
+}
+
+
 h1 {
   font-size: 36px;
 }
@@ -88,7 +94,7 @@ h5 {
 }
 
 .statistic__text {
-  font-size: 3rem; 
+  font-size: 2rem; 
   font-weight: bold;
   font-style: italic;
 } 
@@ -104,7 +110,7 @@ h5 {
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  background-color: black;
+  background-color: #333;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -151,6 +157,7 @@ h5 {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: height 2.3s ease-out;
 }
 
 .expandable-box-header {
@@ -158,23 +165,72 @@ h5 {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
-.expandable-box-header i {
-  font-size: 1.2rem;
-  margin-right: 10px;
+.expandable-box-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
+
 
 .expandable-box-content {
   display: none;
   padding: 10px;
   margin-top: 10px;
+  text-align: center;
+  animation: slide-in 0.5s ease-out;
+}
+
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .expandable-box.active .expandable-box-content {
-  display: block;
+  height: auto;
+  margin-top: 10px;
 }
 
 .expandable-box.active .expandable-box-content {
-  display: block;
+  height: auto;
+  margin-top: 10px;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.footer__text {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.subscribe-button {
+  margin-right: 20px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
