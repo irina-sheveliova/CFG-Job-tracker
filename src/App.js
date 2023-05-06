@@ -38,7 +38,7 @@ function App() {
       <div>
         <Nav />
         <div className="button-container">
-        <button className="get-started-button wide-button">Get Started For Free!</button>
+          <button className="get-started-button wide-button">Get Started For Free!</button>
         </div>
         <div className="landing-page">
           <div className="landing-pic-container">
@@ -168,6 +168,11 @@ function App() {
           </div>
         </div>
         <Testimonials />
+        <div className="footer">
+          <p className="footer-text" style={{marginLeft: '20px'}}>Copyright JobFlow.com
+          </p>
+          <button className="subscribe-button" style={{marginRight: '20px'}}>Subscribe to mailing list</button>
+        </div>
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
@@ -179,6 +184,5 @@ function App() {
 }
 
 export default App;
-
 
 
