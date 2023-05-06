@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Nav.css';
-
+import "./Nav.css";
 
 function Nav() {
   return (
     <nav>
-      <ul>
+      <ul className="nav-links">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -22,15 +21,15 @@ function Nav() {
         <li>
           <Link to="/Contactus">Contact Us</Link>
         </li>
-        <li>
           <Link to="/signup">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+          <li>
+           <button className="login-btn my-btn">Login</button>
+          </li>
+          <li>
+          <button className="logout-btn my-btn">Logout</button>
+          </li>
       </ul>
     </nav>
   );
 }
-
 export default Nav;
