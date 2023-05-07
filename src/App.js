@@ -11,6 +11,7 @@ import HomePage from "./components/Homepage/homepage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
+          <Route path="/login" element={<Login />} />
+
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>

@@ -21,13 +21,19 @@ function Nav() {
         <li>
           <Link to="/Contactus">Contact Us</Link>
         </li>
+        <li>
           <Link to="/signup">Sign Up</Link>
-          <li>
+        </li>
+        <li>
+          <Link to="/login">Log In</Link>
+        </li>
+          {/* Olivia, I commented the below piece as we're not using Login + Logout buttons on the Landing page */}
+          {/* <li>
            <button className="login-btn my-btn">Login</button>
           </li>
           <li>
           <button className="logout-btn my-btn">Logout</button>
-          </li>
+          </li> */}
       </ul>
     </nav>
   );
