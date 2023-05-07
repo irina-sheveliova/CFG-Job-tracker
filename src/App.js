@@ -18,7 +18,8 @@ function App() {
       <div>
         <div className="counter-container">
           <h1 className="counter-heading">
-            Join <Counter end={100000} duration={20} /> Users Tracking with Job Flow!
+            Join <Counter end={100000} duration={20} /> Users Tracking with Job
+            Flow!
           </h1>
         </div>
         <Nav />
@@ -29,7 +30,6 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
-
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
@@ -45,8 +45,3 @@ function App() {
 }
 
 export default App;
-
-
-export default App;
-
-

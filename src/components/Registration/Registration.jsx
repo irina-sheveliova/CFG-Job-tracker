@@ -1,33 +1,34 @@
-import React from 'react';
-import { useState } from 'react';
-import './Registration.css';
-import { createUserWithEmailAndPassword } from '../../FirebaseAuth/auth';
+import React from "react";
+import { useState } from "react";
+import "./Registration.css";
+import { createUserWithEmailAndPassword } from "../../FirebaseAuth/auth";
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 
   function validatePassword() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
     const isValidPassword = passwordRegex.test(formData.password);
     if (!isValidPassword) {
       setPasswordErrorMessage(
-        'Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter'
+        "Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter"
       );
     } else {
-      setPasswordErrorMessage('');
+      setPasswordErrorMessage("");
     }
   }
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    if (passwordErrorMessage === '') {
+    if (passwordErrorMessage === "") {
       const userData = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -41,10 +42,10 @@ export default function SignUpForm() {
       if (result.success) {
         // Clear the form data
         setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
         });
       }
     }
@@ -52,7 +53,7 @@ export default function SignUpForm() {
 
   const onInputChange = (event) => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     setFormData({
@@ -113,7 +114,6 @@ export default function SignUpForm() {
           {passwordErrorMessage && (
             <div className="form-error">{passwordErrorMessage}</div>
           )}
-
         </div>
         <div className="form-group">
           <p className="password-requirement">Password must contain</p>
