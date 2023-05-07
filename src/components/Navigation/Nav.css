@@ -27,8 +27,8 @@ nav a {
 }
 
 nav a:hover {
-  color: peachpuff;
-  background-color: #000000;
+  color: grey;
+  background-color: none;
 }
 
 .login-btn,
@@ -46,7 +46,7 @@ nav a:hover {
 
 .login-btn:hover,
 .logout-btn:hover {
-  background-color: peachpuff;
+  background-color: grey;
 }
 
 .login-btn {
