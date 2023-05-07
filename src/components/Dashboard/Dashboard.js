@@ -14,37 +14,62 @@ const Dashboard = () => {
 
   const [newJob, setNewJob] = useState("");
   const [newCompany, setNewCompany] = useState("");
+  const [newNotes, setnewNotes] = useState("")
 
   const onDragStart = (event, application) => {
     event.dataTransfer.setData("application", JSON.stringify(application));
+    event.dataTransfer.effectAllowed = "move";
   };
 
   const onDragOver = (event) => {
     event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
   };
 
   const onDrop = (event, status) => {
+    event.preventDefault();
     const application = JSON.parse(event.dataTransfer.getData("application"));
     switch (status) {
       case "bookmarked":
-        setBookmarked([...bookmarked, application]);
+        setBookmarked(prevBookmarked => {
+          const newBookmarked = prevBookmarked.filter(app => app.id !== application.id);
+          newBookmarked.push(application);
+          return newBookmarked;
+        });
         break;
       case "applied":
-        setApplied([...applied, application]);
+        setApplied(prevApplied => {
+          const newApplied = prevApplied.filter(app => app.id !== application.id);
+          newApplied.push(application);
+          return newApplied;
+        });
         break;
       case "interviewing":
-        setInterviewing([...interviewing, application]);
+        setInterviewing(prevInterviewing => {
+          const newInterviewing = prevInterviewing.filter(app => app.id !== application.id);
+          newInterviewing.push(application);
+          return newInterviewing;
+        });
         break;
       case "noOffer":
-        setNoOffer([...noOffer, application]);
+        setNoOffer(prevNoOffer => {
+          const newNoOffer = prevNoOffer.filter(app => app.id !== application.id);
+          newNoOffer.push(application);
+          return newNoOffer;
+        });
         break;
       case "offer":
-        setOffer([...offer, application]);
+        setOffer(prevOffer => {
+          const newOffer = prevOffer.filter(app => app.id !== application.id);
+          newOffer.push(application);
+          return newOffer;
+        });
         break;
       default:
         break;
     }
   };
+  
 
   const onDelete = (status, index) => {
     switch (status) {
@@ -68,40 +93,40 @@ const Dashboard = () => {
     }
   };
 
-  const onEdit = (status, index, field, value) => {
+  const onEdit = (status, index, field, value, field1, value1, field2, value2) => {
     switch (status) {
       case "bookmarked":
         setBookmarked(
           bookmarked.map((application, i) =>
-            i === index ? { ...application, [field]: value } : application
+            i === index ? { ...application, [field]: value, [field1]: value1, [field2]: value2 } : application
           )
         );
         break;
       case "applied":
         setApplied(
           applied.map((application, i) =>
-            i === index ? { ...application, [field]: value } : application
+          i === index ? { ...application, [field]: value, [field1]: value1, [field2]: value2 } : application
           )
         );
         break;
       case "interviewing":
         setInterviewing(
           interviewing.map((application, i) =>
-            i === index ? { ...application, [field]: value } : application
+          i === index ? { ...application, [field]: value, [field1]: value1, [field2]: value2 } : application
           )
         );
         break;
       case "noOffer":
         setNoOffer(
           noOffer.map((application, i) =>
-            i === index ? { ...application, [field]: value } : application
+          i === index ? { ...application, [field]: value, [field1]: value1, [field2]: value2 } : application
           )
         );
         break;
       case "offer":
         setOffer(
           offer.map((application, i) =>
-            i === index ? { ...application, [field]: value } : application
+          i === index ? { ...application, [field]: value, [field1]: value1, [field2]: value2 } : application
           )
         );
         break;
@@ -109,7 +134,7 @@ const Dashboard = () => {
         break;
     }
   };
-
+  
   const onAdd = (status) => {
     if (status === "bookmarked" && bookmarked.length >= MAX_JOBS) return;
     if (status === "applied" && applied.length >= MAX_JOBS) return;
@@ -120,7 +145,7 @@ const Dashboard = () => {
     const newApplication = {
       jobTitle: newJob,
       company: newCompany,
-
+      notes: newNotes,
     };
 
     switch (status) {
@@ -145,24 +170,33 @@ const Dashboard = () => {
 
     setNewJob("");
     setNewCompany("");
+    setnewNotes("");
   };
+
+  const DashboardBoxBody = ({ application }) => {
+    return (
+      <div className="dashboard-box-body">
+        <p>{application.jobTitle}</p>
+        <p>{application.company}</p>
+        <p>{application.notes}</p>
+      </div>
+    );
+  };
+  
 
   return (
     <div className="dashboard">
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "bookmarked")}>
         <h2>Bookmarked</h2>
         {bookmarked.map((application, index) => (
-          <div key={index} className="dashboard-box" draggable onDragStart={(event) => onDragStart(event, application)}>
-            <div className="dashboard-box-header">
-              <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("bookmarked", index, "jobTitle", prompt("Enter new job title", application.jobTitle))} />
+              <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+              <div className="dashboard-box-header">
+            <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("bookmarked", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("bookmarked", index)} />
-            </div>
-            <div className="dashboard-box-body">
-              <p>{application.jobTitle}</p>
-              <p>{application.company}</p>
-            </div>
-          </div>
-        ))}
+              </div>
+     <DashboardBoxBody application={application} />
+     </div>
+     ))}
         {bookmarked.length < MAX_JOBS && (
           <div className="dashboard-box dashboard-box-add" onClick={() => onAdd("bookmarked")}>
             <FontAwesomeIcon icon={faPlus} />
@@ -173,17 +207,15 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "applied")}>
         <h2>Applied</h2>
         {applied.map((application, index) => (
-          <div key={index} className="dashboard-box" draggable onDragStart={(event) => onDragStart(event, application)}>
-            <div className="dashboard-box-header">
-              <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("applied", index, "jobTitle", prompt("Enter new job title", application.jobTitle))} />
-              <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("applied", index)} />
-            </div>
-            <div className="dashboard-box-body">
-              <p>{application.jobTitle}</p>
-              <p>{application.company}</p>
-            </div>
-          </div>
-        ))}
+     <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+     <div className="dashboard-box-header">
+      <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("applied", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
+      <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("applied", index)} />
+       </div>
+     <DashboardBoxBody application={application} />
+     </div>
+     ))}
+
         {applied.length < MAX_JOBS && (
           <div className="dashboard-box dashboard-box-add" onClick={() => onAdd("applied")}>
             <FontAwesomeIcon icon={faPlus} />
@@ -194,17 +226,14 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "interviewing")}>
         <h2>Interviewing</h2>
         {interviewing.map((application, index) => (
-          <div key={index} className="dashboard-box" draggable onDragStart={(event) => onDragStart(event, application)}>
+          <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
             <div className="dashboard-box-header">
-              <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("interviewing", index, "jobTitle", prompt("Enter new job title", application.jobTitle))} />
+            <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("interviewing", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("interviewing", index)} />
-            </div>
-            <div className="dashboard-box-body">
-              <p>{application.jobTitle}</p>
-              <p>{application.company}</p>
-            </div>
-          </div>
-        ))}
+              </div>
+     <DashboardBoxBody application={application} />
+     </div>
+     ))}
         {interviewing.length < MAX_JOBS && (
           <div className="dashboard-box dashboard-box-add" onClick={() => onAdd("interviewing")}>
             <FontAwesomeIcon icon={faPlus} />
@@ -215,17 +244,14 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "noOffer")}>
         <h2>No Offer</h2>
         {noOffer.map((application, index) => (
-          <div key={index} className="dashboard-box" draggable onDragStart={(event) => onDragStart(event, application)}>
-            <div className="dashboard-box-header">
-              <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("noOffer", index, "jobTitle", prompt("Enter new job title", application.jobTitle))} />
+           <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+           <div className="dashboard-box-header">
+            <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("noOffer", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("noOffer", index)} />
-            </div>
-            <div className="dashboard-box-body">
-              <p>{application.jobTitle}</p>
-              <p>{application.company}</p>
-            </div>
-          </div>
-        ))}
+              </div>
+     <DashboardBoxBody application={application} />
+     </div>
+     ))}
         {noOffer.length < MAX_JOBS && (
           <div className="dashboard-box dashboard-box-add" onClick={() => onAdd("noOffer")}>
             <FontAwesomeIcon icon={faPlus} />
@@ -236,17 +262,14 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "offer")}>
         <h2>Offer</h2>
         {offer.map((application, index) => (
-          <div key={index} className="dashboard-box" draggable onDragStart={(event) => onDragStart(event, application)}>
-            <div className="dashboard-box-header">
-              <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("offer", index, "jobTitle", prompt("Enter new job title", application.jobTitle))} />
+      <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+      <div className="dashboard-box-header">
+            <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("offer", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("offer", index)} />
-            </div>
-            <div className="dashboard-box-body">
-              <p>{application.jobTitle}</p>
-              <p>{application.company}</p>
-            </div>
-          </div>
-        ))}
+              </div>
+     <DashboardBoxBody application={application} />
+     </div>
+     ))}
         {offer.length < MAX_JOBS && (
           <div className="dashboard-box dashboard-box-add" onClick={() => onAdd("offer")}>
             <FontAwesomeIcon icon={faPlus} />
