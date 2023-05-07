@@ -1,4 +1,4 @@
-/* SignUpForm.css */
+
 
 .signup-form-header {
     font-size: 24px;
@@ -32,6 +32,11 @@ form {
     margin: 0 auto;
 }
 
+.form-error {
+    color: red;
+    font-weight: bold;
+    font-size: 10px;
+}
 
 label {
     margin-bottom: 5px;
@@ -56,10 +61,18 @@ input[type="checkbox"] {
     border: 1px solid #ccc;
     border-radius: 3px;
     width: 100%;
+    position: relative;
 }
 
 input[type="checkbox"] {
     margin-right: 0.5rem;
+}
+
+.icon {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: #aaa;
 }
 
 button[type="submit"] {
@@ -67,7 +80,7 @@ button[type="submit"] {
     font-size: 1rem;
     font-weight: bold;
     color: #fff;
-    background-color: #333;
+    background-color: #4b28d8;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -100,4 +113,19 @@ button[type="submit"]:hover {
 
 .password-requirements-list li {
     margin-left: 25px;
+}
+
+.password-requirements ul {
+    list-style: none;
+    /* Remove default bullets */
+}
+
+.password-requirements ul li::before {
+    content: "\2022";
+    color: red;
+    /* Change the color */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }

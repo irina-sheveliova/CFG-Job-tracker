@@ -74,6 +74,9 @@ export default function SignUpForm() {
             required
           />
         </div>
+        {passwordErrorMessage && (
+          <div className="form-error">{passwordErrorMessage}</div>
+        )}
         <div className="form-group">
           <input
             type="password"
@@ -84,9 +87,6 @@ export default function SignUpForm() {
             onBlur={validatePassword}
             required
           />
-          {/* {passwordErrorMessage && (
-          <div className="form-error">{passwordErrorMessage}</div>
-        )} */}
         </div>
         <div className="form-group">
           <p className="password-requirement">Password must contain</p>
@@ -109,7 +109,7 @@ export default function SignUpForm() {
           <button type="submit">Sign Up</button>
         </div>
         <p>
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <a href="/login">Log in</a>
         </p>
       </div>
     </form>
