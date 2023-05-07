@@ -10,25 +10,25 @@ function Login() {
     // User Login info
     const database = [
       {
-        username: "user1",
-        password: "pass1"
+        username: "user1@test.com",
+        password: "user1@test.com"
       },
       {
-        username: "user2",
-        password: "pass2"
+        username: "user2@test.com",
+        password: "user2@test.com"
       }
     ];
   
     const errors = {
-      uname: "invalid username",
-      pass: "invalid password"
+      uname: "Username not found",
+      pass: "Invalid password"
     };
   
-    const handleSubmit = (event) => {
+    const onSubmit = (event) => {
       //Prevent page reload
       event.preventDefault();
   
-      var { uname, pass } = document.forms[0];
+      let { uname, pass } = document.forms[0];
   
       // Find user login info
       const userData = database.find((user) => user.username === uname.value);
@@ -50,43 +50,40 @@ function Login() {
     // Generate JSX code for error message
     const renderErrorMessage = (name) =>
       name === errorMessages.name && (
-        <div className="error">{errorMessages.message}</div>
+        <div className="form-error">{errorMessages.message}</div>
       );
   
     // JSX code for login form
     const renderForm = (
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-            <div className="login-form-header">Log in</div>
-            <div className="input-container">
-                <input
-                type="text" 
-                name="uname" required 
-                placeholder="Email"/>
+      <form onSubmit={onSubmit}>
+        <div className="form-container">
+          <h2 className="login-form-header">Log in</h2>
+          <div className="form-group">
+            <input
+              type="email"
+              name="uname" required 
+              placeholder="Email"/>
             {renderErrorMessage("uname")}
           </div>
-          <div className="input-container">
+          <div className="form-group">
             <input 
-            type="password" 
-            name="pass" required 
-            placeholder="Password"/>
+              type="password" 
+              name="pass" required 
+              placeholder="Password"/>
             {renderErrorMessage("pass")}
           </div>
           <div className="button-container">
-            {/* <input type="submit" /> */}
             <button type="submit">Continue</button>
           </div>
-          <p>
-          Don't have an account? <a href="/signup">Sign Up</a>
-        </p>
-        </form>
-      </div>
+          <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        </div>
+      </form>
     );
   
     return (
       <div className="app">
         <div className="login-form">
-          {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+          {isSubmitted ? <h3 className="loginMessage">user logged in successfully</h3> : renderForm}
         </div>
       </div>
     );
