@@ -25,7 +25,7 @@ const Dashboard = () => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   };
-
+  
   const onDrop = (event, status) => {
     event.preventDefault();
     const application = JSON.parse(event.dataTransfer.getData("application"));
@@ -189,7 +189,7 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "bookmarked")}>
         <h2>Bookmarked</h2>
         {bookmarked.map((application, index) => (
-              <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+              <div key={index} className="dashboard-box bookmarked" draggable onDragStart={(event) => {onDragStart(event, application);}}>
               <div className="dashboard-box-header">
             <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("bookmarked", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("bookmarked", index)} />
@@ -207,7 +207,7 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "applied")}>
         <h2>Applied</h2>
         {applied.map((application, index) => (
-     <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+     <div key={index} className="dashboard-box applied" draggable onDragStart={(event) => {onDragStart(event, application);}}>
      <div className="dashboard-box-header">
       <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("applied", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
       <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("applied", index)} />
@@ -226,7 +226,7 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "interviewing")}>
         <h2>Interviewing</h2>
         {interviewing.map((application, index) => (
-          <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+          <div key={index} className="dashboard-box interviewing" draggable onDragStart={(event) => {onDragStart(event, application);}}>
             <div className="dashboard-box-header">
             <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("interviewing", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("interviewing", index)} />
@@ -244,7 +244,7 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "noOffer")}>
         <h2>No Offer</h2>
         {noOffer.map((application, index) => (
-           <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+           <div key={index} className="dashboard-box noOffer" draggable onDragStart={(event) => {onDragStart(event, application);}}>
            <div className="dashboard-box-header">
             <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("noOffer", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("noOffer", index)} />
@@ -262,7 +262,7 @@ const Dashboard = () => {
       <div className="dashboard-column" onDragOver={(event) => onDragOver(event)} onDrop={(event) => onDrop(event, "offer")}>
         <h2>Offer</h2>
         {offer.map((application, index) => (
-      <div key={index} className="dashboard-box" draggable onDragStart={(event) => {onDragStart(event, application);}}>
+      <div key={index} className="dashboard-box offer" draggable onDragStart={(event) => {onDragStart(event, application);}}>
       <div className="dashboard-box-header">
             <FontAwesomeIcon icon={faEdit} onClick={() => onEdit("offer", index, "jobTitle", prompt("Enter new job title", application.jobTitle), "company", prompt("Enter company name", application.company), "notes", prompt("Enter notes", application.notes))} />
               <FontAwesomeIcon icon={faTrashAlt} onClick={() => onDelete("offer", index)} />
