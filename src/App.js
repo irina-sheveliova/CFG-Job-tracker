@@ -8,6 +8,7 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
@@ -34,5 +36,4 @@ function App() {
 }
 
 export default App;
-
 
