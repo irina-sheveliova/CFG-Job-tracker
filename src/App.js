@@ -9,11 +9,17 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Counter from "./components/Counter/counter";
 
 function App() {
   return (
     <Router>
       <div>
+        <div className="counter-container">
+          <h1 className="counter-heading">
+            Join <Counter end={100000} duration={20} /> Users Tracking with Job Flow!
+          </h1>
+        </div>
         <Nav />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -36,4 +42,5 @@ function App() {
 }
 
 export default App;
+
 
