@@ -10,6 +10,7 @@ import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Counter from "./components/Counter/counter";
+import HowitWorks from "./components/HowitWorks/Howitworks";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/HowitWorks" element={<HowitWorks />} />
+
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
@@ -40,6 +43,9 @@ function App() {
     </Router>
   );
 }
+
+export default App;
+
 
 export default App;
 
