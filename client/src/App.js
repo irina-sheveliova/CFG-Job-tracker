@@ -8,7 +8,7 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Applications from "./components/Applications/appdetails";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
@@ -29,7 +29,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/Applications" element={<Applications />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
 
@@ -48,3 +48,4 @@ function App() {
 }
 
 export default App;
+
