@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./counter.css";
 
 function Counter({ end, duration }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10000);
 
   useEffect(() => {
     const step = 1;
