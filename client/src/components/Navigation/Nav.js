@@ -16,7 +16,7 @@ function Nav() {
           <Link to="/HowitWorks">How it Works</Link>
         </li>
         <li>
-          <Link to="/Dashboard">Dashboard</Link>
+          <Link to="/Applications">Applications</Link>
         </li>
         <li>
           <Link to="/Contactus">Contact Us</Link>
@@ -27,13 +27,6 @@ function Nav() {
         <li>
           <Link to="/login">Log In</Link>
         </li>
-          {/* Olivia, I commented the below piece as we're not using Login + Logout buttons on the Landing page */}
-          {/* <li>
-           <button className="login-btn my-btn">Login</button>
-          </li>
-          <li>
-          <button className="logout-btn my-btn">Logout</button>
-          </li> */}
       </ul>
     </nav>
   );
