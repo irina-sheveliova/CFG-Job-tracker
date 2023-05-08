@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Registration.css";
+import { createUserWithEmailAndPassword } from "../../FirebaseAuth/auth";
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -9,7 +11,11 @@ export default function SignUpForm() {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
+
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
 
   function validatePassword() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
@@ -23,9 +29,46 @@ export default function SignUpForm() {
     }
   }
 
-  const onSubmit = (event) => {
+  function validateEmail() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(formData.email);
+    if (!isValidEmail) {
+      setEmailErrorMessage("Please enter a valid email address");
+    } else {
+      setEmailErrorMessage("");
+    }
+  }
+
+  const onSubmit = async (event) => {
     event.preventDefault();
-    console.log("Form submitted:", formData);
+    validatePassword();
+    validateEmail();
+    if (!passwordErrorMessage && !emailErrorMessage) {
+      console.log("Form submitted:", formData);
+      navigate("/");
+    }
+
+    if (passwordErrorMessage === "") {
+      const userData = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+      };
+      const result = await createUserWithEmailAndPassword(
+        formData.email,
+        formData.password,
+        userData
+      );
+      if (result.success) {
+        // Clear the form data
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+        });
+      }
+    }
   };
 
   const onInputChange = (event) => {
@@ -71,8 +114,12 @@ export default function SignUpForm() {
             placeholder="Email"
             value={formData.email}
             onChange={onInputChange}
+            onBlur={validateEmail}
             required
           />
+          {emailErrorMessage && (
+            <div className="form-error">{emailErrorMessage}</div>
+          )}
         </div>
         <div className="form-group">
           <input
@@ -84,32 +131,18 @@ export default function SignUpForm() {
             onBlur={validatePassword}
             required
           />
-          {/* {passwordErrorMessage && (
-          <div className="form-error">{passwordErrorMessage}</div>
-        )} */}
+
+          {passwordErrorMessage && (
+            <div className="form-error">{passwordErrorMessage}</div>
+          )}
         </div>
         <div className="form-group">
-          <p className="password-requirement">Password must contain</p>
-          <div className="password-requirements">
-            <div className="password-requirements-column">
-              <ul>
-                <li>8-20 characters</li>
-                <li>Two or more numbers</li>
-              </ul>
-            </div>
-            <div className="password-requirements-column">
-              <ul>
-                <li>One uppercase letter</li>
-                <li>One lowercase letter</li>
-              </ul>
-            </div>
-          </div>
+          <button type="submit" style={{ width: "100%" }}>
+            Sign Up
+          </button>
         </div>
-        <div className="form-group">
-          <button type="submit">Sign Up</button>
-        </div>
-        <p>
-          Already have an account? <a href="/login">Login</a>
+        <p style={{ textAlign: "center", fontSize: "18px" }}>
+          Already have an account? <a href="/login">Log in</a>
         </p>
       </div>
     </form>

@@ -1,14 +1,17 @@
-/* SignUpForm.css */
-
 .signup-form-header {
-    font-size: 24px;
+    font-size: 38px;
     font-weight: bold;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-align: center;
 }
 
 .signup-form-text {
-    font-size: 0.8rem;
+    font-size: 30px;
     color: #aaa;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    margin-top: -20px;
+    text-align: center;
+    font-family: 'Square Peg', cursive;
 }
 
 form {
@@ -17,21 +20,32 @@ form {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    /* font-family: 'Barlow', sans-serif;
+        font-family: 'Lobster', cursive;
+        font-family: 'My Soul', cursive;
+        font-family: 'Square Peg', cursive; */
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    width: 100%;
+input::placeholder {
+font-family: 'Yanone Kaffeesatz', sans-serif;}
+
+
+.form-container {
     max-width: 400px;
-}
-
-.form-container{
-    max-width: 300px;
+    width: 100%;
     margin: 0 auto;
+    padding-bottom: 120px;
 }
 
+.form-error {
+    display: block;
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+    /* or adjust as necessary */
+}
 
 label {
     margin-bottom: 5px;
@@ -42,9 +56,41 @@ label {
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
-.form-group input[type="checkbox"],
+.form-group input[type="checkbox"] {
+    margin-bottom: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        max-width: 800px;
+}
+
 .form-group button[type="submit"] {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        max-width: 500px
+}
+
+
+.form-group input[type="password"]{
     width: 100%;
+    flex-direction: row;
+}
+
+
+input[type="password"]{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    position: relative;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 input[type="text"],
@@ -56,48 +102,30 @@ input[type="checkbox"] {
     border: 1px solid #ccc;
     border-radius: 3px;
     width: 100%;
+    position: relative;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
-input[type="checkbox"] {
-    margin-right: 0.5rem;
-}
 
 button[type="submit"] {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: bold;
     color: #fff;
-    background-color: #333;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    background-color: #4b28d8;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 0 auto;
+    width: 100%;
+    /* Center horizontally */
 }
 
 button[type="submit"]:hover {
     background-color: grey;
 }
 
-.password-requirements {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 2px;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-.password-requirements-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.password-requirement,
-.password-requirements-list {
-    margin-bottom: 2px;
-    font-size: 12px;
-}
-
-.password-requirements-list li {
-    margin-left: 25px;
-}
+    
+        

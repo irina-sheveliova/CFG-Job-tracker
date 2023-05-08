@@ -11,6 +11,7 @@ import HomePage from "./components/Homepage/homepage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <div>
         <div className="counter-container">
           <h1 className="counter-heading">
-            Join <Counter end={100000} duration={20} /> Users Tracking with Job Flow!
+            Join <Counter end={100000} duration={20} /> Users Tracking with Job
+            Flow!
           </h1>
         </div>
         <Nav />
@@ -29,6 +31,7 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
+          <Route path="/login" element={<Login />} />
 
         </Routes>
         <div className="footer">
@@ -45,6 +48,6 @@ function App() {
 }
 
 
-export default App;
 
+export default App;
 
