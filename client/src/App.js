@@ -12,6 +12,8 @@ import Applications from "./components/Applications/appdetails";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
+import JobDetails from "./components/JobApplicationDetails/JobDetails";
+import JobDetailsPage from "./pages/JobDetailsPage";
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
           <Route path="/Applications" element={<Applications />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
-
+          <Route path="/Applications/:id" element={<JobDetailsPage />} />
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
@@ -48,4 +50,3 @@ function App() {
 }
 
 export default App;
-
