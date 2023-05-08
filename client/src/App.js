@@ -8,7 +8,7 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
-import Dashboard from "./components/Dashboard/Dashboard";
+import JobApplications from "./components/JobApplications/JobApplications";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
@@ -18,10 +18,10 @@ function App() {
     <Router>
       <div>
         <div className="counter-container">
-          <h1 className="counter-heading">
+          {/* <h1 className="counter-heading">
             Join <Counter end={100000} duration={20} /> Users Tracking with Job
             Flow!
-          </h1>
+          </h1> */}
         </div>
         <Nav />
         <Routes>
@@ -29,7 +29,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<JobApplications />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
 
@@ -38,9 +38,9 @@ function App() {
           <p className="footer-text" style={{ marginLeft: "20px" }}>
             Copyright JobFlow.com{" "}
           </p>
-          <button className="subscribe-button" style={{ marginRight: "20px" }}>
+          {/* <button className="subscribe-button" style={{ marginRight: "20px" }}>
             Subscribe to mailing list
-          </button>
+          </button> */}
         </div>
       </div>
     </Router>
