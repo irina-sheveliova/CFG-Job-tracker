@@ -7,6 +7,7 @@ import "./JobDetails.css";
 // user profile details should be added too
 
 const JobDetails = ({
+  id,
   position,
   company,
   location,
@@ -24,6 +25,7 @@ const JobDetails = ({
   const [notes, setNotes] = useState("");
   const [editable, setEditable] = useState(false);
   const [jobnotes, setJobNotes] = useState(jobNotes);
+  const [ratings, setRatings] = useState(rating);
 
   const handleChange = (event) => {
     setSelectedStatus(event.target.value);
@@ -41,12 +43,16 @@ const JobDetails = ({
     setNotes(event.target.value);
   };
 
-  const jobNotesChange = (event) => {
+  const jobInfoChange = (event) => {
     setJobNotes(event.target.value);
   };
 
   const handleEditableClick = () => {
     setEditable(!editable);
+  };
+
+  const handleRatingChange = (newRating) => {
+    setRatings(newRating);
   };
 
   return (
@@ -74,26 +80,34 @@ const JobDetails = ({
         />
       </p>
       <div className="star-rating">
-        <StarRating rating={rating} />
+        <StarRating rating={ratings} onRatingChange={handleRatingChange} />
       </div>
       <div className="status">
-        <select value={selectedStatus} onChange={handleChange}>
+        <select
+          value={selectedStatus}
+          onChange={handleChange}
+          className="select-status"
+        >
           <option value="applied">Applied</option>
           <option value="interviewing">Interviewing</option>
           <option value="offered">Offered</option>
           <option value="rejected">Rejected</option>
         </select>
       </div>
+
       <button onClick={() => setShowJobInfo(!showJobInfo)}>Job Info</button>
+      <br />
       {showJobInfo && (
         <>
           <p>
             {editable ? (
               <textarea
-                value={jobNotes}
-                onChange={jobNotesChange}
+                value={jobnotes}
+                onChange={jobInfoChange}
                 style={{ border: "1px solid black", margin: "0 5px" }}
-              />
+              >
+                {jobNotes}
+              </textarea>
             ) : (
               <span style={{ margin: "0 5px" }}>{jobNotes}</span>
             )}
@@ -103,7 +117,6 @@ const JobDetails = ({
           </button>
         </>
       )}
-      <br />
       <button onClick={handleNotesClick}>
         {showNotes ? "Hide Notes" : "Add Notes"}
       </button>

@@ -1,0 +1,62 @@
+.job-listing {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.panel {
+    flex-basis: 48%;
+    padding: 20px;
+    border: 1px solid #ccc;
+        height: 100vh;
+}
+
+.left-panel {
+    margin-right: 10px;
+}
+
+.right-panel {
+    margin-left: 10px;
+}
+
+.job-listing-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px lightgray;
+    background-color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+h4{
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+
+.listed-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    
+}
+
+.list-button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}

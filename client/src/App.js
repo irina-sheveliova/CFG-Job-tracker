@@ -12,7 +12,6 @@ import Applications from "./components/Applications/appdetails";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
-import JobDetails from "./components/JobApplicationDetails/JobDetails";
 import JobDetailsPage from "./pages/JobDetailsPage";
 
 function App() {
