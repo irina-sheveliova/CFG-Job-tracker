@@ -4,13 +4,13 @@
   flex: column;
 }
 
-.applications-table {
+.applications_table {
   display: block;
   overflow: hidden;
   white-space: nowrap;
   width: 100em;
-  max-width: 100%;
-  margin: auto;
+  max-width: 90%;
+  margin: 0 auto;
   table-layout: auto;
   overflow-x: auto;
   table-layout: fixed;
@@ -27,7 +27,7 @@
 
 .applications_table th,
 .applications_table td {
-  padding: 0.2rem;
+  padding: 1rem;
 }
 
 .applications_table td {
@@ -45,7 +45,6 @@
   padding: 0.3rem;
 
 }
-
 
 .label-applied {
   background-color: rgb(227, 168, 58);
@@ -70,17 +69,29 @@
 .table-actions {
   display: flex;
   justify-content: space-around;
-  padding: 12px;
+  padding: 14px;
 }
 
 .actions svg {
   cursor: pointer;
+
 }
 
 .delete-button {
   color: red;
+  margin: 5px;
+  max-width: 25px;
+  max-height: 25px;
 }
 
 .edit-button {
-  color: lightgray;
+  color: darkgray;
+  margin: 5px;
+  max-width: 25px;
+  max-height: 25px;
+
+}
+
+.fill-out {
+  width: 100%;
 }

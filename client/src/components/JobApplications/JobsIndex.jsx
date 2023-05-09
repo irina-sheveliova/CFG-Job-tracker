@@ -1,9 +1,10 @@
 import JobApplications from "./JobApplications";
+import './JobsIndex.css';
 import Modal from './Modal.jsx';
 
 function JobsIndex() {
     return (
-        <div>
+        <div className="index-div">
             <h1>Main Jobs Page</h1>
             <JobApplications />
             <Modal />

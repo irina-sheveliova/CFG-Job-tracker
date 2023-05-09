@@ -22,7 +22,7 @@ function JobApplications() {
                             <th>Status</th>
                             <th>Date of Application</th>
                             <th>Salary</th>
-                            <th>Action</th>
+                            <th className="fill-out">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,9 +36,9 @@ function JobApplications() {
                             </td>
                             <td> 12/05/2023</td>
                             <td> 150k</td>
-                            <td>
-                                <span className="table-actions" ><BsFillTrashFill className='delete-button' />
-                                    <BsFillPencilFill /></span>
+                            <td >
+                                <span className="table-actions" ><BsFillPencilFill className="edit-button" /><BsFillTrashFill className='delete-button' />
+                                </span>
                             </td>
                         </tr>
 
@@ -49,11 +49,11 @@ function JobApplications() {
                             <td>
                                 <span className="label label-interviewing"> Interviewing </span>
                             </td>
-                            <td> 12/05/2023</td>
+                            <td> 01/05/2023</td>
                             <td> 120k</td>
                             <td>
-                                <span className="table-actions"><BsFillTrashFill className='delete-button' />
-                                    <BsFillPencilFill /></span>
+                                <span className="table-actions">
+                                    <BsFillPencilFill className="edit-button" /> <BsFillTrashFill className='delete-button' /></span>
                             </td>
                         </tr>
                         <tr>
@@ -66,8 +66,8 @@ function JobApplications() {
                             <td> 12/05/2023</td>
                             <td> 90k</td>
                             <td>
-                                <span className="table-actions"><BsFillTrashFill className='delete-button' />
-                                    <BsFillPencilFill /></span>
+                                <span className="table-actions"><BsFillPencilFill className="edit-button" /><BsFillTrashFill className='delete-button' />
+                                </span>
                             </td>
                         </tr>
                     </tbody>
