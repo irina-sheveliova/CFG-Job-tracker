@@ -5,7 +5,7 @@ import Modal from './Modal.jsx';
 function JobsIndex() {
     return (
         <div className="index-div">
-            <h1>Main Jobs Page</h1>
+            <h1>My Job Applications</h1>
             <JobApplications />
             <Modal />
         </div>
