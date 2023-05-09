@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StarRating from "./StarRating";
 import "./JobDetails.css";
@@ -27,12 +27,21 @@ const JobDetails = ({
   const [jobnotes, setJobNotes] = useState(jobNotes);
   const [ratings, setRatings] = useState(rating);
 
+  useEffect(() => {
+    setSalaryValue(salary);
+  }, [salary]);
+
+  //   useEffect(() => {
+  //     setRatings(rating);
+  //   }, [rating]);
+
   const handleChange = (event) => {
     setSelectedStatus(event.target.value);
   };
 
   const handleSalaryChange = (event) => {
     setSalaryValue(event.target.value);
+    console.log(event.target.value);
   };
 
   const handleNotesClick = () => {
@@ -80,7 +89,7 @@ const JobDetails = ({
         />
       </p>
       <div className="star-rating">
-        <StarRating rating={ratings} onRatingChange={handleRatingChange} />
+        <StarRating rating={ratings} />
       </div>
       <div className="status">
         <select
