@@ -19,8 +19,9 @@
 
 }
 
+/* table header set up - teal now to match homepage plans */
+
 .applications_table thead {
-  /* background-color: #cccccccb; */
   color: #272626;
   background-color: teal;
   color: rgba(255, 255, 255, 0.886);
@@ -94,6 +95,7 @@
 
 }
 
+/* this expands the element to fill the table */
 .fill-out {
   width: 100%;
 }

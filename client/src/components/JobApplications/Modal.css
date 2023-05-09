@@ -12,14 +12,56 @@
 
 }
 
-
 .modal {
     border-radius: 4px;
     padding: 2rem;
-    background-color: pink;
+    background-color: rgb(229, 242, 242);
     width: 25em;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
+}
+
+/* Form styling */
+
+form {
+    height: 100vh;
+    display: flex;
+    margin: 0 auto;
+    padding-top: 4rem;
+
+}
+
+
+.main-div {
+    max-width: 100%;
+    margin: 0 auto;
+
+}
+
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    max-width: 100vh;
+}
+
+.form-div input,
+.form-div select,
+.form-div textarea {
+    font-size: 1rem;
+    padding: 0.4rem;
+    border: 0.8px solid darkgray;
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+    -moz-border-radius: 0%;
+    -ms-border-radius: 0%;
+    -o-border-radius: 0%;
+}
+
+#notes {
+    padding: 0.7rem;
+    height: 150px;
 }
