@@ -43,8 +43,17 @@ const TeamIntro = () => {
         </p>
       </div>
       <div className="member-box">
-        <h3>Team member</h3>
-        <p>Description</p>
+        <h3>Efuah Faler</h3>
+        <p>
+          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{' '}
+          <strong>painting</strong>
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faHeart} /> I do it to relax and I love the process of creating something from nothing.
+        </p>
+
+
+
       </div>
       <div className="member-box">
         <h3>Team member</h3>
