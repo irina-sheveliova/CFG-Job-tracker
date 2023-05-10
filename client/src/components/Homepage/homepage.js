@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import About from "../About/About";
 import RegistrationPage from "../Registration/Registration";
 import ContactUs from "../Contact/ContactUs";
-import Landpge from "../../Landpge.jpg";
+import Landpge from "../../Landpge.png";
 import "./homepage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
