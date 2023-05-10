@@ -33,9 +33,13 @@ npm start
 
 Other Dependencies to install for compilation to compile successfully are:
 ` npm install @fortawesome/fontawesome-free@6.4.0`
+
 ` npm install @fortawesome/free-solid-svg-icons@6.4.0`
+
 ` npm install @fortawesome/react-fontawesome@0.2.0`
-` npm install react-bootstrap@2.7.4`  
+
+` npm install react-bootstrap@2.7.4`
+
 ` npm install --save @fortawesome/fontawesome-svg-core`
 
 ## Usage
