@@ -7,7 +7,7 @@ function JobsIndex() {
         <div className="index-div">
             <h1>My Job Applications</h1>
             <JobApplications />
-            <Modal />
+            {/* <Modal /> */}
         </div>
     );
 }

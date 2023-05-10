@@ -24,7 +24,7 @@ function JobModal() {
 
                         <div className="form-div">
                             <label htmlFor="status"> Status</label>
-                            {/* <input name="status" /> */}
+
                             <select name="status">
                                 <option value="applied">Applied</option>
                                 <option value="no-applied">Not Applied</option>
