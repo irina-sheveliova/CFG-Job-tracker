@@ -19,10 +19,10 @@ function Nav() {
           <Link to="/HowitWorks">How it Works</Link>
         </li>
         <li>
-          <Link to="/Applications">Applications</Link>
+          <Link to="/applications">Job Applications</Link>
         </li>
         <li>
-          <Link to="/Contactus">Contact Us</Link>
+          <Link to="/contactus">Contact Us</Link>
         </li>
         <li>
           <Link to="/signup">Sign Up</Link>
