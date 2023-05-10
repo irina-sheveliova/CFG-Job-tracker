@@ -1,6 +1,6 @@
 /* Border for website */
 body {
-    border: 10px solid #333;
+    border: 10px solid #008080;
   }
   
   
@@ -100,7 +100,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     color: #fff;
-    background-color: #333;
+    background-color: #008080;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -109,8 +109,10 @@ body {
   }
   
   .get-started-button:hover {
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    background-color: #00bfbf;
+    background-image: linear-gradient(to bottom, #00bfbf, #008080);
   }
+  
   
   @keyframes pulse {
     0% {
@@ -131,23 +133,28 @@ body {
     width: 100%;
     max-width: 400px;
   }
-  
-  
+
   .expandable-box-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.5em;
+    gap: 20px;
   }
   
   .expandable-box {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
+    background-color: #008080;
+    color: #fff;
+    border: none;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: height 2.3s ease-out;
+    padding: 10px;
+    box-shadow: 0 5px 0 #006666;
+    transition: transform 0.2s;
+    width: 100%;
+  }
+  
+  .expandable-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 #006666;
   }
   
   .expandable-box-header {
@@ -168,7 +175,6 @@ body {
     text-align: center;
   }
   
-  
   .expandable-box-content {
     display: none;
     padding: 10px;
@@ -176,7 +182,6 @@ body {
     text-align: center;
     animation: slide-in 0.5s ease-out;
   }
-  
   
   @keyframes slide-in {
     from {
@@ -190,16 +195,10 @@ body {
     }
   }
   
-  .expandable-box.active .expandable-box-content {
-    height: auto;
-    margin-top: 10px;
+  .expandable-box:active {
+    transform: translateY(0);
+    box-shadow: none;
   }
   
-  .expandable-box.active .expandable-box-content {
-    height: auto;
-    margin-top: 10px;
-  }
-  
-
   
   

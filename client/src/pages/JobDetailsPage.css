@@ -1,0 +1,13 @@
+.job-page {
+    display: flex;
+}
+
+.left-panel {
+    flex-basis: 20%;
+    padding: 1rem;
+}
+
+.right-panel {
+    flex-basis: 80%;
+    padding: 1rem;
+}

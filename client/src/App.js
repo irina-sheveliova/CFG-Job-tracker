@@ -8,11 +8,12 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
-// import JobApplications from "./components/JobApplications/JobApplications";
 import JobsIndex from "./components/JobApplications/JobsIndex";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
+import JobDetailsPage from "./pages/JobDetailsPage";
+import TeamIntro from "./components/TeamIntro/TeamIntro";
 
 function App() {
   return (
@@ -30,9 +31,11 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/dashboard" element={<JobsIndex />} />
+          <Route path="/Applications" element={<JobsIndex />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/team-intro" element={<TeamIntro />} />
+          <Route path="/Applications/:id" element={<JobDetailsPage />} />
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
