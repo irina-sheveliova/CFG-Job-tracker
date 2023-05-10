@@ -1,0 +1,101 @@
+.table-container {
+  width: 100%;
+  display: flex;
+  flex: column;
+}
+
+.applications_table {
+  display: block;
+  width: 100em;
+  max-width: 90%;
+  margin: 0 auto;
+  table-layout: auto;
+  overflow-x: auto;
+  border-collapse: collapse;
+  box-shadow: 0px 10px 10px #cccccccb;
+  border-radius: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+/* table header set up - teal now to match homepage plans */
+
+.applications_table thead {
+  color: #272626;
+  background-color: teal;
+  color: rgba(255, 255, 255, 0.886);
+
+}
+
+.applications_table th,
+.applications_table td {
+  padding: 1rem;
+}
+
+.applications_table td {
+  border-top: 0.3px solid #ddddddc8;
+  overflow: hidden;
+}
+
+.applications_table tbody tr:hover {
+  background-color: #eeeeeeb0;
+}
+
+.label {
+  border-radius: 3px;
+  color: white;
+  padding: 0.3rem;
+
+}
+
+.label-applied {
+  background-color: rgb(227, 168, 58);
+}
+
+.label-not-applied {
+  background-color: grey;
+}
+
+.label-interviewing {
+  background-color: blue;
+}
+
+.label-offer {
+  background-color: green;
+}
+
+.label-rejected {
+  background-color: red;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 14px;
+}
+
+.actions svg {
+  cursor: pointer;
+
+}
+
+.delete-button {
+  color: red;
+  margin: 5px;
+  max-width: 25px;
+  max-height: 25px;
+}
+
+.edit-button {
+  color: darkgray;
+  margin: 5px;
+  max-width: 25px;
+  max-height: 25px;
+
+}
+
+/* this expands the element to fill the table */
+.fill-out {
+  width: 100%;
+}

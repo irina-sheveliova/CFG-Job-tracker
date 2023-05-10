@@ -8,7 +8,7 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import HomePage from "./components/Homepage/homepage";
-import Applications from "./components/Applications/appdetails";
+import JobsIndex from "./components/JobApplications/JobsIndex";
 import Counter from "./components/Counter/counter";
 import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
@@ -31,7 +31,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/Applications" element={<Applications />} />
+          <Route path="/Applications" element={<JobsIndex />} />
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
           <Route path="/team-intro" element={<TeamIntro />} />
@@ -50,4 +50,7 @@ function App() {
   );
 }
 
+
+
 export default App;
+
