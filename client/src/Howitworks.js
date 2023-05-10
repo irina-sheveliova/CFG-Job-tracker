@@ -1,1 +1,0 @@
-import './Howitworks.css';

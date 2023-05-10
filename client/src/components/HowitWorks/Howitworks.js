@@ -10,8 +10,8 @@ const HowItWorks = () => {
         <p>In order to access the features and benefits of Job Flow, you must first create a new account or log in to an existing one. This step is necessary to ensure the security and privacy of your job application information, as well as to enable you to take full advantage of the platform's capabilities. The account creation process is quick and easy, and once completed, you will have access to a range of tools and resources that can help streamline your job search process.</p>
       </div>
       <div className="step-box">
-        <h3>Step 2: Navigate to Your Dashboard</h3>
-        <p>Upon successfully logging in, you will be directed to your personalized dashboard. From here, you can begin adding job applications to your account. The dashboard serves as a central hub for managing your job search, allowing you to easily track your progress and stay organized.</p>
+        <h3>Step 2: Navigate to the Applications Page</h3>
+        <p>Upon successfully logging in, you will be directed to your personalized applications page. From here, you can begin adding job applications to your account. The applications page serves as a central hub for managing your job search, allowing you to easily track your progress and stay organized.</p>
       </div>
       <div className="step-box">
         <h3>Step 3: Start Adding Jobs</h3>
@@ -24,7 +24,7 @@ const HowItWorks = () => {
       </div>
       <div className="faq-box">
         <h2>Frequently Asked Questions</h2>
-        <p><strong>How many jobs can I have on my dashboard in total?</strong> You can have 50 items on your board in total and a maximum of 10 items per column.</p>
+        <p><strong>How many jobs can I have on my applications page in total?</strong> You can have 50 items on your board in total and a maximum of 10 items per column.</p>
         <p><strong>Is Job flow free to use?</strong> Yes, we believe that everyone should have access to tools that can help them manage their job search effectively. That's why we've made Job flow completely free to use. All you need to do is sign up for an account to access all of the features we offer.</p>
         <p><strong>How do I change my password?</strong> You can change your password by going to your account settings and clicking on the "Change Password" button. If you have any issues, please contact support at support@jobflow.com.</p>
         <p><strong>Can I delete jobs from my job flow?</strong> Yes, you can delete jobs from your job flow by clicking on the job and selecting the "delete" option.</p>
@@ -40,3 +40,4 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
+

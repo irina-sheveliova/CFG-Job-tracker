@@ -10,14 +10,14 @@
 
 /* Border for website */
 body {
-  border: 10px solid #333;
+  border: 10px solid #008080 !important;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #008080;
   color: #fff;
   padding: 20px;
 }
@@ -51,6 +51,10 @@ body {
   font-style: oblique;
   animation: pulse 2s infinite;
 }
+
+
+
+
 
 
 
