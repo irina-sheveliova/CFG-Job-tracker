@@ -1,50 +1,16 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import JobDetails from "./JobDetails";
 import { useNavigate, useParams } from "react-router-dom";
 import "./JobListing.css";
-
-const jobs = [
-  {
-    id: 1,
-    position: "Frontend Engineer",
-    company: "Lush",
-    location: "Brighton, UK",
-    dateSaved: "May 1, 2023",
-    salary: "130,000",
-    status: "applied",
-    rating: 4,
-    jobNotes: "This is a great opportunity!",
-  },
-  {
-    id: 2,
-    position: "Backend Developer",
-    company: "Overleaf",
-    location: "London, UK",
-    dateSaved: "April 28, 2023",
-    salary: "70,000",
-    status: "interviewing",
-    rating: 5,
-    jobNotes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-  },
-  {
-    id: 3,
-    position: "Full Stack Developer",
-    company: "Ancestry.com",
-    location: "Chicago, USA",
-    dateSaved: "April 25, 2023",
-    salary: "90,000",
-    status: "offered",
-    rating: 3,
-    jobNotes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-];
+import jobs from "./jobs";
 
 const JobListing = () => {
-  const [selectedJob, setSelectedJob] = React.useState(null);
+  const [selectedJob, setSelectedJob] = useState(null);
   const navigate = useNavigate();
   const { jobId } = useParams();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (jobId) {
       const job = jobs.find((job) => job.id === Number(jobId));
       setSelectedJob(job);
@@ -66,7 +32,10 @@ const JobListing = () => {
           <h4>Saved Jobs</h4>
           <ul className="listed-items">
             {jobs.map((job) => (
-              <li key={job.id} className="item">
+              <li
+                key={job.id}
+                className={`item ${selectedJob === job.id ? "selected" : ""}`}
+              >
                 <button
                   onClick={() => handleJobClick(job.id)}
                   className="list-button"

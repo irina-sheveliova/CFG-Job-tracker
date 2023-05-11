@@ -56,6 +56,7 @@ select:focus {
     cursor: pointer;
 }
 
+
 .status {
  margin-top: 10px;
 
@@ -135,19 +136,30 @@ select:focus {
 }
 
 .details-page button {
-    background-color: #008080;
+    border: none;
+        background-color: transparent;
+        color: #008080;
+        font: inherit;
+        cursor: pointer;
+        padding: 0;
+        outline: none;
+    /* background-color: #008080;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 10px; */
 }
 
 .details-page button:hover {
     background-color: white;
     color:#008080;
-    border: 2px solid #008080;
+    /* border: 2px solid #008080; */
+}
+
+.btn-icon button:hover {
+    content: "Add notes";
 }
 
 .details-page .star-rating {
