@@ -56,7 +56,7 @@ const JobListing = () => {
   const handleJobClick = (jobId) => {
     const job = jobs.find((job) => job.id === jobId);
     setSelectedJob(job);
-    navigate(`/Applications/${job.id}`);
+    navigate(`/applications/${job.id}`);
   };
 
   return (

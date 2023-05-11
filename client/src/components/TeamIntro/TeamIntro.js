@@ -12,7 +12,7 @@ const TeamIntro = () => {
       <div className="member-box">
         <h3>Irina Șeveliova</h3>
         <p>
-          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{' '}
+          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{" "}
           <strong>singing</strong>
         </p>
         <p>
@@ -23,7 +23,7 @@ const TeamIntro = () => {
       <div className="member-box">
         <h3>Olivia Onu</h3>
         <p>
-          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{' '}
+          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{" "}
           <strong>listening to music</strong>
         </p>
         <p>
@@ -34,7 +34,7 @@ const TeamIntro = () => {
       <div className="member-box">
         <h3>Katarzyna Kaczmarek</h3>
         <p>
-          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{' '}
+          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{" "}
           <strong>rollerblading</strong>
         </p>
         <p>
@@ -43,8 +43,14 @@ const TeamIntro = () => {
         </p>
       </div>
       <div className="member-box">
-        <h3>Team member</h3>
-        <p>Description</p>
+        <h3>Joy Omodiale</h3>
+        <p>
+          <FontAwesomeIcon icon={faHeart} /> My favourite hobby is{" "}
+          <strong></strong>
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faHeart} /> I do it because
+        </p>
       </div>
       <div className="member-box">
         <h3>Team member</h3>

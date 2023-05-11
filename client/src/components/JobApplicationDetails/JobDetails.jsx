@@ -31,9 +31,13 @@ const JobDetails = ({
     setSalaryValue(salary);
   }, [salary]);
 
-  //   useEffect(() => {
-  //     setRatings(rating);
-  //   }, [rating]);
+  useEffect(() => {
+    setSelectedStatus(status);
+  }, [status]);
+
+  useEffect(() => {
+    setRatings(rating);
+  }, [rating]);
 
   const handleChange = (event) => {
     setSelectedStatus(event.target.value);
