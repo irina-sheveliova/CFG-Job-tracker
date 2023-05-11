@@ -20,7 +20,7 @@ To build our website, we will be using React as our frontend technology. React i
 
 On the backend, we will be using Node.js, a popular runtime environment that allows us to execute server-side JavaScript. Node.js is well-suited for building scalable, high-performance web applications and has a vast library of modules and tools that we can use to speed up development.
 
-We have selected SQL as our database technology because of its reliability, scalability, and strong community support. With SQL, we can create complex queries and manage large datasets efficiently, making it an excellent choice for our job tracking website.
+We have selected MS SQL as our database technology because of its reliability, scalability, and strong community support. With MS SQL, we can create complex queries and manage large datasets efficiently, making it an excellent choice for our job tracking website.
 
 To organize our workload, we will be using GitHub and Jira as our primary task management tools. GitHub will allow us to collaborate on code, track changes, and review each other's work. Jira will enable us to create and manage tasks, assign them to team members, and track progress over time.
 
@@ -37,7 +37,7 @@ The How It Works page provides step-by-step instructions on how to use the websi
 ## Part 2  
 
 ### Design wireframe
-JobFlow website will have 8 pages, the prototype has been created using modern tool 'drawio'. Detailed diagram is available by the link https://app.diagrams.net/?src=about#Hirina-sheveliova%2FCFG-Job-tracker%2Fproject_hw%2FProject_Homework%2FCFG%20JobFlow%20Diagram.drawio, as well as attached to GitHub repo as .pdf file "CFG JobFlow Diagram.pdf"
+JobFlow website will have approximately 8 pages, the prototype has been created using modern tool 'drawio'. Detailed diagram is available by the link https://app.diagrams.net/?src=about#Hirina-sheveliova%2FCFG-Job-tracker%2Fproject_hw%2FProject_Homework%2FCFG%20JobFlow%20Diagram.drawio, as well as attached to GitHub repo as .pdf file "CFG JobFlow Diagram.pdf"
 
 **The flow** is easy and self-explanatory - user opens home page, then he may switch between tabs using Navigation pane to read more about application on "About" and "How It Works" pages. He can create an account by clicking "Sign Up" button or log in to existing account using "Log In" button. Once logged in user will see the list of job applications he already created and can also create a new entry using "Add New Job" button. He can also switch to Account Settings page where it's possible to update profile details, change password and log off using "Log Out" button.
 
