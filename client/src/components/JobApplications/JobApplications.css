@@ -49,23 +49,23 @@
 
 }
 
-.label-applied {
+.label-Applied {
   background-color: rgb(227, 168, 58);
 }
 
-.label-not-applied {
+.label-NotApplied {
   background-color: grey;
 }
 
-.label-interviewing {
+.label-Interviewing {
   background-color: blue;
 }
 
-.label-offer {
+.label-Offer {
   background-color: green;
 }
 
-.label-rejected {
+.label-Rejected {
   background-color: red;
 }
 

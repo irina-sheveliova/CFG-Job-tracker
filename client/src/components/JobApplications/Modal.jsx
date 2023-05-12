@@ -1,15 +1,20 @@
 import React from 'react'
 import "./Modal.css"
 
-function JobModal() {
+function Modal({ closeModal }) {
     return (
         // <h1> Adding a New Job </h1>
-        <div className="m-container">
+        <div className="m-container" onClick={
+            (e) => {
+                if (e.target.className === "m-container")
+                    closeModal();
+            }}
+        >
             <div className="modal">
 
                 <form>
-                    <div className="main-div">
-                        <div className="form-div">
+                    <div className="main-div" >
+                        <div className="form-div" >
                             <label htmlFor="job_position">Job Position</label>
                             <input type="text" name="job_position" />
                         </div>
@@ -51,4 +56,4 @@ function JobModal() {
     )
 };
 
-export default JobModal;
+export default Modal;
