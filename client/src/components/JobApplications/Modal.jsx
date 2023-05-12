@@ -4,6 +4,9 @@ import { useState } from 'react';
 
 function Modal({ closeModal, addJob }) {
 
+    //setting state for errors
+    const [errors, setErrors] = useState({})
+
     const [jobForm, setJobForm] = useState({
         position: "",
         company: "",
@@ -22,16 +25,33 @@ function Modal({ closeModal, addJob }) {
         console.log("form changed")
     }
 
+    const formValidation = () => {
+        if (jobForm.position && jobForm.company && jobForm.doa && jobForm.status) {
+            setErrors("");
+            console.log("form is valid")
+            return true
+        }
+        else {
+            console.log("form is invalid")
+            return false;
+        }
+    };
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(jobForm)
+        //if form validation returns false, then 
+        if (!formValidation()) {
+            return
+        }
+
         //addJob function (passed in as a prop) which adds a new row to the table
         addJob(jobForm)
+        closeModal()
     }
 
-    //TO DO:
-    //add validations to the form on submission
 
     return (
         // <h1> Adding a New Job </h1>
