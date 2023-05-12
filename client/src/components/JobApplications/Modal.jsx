@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 function Modal({ closeModal, addJob }) {
 
-    //setting state for errors
-    const [errors, setErrors] = useState({})
+    //setting state for form errors
+    const [errors, setErrors] = useState("")
 
     const [jobForm, setJobForm] = useState({
         position: "",
@@ -25,6 +25,7 @@ function Modal({ closeModal, addJob }) {
         console.log("form changed")
     }
 
+    //validation for the form
     const formValidation = () => {
         if (jobForm.position && jobForm.company && jobForm.doa && jobForm.status) {
             setErrors("");
@@ -32,6 +33,14 @@ function Modal({ closeModal, addJob }) {
             return true
         }
         else {
+            // if the value doesn't exist, we want to ppush it into our errorItems array
+            let errorItems = [];
+            for (const [key, value] of Object.entries(jobForm)) {
+                if (!value && (key === "position" || key === "company" || key === "doa" || key === "status")) {
+                    errorItems.push(key);
+                }
+            }
+            setErrors(errorItems.join(", "));
             console.log("form is invalid")
             return false;
         }
@@ -46,7 +55,6 @@ function Modal({ closeModal, addJob }) {
         if (!formValidation()) {
             return
         }
-
         //addJob function (passed in as a prop) which adds a new row to the table
         addJob(jobForm)
         closeModal()
@@ -74,14 +82,14 @@ function Modal({ closeModal, addJob }) {
                             <input type="text" name="company" value={jobForm.company} onChange={handleFormChange} />
                         </div>
                         <div className="form-div">
-                            <label htmlFor="doa"> Date of Application</label>
+                            <label htmlFor="doa"> Date of Application (doa)</label>
                             <input type="date" name="doa" value={jobForm.doa} onChange={handleFormChange} />
                         </div>
 
                         <div className="form-div">
                             <label htmlFor="status"> Status</label>
 
-                            <select name="status" value={setJobForm.status} onChange={handleFormChange}>
+                            <select name="status" value={jobForm.status} onChange={handleFormChange}>
                                 <option value="applied">Applied</option>
                                 <option value="no-applied">Not Applied</option>
                                 <option value="interviewing">Interviewing</option>
@@ -98,6 +106,8 @@ function Modal({ closeModal, addJob }) {
                             <label htmlFor="notes"> Notes</label>
                             <textarea id="notes" type="text" name="notes" value={jobForm.notes} onChange={handleFormChange}></textarea>
                         </div>
+                        {/* creating a new div if errors exist */}
+                        {errors && <div className="form-errors">{`Please provide: ${errors}`}</div>}
                         <button className="modal-button" type="submit" onClick={handleSubmit}>Enter</button>
                     </div>
                 </form>

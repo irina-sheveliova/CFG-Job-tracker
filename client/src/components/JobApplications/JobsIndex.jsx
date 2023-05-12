@@ -52,13 +52,22 @@ function JobsIndex() {
         setRows([...rows, newRow])
     }
 
+    // Function to UPDATE a row in the table
+    const [rowToUpdate, setRowToUpdate] = useState(null)
+
+
+    //whenever the handleEdit function is being called, we take in the index it's called at
+    const handleEdit = (idx) => {
+        setRowToUpdate(idx);
+        setModalOpen(true);
+    }
 
 
     return (
         <div className="index-div">
             <h1>My Job Applications</h1>
             <button className="btn" onClick={() => setModalOpen(true)}> Add a Job</button>
-            <JobApplications rows={rows} deleteJob={handleDelete} />
+            <JobApplications rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
             {modalOpen && <Modal
                 closeModal={() => setModalOpen(false)}
                 addJob={handleSubmit} />}

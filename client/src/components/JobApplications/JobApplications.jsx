@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./JobApplications.css";
 import Modal from "./Modal";
 import axios from 'axios';
-// import { Fragment } from 'react';
+
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 
 
-function JobApplications({ rows, deleteJob }) {
+function JobApplications({ rows, deleteJob, editJob }) {
 
-    // this function accepts the rows and deleteJob props from JobsIndex
-
+    // this function accepts the rows, deleteJob and editJob props from JobsIndex
     return (
-        // <React.Fragment>
+
         <div className="table-container">
             <table className="applications_table">
                 <thead>
@@ -46,9 +45,11 @@ function JobApplications({ rows, deleteJob }) {
                                 </td>
                                 <td className="fill-out">{row.notes}</td>
                                 <td>
-                                    <span className="table-actions"><BsFillPencilFill className="edit-button" /><BsFillTrashFill
-                                        className='delete-button'
-                                        onClick={() => deleteJob(idx)} />
+                                    <span className="table-actions">
+                                        <BsFillPencilFill className="edit-button" onClick={() => editJob(idx)} />
+                                        <BsFillTrashFill
+                                            className='delete-button'
+                                            onClick={() => deleteJob(idx)} />
                                     </span>
                                 </td>
                             </tr>
@@ -57,8 +58,6 @@ function JobApplications({ rows, deleteJob }) {
                 </tbody>
             </table>
         </div>
-
-        // </React.Fragment>
     );
 };
 
