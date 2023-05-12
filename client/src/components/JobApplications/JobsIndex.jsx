@@ -11,7 +11,7 @@ function JobsIndex() {
     const [rows, setRows] = useState([
         {
             id: "1",
-            job_position: "Developer",
+            position: "Developer",
             company: "Google",
             doa: "10/04/2023",
             salary: "120k",
@@ -20,7 +20,7 @@ function JobsIndex() {
         },
         {
             id: "2",
-            job_position: "Developer",
+            position: "Developer",
             company: "Amazon",
             doa: "10/04/2023",
             salary: "100k",
@@ -29,7 +29,7 @@ function JobsIndex() {
         },
         {
             id: "3",
-            job_position: "Developer",
+            position: "Developer",
             company: "Facebook",
             doa: "10/04/2023",
             salary: "100k",
@@ -47,9 +47,21 @@ function JobsIndex() {
 
 
     // Function to ADD a row in the table
-    // The function returns existing rows and adds a new row
+    // If we're NOT updating a row, then it adds a new row to existing rows
+    // ELSE we call the function setRows and return any edited values
     const handleSubmit = (newRow) => {
-        setRows([...rows, newRow])
+        rowToUpdate === null ?
+            setRows([...rows, newRow]) :
+
+            setRows(
+                rows.map((current, idx) => {
+                    if (idx !== rowToUpdate) {
+                        return current
+                    }
+                    else {
+                        return newRow;
+                    }
+                }))
     }
 
     // Function to UPDATE a row in the table
@@ -69,8 +81,11 @@ function JobsIndex() {
             <button className="btn" onClick={() => setModalOpen(true)}> Add a Job</button>
             <JobApplications rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
             {modalOpen && <Modal
-                closeModal={() => setModalOpen(false)}
-                addJob={handleSubmit} />}
+                closeModal={() =>
+                    setModalOpen(false)}
+                addJob={handleSubmit}
+                defaultValue={rowToUpdate !== null && rows[rowToUpdate]}
+            />}
         </div>
     );
 }

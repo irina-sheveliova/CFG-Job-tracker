@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./JobApplications.css";
-import Modal from "./Modal";
-import axios from 'axios';
+// import axios from 'axios';
 
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 
@@ -34,7 +33,7 @@ function JobApplications({ rows, deleteJob, editJob }) {
 
                             return <tr key={idx}>
                                 <td>{row.id}</td>
-                                <td>{row.job_position}</td>
+                                <td>{row.position}</td>
                                 <td>{row.company}</td>
                                 <td>{row.doa}</td>
                                 <td>{row.salary}</td>

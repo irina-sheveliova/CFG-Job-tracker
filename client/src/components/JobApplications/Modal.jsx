@@ -2,12 +2,14 @@ import React from 'react'
 import "./Modal.css";
 import { useState } from 'react';
 
-function Modal({ closeModal, addJob }) {
+function Modal({ closeModal, addJob, defaultValue }) {
 
     //setting state for form errors
     const [errors, setErrors] = useState("")
 
-    const [jobForm, setJobForm] = useState({
+    // state is set to the default value if provided
+    // but if it's null, we use our dictionary
+    const [jobForm, setJobForm] = useState(defaultValue || {
         position: "",
         company: "",
         doa: "",
