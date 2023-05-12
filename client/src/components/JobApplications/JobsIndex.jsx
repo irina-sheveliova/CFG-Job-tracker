@@ -38,7 +38,7 @@ function JobsIndex() {
         }
     ]);
 
-    // Function to delete a row from the table
+    // Function to DELETE a row from the table
     // It filters through the set rows array.If the current index is NOT equal to the target index, rows gets added, 
     // else it will not get added and be deleted 
     const handleDelete = (targetIndex) => {
@@ -46,12 +46,22 @@ function JobsIndex() {
     };
 
 
+    // Function to ADD a row in the table
+    // The function returns existing rows and adds a new row
+    const handleSubmit = (newRow) => {
+        setRows([...rows, newRow])
+    }
+
+
+
     return (
         <div className="index-div">
             <h1>My Job Applications</h1>
             <button className="btn" onClick={() => setModalOpen(true)}> Add a Job</button>
             <JobApplications rows={rows} deleteJob={handleDelete} />
-            {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
+            {modalOpen && <Modal
+                closeModal={() => setModalOpen(false)}
+                addJob={handleSubmit} />}
         </div>
     );
 }

@@ -1,7 +1,38 @@
 import React from 'react'
-import "./Modal.css"
+import "./Modal.css";
+import { useState } from 'react';
 
-function Modal({ closeModal }) {
+function Modal({ closeModal, addJob }) {
+
+    const [jobForm, setJobForm] = useState({
+        position: "",
+        company: "",
+        doa: "",
+        status: "",
+        salary: "",
+        notes: " "
+    })
+
+    const handleFormChange = (e) => {
+        setJobForm({
+            ...jobForm,
+            [e.target.name]: e.target.value
+
+        })
+        console.log("form changed")
+    }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(jobForm)
+        //addJob function (passed in as a prop) which adds a new row to the table
+        addJob(jobForm)
+    }
+
+    //TO DO:
+    //add validations to the form on submission
+
     return (
         // <h1> Adding a New Job </h1>
         <div className="m-container" onClick={
@@ -15,22 +46,22 @@ function Modal({ closeModal }) {
                 <form>
                     <div className="main-div" >
                         <div className="form-div" >
-                            <label htmlFor="job_position">Job Position</label>
-                            <input type="text" name="job_position" />
+                            <label htmlFor="position">Job Position</label>
+                            <input type="text" name="position" value={jobForm.position} onChange={handleFormChange} />
                         </div>
                         <div className="form-div">
                             <label htmlFor="company"> Company</label>
-                            <input type="text" name="company" />
+                            <input type="text" name="company" value={jobForm.company} onChange={handleFormChange} />
                         </div>
                         <div className="form-div">
                             <label htmlFor="doa"> Date of Application</label>
-                            <input type="date" name="doa" />
+                            <input type="date" name="doa" value={jobForm.doa} onChange={handleFormChange} />
                         </div>
 
                         <div className="form-div">
                             <label htmlFor="status"> Status</label>
 
-                            <select name="status">
+                            <select name="status" value={setJobForm.status} onChange={handleFormChange}>
                                 <option value="applied">Applied</option>
                                 <option value="no-applied">Not Applied</option>
                                 <option value="interviewing">Interviewing</option>
@@ -40,14 +71,14 @@ function Modal({ closeModal }) {
                         </div>
                         <div className="form-div">
                             <label htmlFor="salary"> Salary</label>
-                            <input name="salary" />
+                            <input name="salary" value={jobForm.salary} onChange={handleFormChange} />
                         </div>
                         <div className="form-div">
 
                             <label htmlFor="notes"> Notes</label>
-                            <textarea id="notes" type="text" name="notes"></textarea>
+                            <textarea id="notes" type="text" name="notes" value={jobForm.notes} onChange={handleFormChange}></textarea>
                         </div>
-                        <button className="modal-button" type="submit">Enter</button>
+                        <button className="modal-button" type="submit" onClick={handleSubmit}>Enter</button>
                     </div>
                 </form>
             </div>
