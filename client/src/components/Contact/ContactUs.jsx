@@ -30,7 +30,7 @@ function ContactUs() {
     }
 
     // if there are no errors AND the fields aren't blank AND email is valid
-    // then we can add an submitted alert
+    // then we can add a submitted alert
     useEffect(() => {
         if (Object.keys(errors).length === 0 && (values.name !== "" && values.email !== "" && values.password !== "")) {
             alert("Form Submitted");
