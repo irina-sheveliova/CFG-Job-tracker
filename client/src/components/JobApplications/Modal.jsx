@@ -67,14 +67,16 @@ function Modal({ closeModal, addJob, defaultValue }) {
 
         <div className="m-container" onClick={
             (e) => {
-                if (e.target.className === "m-container")
+                if (e.target.className === "close")
                     closeModal();
             }}
         >
             <div className="modal">
 
                 <form>
+
                     <div className="main-div" >
+                        <div className='close'> X</div>
                         <div className="form-div" >
                             <label htmlFor="position">Job Position</label>
                             <input type="text" name="position" value={jobForm.position} onChange={handleFormChange} />
@@ -92,6 +94,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
                             <label htmlFor="status"> Status</label>
 
                             <select name="status" value={jobForm.status} onChange={handleFormChange}>
+                                <option>Please choose </option>
                                 <option value="applied">Applied</option>
                                 <option value="no-applied">Not Applied</option>
                                 <option value="interviewing">Interviewing</option>

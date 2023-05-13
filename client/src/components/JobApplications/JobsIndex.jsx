@@ -82,8 +82,10 @@ function JobsIndex() {
             <button className="add-btn" onClick={() => setModalOpen(true)}> Add a Job</button>
             <JobsTable rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
             {modalOpen && <Modal
-                closeModal={() =>
-                    setModalOpen(false)}
+                closeModal={() => {
+                    setModalOpen(false);
+                    setRowToUpdate(null);
+                }}
                 addJob={handleSubmit}
                 defaultValue={rowToUpdate !== null && rows[rowToUpdate]}
             />}

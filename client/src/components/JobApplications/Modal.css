@@ -25,6 +25,17 @@
 
 /* Form styling */
 
+.close {
+    /*position: fixed;
+    */
+    margin-left: 200px;
+    font-size: 35px;
+    background-color: whitesmoke;
+    color: red;
+    padding: 7px;
+
+}
+
 form {
     height: 100vh;
     display: flex;
@@ -45,6 +56,7 @@ form {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
     max-width: 100vh;
 }
 

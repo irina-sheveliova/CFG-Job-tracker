@@ -13,10 +13,8 @@
   overflow-x: auto;
   border-collapse: collapse;
   box-shadow: 0px 10px 10px #cccccccb;
-  border-radius: 12px;
   overflow: hidden;
   white-space: nowrap;
-
 }
 
 /* table header set up - teal now to match homepage plans */
@@ -82,14 +80,14 @@
 
 .delete-button {
   color: red;
-  margin: 5px;
+  padding: 6px;
   max-width: 25px;
   max-height: 25px;
 }
 
 .edit-button {
   color: darkgray;
-  margin: 5px;
+  padding: 6px;
   max-width: 25px;
   max-height: 25px;
 
