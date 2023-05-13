@@ -7,14 +7,17 @@
 .applications_table {
   display: block;
   width: 100em;
-  max-width: 90%;
-  margin: 0 auto;
+  height: 400px;
   table-layout: auto;
-  overflow-x: auto;
+  max-width: 85%;
+  margin: 0 auto;
   border-collapse: collapse;
   box-shadow: 0px 10px 10px #cccccccb;
   overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
   white-space: nowrap;
+
 }
 
 /* table header set up - teal now to match homepage plans */
@@ -51,7 +54,7 @@
   background-color: rgb(227, 168, 58);
 }
 
-.label-NotApplied {
+.label-Not-Applied {
   background-color: grey;
 }
 

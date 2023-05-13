@@ -96,7 +96,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
                             <select name="status" value={jobForm.status} onChange={handleFormChange}>
                                 <option>Please choose </option>
                                 <option value="applied">Applied</option>
-                                <option value="no-applied">Not Applied</option>
+                                <option value="not-Applied">Not Applied</option>
                                 <option value="interviewing">Interviewing</option>
                                 <option value="offer">Offer</option>
                                 <option value="rejected">Rejected</option>
