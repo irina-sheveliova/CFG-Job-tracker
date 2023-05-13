@@ -1,11 +1,11 @@
 import React from "react";
-import "./JobApplications.css";
+import "./JobsTable.css";
 // import axios from 'axios';
 
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 
 
-function JobApplications({ rows, deleteJob, editJob }) {
+function JobsTable({ rows, deleteJob, editJob }) {
 
     // this function accepts the rows, deleteJob and editJob props from JobsIndex
     return (
@@ -61,4 +61,4 @@ function JobApplications({ rows, deleteJob, editJob }) {
 };
 
 
-export default JobApplications;
+export default JobsTable;

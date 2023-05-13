@@ -64,7 +64,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
 
 
     return (
-        // <h1> Adding a New Job </h1>
+
         <div className="m-container" onClick={
             (e) => {
                 if (e.target.className === "m-container")

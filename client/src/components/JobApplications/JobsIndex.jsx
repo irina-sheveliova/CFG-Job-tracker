@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import JobApplications from "./JobApplications";
+import JobsTable from "./JobsTable";
 import Modal from './Modal.jsx';
 import './JobsIndex.css';
 
@@ -7,7 +7,8 @@ function JobsIndex() {
 
     const [modalOpen, setModalOpen] = useState(false);
 
-    // setting the values for rows
+    // setting the values for rows here for now
+    // when api is set up, the table will be populated from the database
     const [rows, setRows] = useState([
         {
             id: "1",
@@ -78,8 +79,8 @@ function JobsIndex() {
     return (
         <div className="index-div">
             <h1>My Job Applications</h1>
-            <button className="btn" onClick={() => setModalOpen(true)}> Add a Job</button>
-            <JobApplications rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
+            <button className="add-btn" onClick={() => setModalOpen(true)}> Add a Job</button>
+            <JobsTable rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
             {modalOpen && <Modal
                 closeModal={() =>
                     setModalOpen(false)}
