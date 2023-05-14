@@ -142,7 +142,10 @@ export default function SignUpForm() {
           </button>
         </div>
         <p style={{ textAlign: "center", fontSize: "18px" }}>
-          Already have an account? <a href="/login">Log in</a>
+          Already have an account?{" "}
+          <a href="/login" style={{ color: "#008080" }}>
+            Log in
+          </a>
         </p>
       </div>
     </form>

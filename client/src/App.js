@@ -35,7 +35,7 @@ function App() {
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
           <Route path="/team-intro" element={<TeamIntro />} />
-          <Route path="/Applications/:id" element={<JobDetailsPage />} />
+          <Route path="/applications/:id" element={<JobDetailsPage />} />
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
@@ -50,7 +50,4 @@ function App() {
   );
 }
 
-
-
 export default App;
-

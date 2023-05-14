@@ -1,5 +1,14 @@
-.select-status {
-    background-color: #005149;
+select {
+    /* -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolygon points='5 7 10 12 15 7'/%3E%3C/svg%3E") no-repeat right center/10px;
+        border: none;
+        padding: 8px;
+        font-size: 16px;
+        color: #333;
+        width: 200px; */
+    /* background-color: #005149;
     color: #fff;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     border-radius: 4px;
@@ -14,8 +23,14 @@
     cursor: pointer;
     margin-bottom: 10px;
     height: 30px;
-    width: 10%;
+    width: 10%; */
 };
+
+option {
+    padding: 8px;
+    background-color: #fff;
+    color: #333;
+}
 
 select:not(:focus) {
     background-color: yellow;
@@ -40,6 +55,7 @@ select:focus {
     outline: none;
     cursor: pointer;
 }
+
 
 .status {
  margin-top: 10px;
@@ -120,19 +136,30 @@ select:focus {
 }
 
 .details-page button {
-    background-color: #008080;
+    border: none;
+        background-color: transparent;
+        color: #008080;
+        font: inherit;
+        cursor: pointer;
+        padding: 0;
+        outline: none;
+    /* background-color: #008080;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 10px; */
 }
 
 .details-page button:hover {
     background-color: white;
     color:#008080;
-    border: 2px solid #008080;
+    /* border: 2px solid #008080; */
+}
+
+.btn-icon button:hover {
+    content: "Add notes";
 }
 
 .details-page .star-rating {
