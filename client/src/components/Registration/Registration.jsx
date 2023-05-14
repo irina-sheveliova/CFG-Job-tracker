@@ -68,7 +68,7 @@ export default function SignUpForm() {
           // Now, send the user data to your backend API
 
           const response = await axios.post(
-            'http://localhost:5000/users',
+            'http://localhost:8080/users',
             userData
           );
           console.log('User created:', response.data);
