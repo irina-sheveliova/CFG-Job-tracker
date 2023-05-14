@@ -1,31 +1,32 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Registration.css";
-import { createUserWithEmailAndPassword } from "../../FirebaseAuth/auth";
+import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './Registration.css';
+import { createUserWithEmailAndPassword } from '../../FirebaseAuth/auth';
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
   });
 
   const navigate = useNavigate();
 
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
 
   function validatePassword() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
     const isValidPassword = passwordRegex.test(formData.password);
     if (!isValidPassword) {
       setPasswordErrorMessage(
-        "Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter"
+        'Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter'
       );
     } else {
-      setPasswordErrorMessage("");
+      setPasswordErrorMessage('');
     }
   }
 
@@ -33,9 +34,9 @@ export default function SignUpForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValidEmail = emailRegex.test(formData.email);
     if (!isValidEmail) {
-      setEmailErrorMessage("Please enter a valid email address");
+      setEmailErrorMessage('Please enter a valid email address');
     } else {
-      setEmailErrorMessage("");
+      setEmailErrorMessage('');
     }
   }
 
@@ -44,36 +45,56 @@ export default function SignUpForm() {
     validatePassword();
     validateEmail();
     if (!passwordErrorMessage && !emailErrorMessage) {
-      console.log("Form submitted:", formData);
-      navigate("/");
+      console.log('Form submitted:', formData);
+      navigate('/');
     }
 
-    if (passwordErrorMessage === "") {
+    if (passwordErrorMessage === '') {
       const userData = {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
       };
-      const result = await createUserWithEmailAndPassword(
-        formData.email,
-        formData.password,
-        userData
-      );
-      if (result.success) {
-        // Clear the form data
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        });
+
+      try {
+        const result = await createUserWithEmailAndPassword(
+          formData.email,
+          formData.password,
+          userData
+        );
+
+        if (result.success) {
+          // User created successfully using Firebase Authentication
+          // Now, send the user data to your backend API
+
+          const response = await axios.post(
+            'http://localhost:5000/users',
+            userData
+          );
+          console.log('User created:', response.data);
+
+          // Clear the form data
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+          });
+        } else {
+          // Handle unsuccessful user creation using Firebase Authentication
+          console.error('Error creating user:', result.error);
+          // Display an error message or handle the error accordingly
+        }
+      } catch (error) {
+        console.error('Error creating user:', error);
+        // Handle error accordingly
       }
     }
   };
 
   const onInputChange = (event) => {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     setFormData({
@@ -137,11 +158,11 @@ export default function SignUpForm() {
           )}
         </div>
         <div className="form-group">
-          <button type="submit" style={{ width: "100%" }}>
+          <button type="submit" style={{ width: '100%' }}>
             Sign Up
           </button>
         </div>
-        <p style={{ textAlign: "center", fontSize: "18px" }}>
+        <p style={{ textAlign: 'center', fontSize: '18px' }}>
           Already have an account? <a href="/login">Log in</a>
         </p>
       </div>
