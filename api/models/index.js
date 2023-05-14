@@ -1,36 +1,30 @@
-//this file will instantiate our database connection
-const dbConfig = require('../config/db-config');
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
+import User from './user.js';
+import Job from './job.js';
+import dotenv from 'dotenv';
 
-
-// Creating a new instance of sequelise and passing in an object with parameters "dialect" and "storage"
+//This file will instantiate our database connection
+// We create a new instance of sequelise and pass in an object with parameters "dialect" and "storage"
 // storage creates a database in our project called 'JobFlow'.
+
+dotenv.config();
+
+// get all the strings from a .env file instead
 const sequelize = new Sequelize(
-
-    dbConfig.DATABASE,
-    dbConfig.USER,
-    dbConfig.PASSWORD,
+    process.env.DATABASE,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
-        host: dbConfig.HOST,
-        dialect: dbConfig.DIALECT
-    }
-)
+        host: process.env.HOST,
+        dialect: process.env.DIALECT
+    });
 
-// exporting the sequelize instance
 const db = {};
+
+db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.models = {}
-db.models.user = require('./users')(sequelize.Sequelize.DataTypes)
 
+db.User = User(sequelize, Sequelize);
+db.Job = Job(sequelize, Sequelize);
 
-module.exports = db;
-
-    // //testing our connection to the database
-    // (async () => {
-    //     try {
-    //         await sequelize.authenticate();
-    //         console.log('Connection to the database successful!');
-    //     } catch (error) {
-    //         console.error('Error connecting to the database: ', error);
-    //     }
-    // })();
+export default db;
