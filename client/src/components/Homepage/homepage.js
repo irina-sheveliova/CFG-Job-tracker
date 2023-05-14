@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import About from '../About/About';
 import RegistrationPage from '../Registration/Registration';
 import ContactUs from '../Contact/ContactUs';
@@ -10,6 +10,12 @@ import '@fortawesome/fontawesome-free/js/all.min.js';
 import Testimonials from '../Testimonials/Testimonials';
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  const navigateToSignUp = () => {
+    navigate('/signup');
+  };
+
   const [count, setCount] = useState(10000);
 
   useEffect(() => {
@@ -30,7 +36,9 @@ function HomePage() {
   return (
     <div>
       <div className="button-container">
-        <button className="get-started-button wide-button">
+        <button
+          className="get-started-button wide-button"
+          onClick={navigateToSignUp}>
           Get Started For Free!
         </button>
       </div>
