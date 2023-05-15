@@ -88,6 +88,63 @@ select {
     margin-right: 5px;
   }
   
+  /* Jobsearch Title */
+  #search-title {
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    position: relative;
+  }
+  
+  #search-title::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 40%;
+    height: 2px;
+    background-color: #008080;
+    margin-top: 30px;
+  }
+  
+  #jobflow-text {
+    color: black;
+    font-style: italic;
+  }
+
+  #Dream-sub {
+    color: #008080;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  #sub-search-title {
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    position: relative;
+  }
+
   
 /* Results container */
 .results-container {
@@ -162,6 +219,7 @@ select {
     font-weight: bold;
   }
   
+ 
   
 
   
