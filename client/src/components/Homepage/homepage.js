@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import About from '../About/About';
 import RegistrationPage from '../Registration/Registration';
 import ContactUs from '../Contact/ContactUs';
@@ -10,12 +10,6 @@ import '@fortawesome/fontawesome-free/js/all.min.js';
 import Testimonials from '../Testimonials/Testimonials';
 
 function HomePage() {
-  const navigate = useNavigate();
-
-  const navigateToSignUp = () => {
-    navigate('/signup');
-  };
-
   const [count, setCount] = useState(10000);
 
   useEffect(() => {
@@ -36,9 +30,7 @@ function HomePage() {
   return (
     <div>
       <div className="button-container">
-        <button
-          className="get-started-button wide-button"
-          onClick={navigateToSignUp}>
+        <button className="get-started-button wide-button">
           Get Started For Free!
         </button>
       </div>
@@ -55,20 +47,21 @@ function HomePage() {
             </div>
             <div className={boxState[0] ? 'box-content show' : 'box-content'}>
               <p>
-                Keep track of all your job applications in one place and stay on
-                top of your job search.{' '}
+              Say goodbye to scattered notes and endless spreadsheets. Our job search platform provides a centralized hub for you to keep track of all your job applications effortlessly. Stay organized, stay on top of your game.
+              Track application statuses, set reminders for follow-ups, and never miss an important deadline. Our intuitive interface makes it simple to manage multiple applications simultaneously, allowing you to focus on what matters most: landing your dream job.{' '}
               </p>
             </div>
           </div>
           <div className="expandable-box" onClick={() => toggleBox(1)}>
             <div className="box-header">
               <i className="fas fa-clipboard-list"></i>
-              <h2 className="box-title">To-Do List (Coming Soon)</h2>
+              <h2 className="box-title">Search For Live Jobs</h2>
             </div>
             <div className={boxState[1] ? 'box-content show' : 'box-content'}>
               <p>
-                Stay organized with a to-do list that helps you keep track of
-                everything you need to do to land your next job.{' '}
+              Find your dream job in seconds with our powerful job search platform. Uncover endless opportunities,
+              explore top companies, and discover the perfect match for your skills and aspirations. Explore top companies, 
+              dive into detailed job descriptions, and uncover valuable insights to make informed decisions. From remote work options to competitive compensation packages, we've got you covered.{' '}
               </p>
             </div>
           </div>
