@@ -3,10 +3,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import userApi from './routes/users.js';
 import jobsApi from './routes/jobs.js';
-
 import db from './models/index.js';
-
 const app = express();
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,11 +17,16 @@ app.get('/', (req, res) => {
 
 app.use('/api', userApi);
 app.use('/api', jobsApi);
+
 const PORT = process.env.PORT || 8080;
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+// Using the sync() method to sync our models to SQL tables
+// can use 'sync({ force: true })' to drop and recreate any existing tables
+
+db.sequelize.sync({ force: true }).
+  then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}.`);
+    });
   });
-});
 

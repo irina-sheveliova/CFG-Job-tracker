@@ -3,6 +3,7 @@ import User from './user.js';
 import Job from './job.js';
 import dotenv from 'dotenv';
 
+
 //This file will instantiate our database connection
 // We create a new instance of sequelise and pass in an object with parameters "dialect" and "storage"
 // storage creates a database in our project called 'JobFlow'.

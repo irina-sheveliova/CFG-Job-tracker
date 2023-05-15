@@ -1,4 +1,4 @@
-// houses our job applications tables
+//  houses our job applications tables
 // 'doa'stands for 'date of application'
 
 export default (sequelize, Sequelize) => {
