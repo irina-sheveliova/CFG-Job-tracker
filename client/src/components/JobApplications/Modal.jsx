@@ -8,7 +8,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
     const [errors, setErrors] = useState("")
 
     // state is set to the default value if provided
-    // but if it's null, we use our dictionary
+    // but if it's null, we use our object
     const [jobForm, setJobForm] = useState(defaultValue || {
         position: "",
         company: "",
@@ -35,7 +35,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
             return true
         }
         else {
-            // if the value doesn't exist, we want to ppush it into our errorItems array
+            // if the value doesn't exist, we want to push it into our errorItems array
             let errorItems = [];
             for (const [key, value] of Object.entries(jobForm)) {
                 if (!value && (key === "position" || key === "company" || key === "doa" || key === "status")) {
@@ -53,7 +53,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        //if form validation returns false, then 
+        //if form validation returns false then return, otherwise add as a new row
         if (!formValidation()) {
             return
         }
