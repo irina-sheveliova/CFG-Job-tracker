@@ -10,31 +10,30 @@ const Search = () => {
   const [radiusQuery, setRadiusQuery] = useState(''); // State for radius query
 
   const searchJsearch = async (event) => {
-    console.log(queryParam);
     event.preventDefault();
   
-    const location = locationQuery ? ` within ${radiusQuery}km of ${locationQuery}` : '';
-    const queryParam = `${query}${location}`;
+    try {
+      const location = locationQuery ? ` within ${radiusQuery}km of ${locationQuery}` : '';
+      const queryParam = `${query}${location}`;
   
-    const response = await axios.get(`https://jsearch.p.rapidapi.com/search`, {
-      headers: {
-        'X-RapidAPI-Key': 'c9f0d150camsh7d9406b60fc5d1ep17996djsna932e8fb918c',
-        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-      },
-      params: {
-        query: queryParam,
-        page: currentPage,
-        num_pages: 10
-      }
-    });
+      const response = await axios.get(`https://jsearch.p.rapidapi.com/search`, {
+        headers: {
+          'X-RapidAPI-Key': 'c9f0d150camsh7d9406b60fc5d1ep17996djsna932e8fb918c',
+          'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+        },
+        params: {
+          query: queryParam,
+          page: currentPage,
+          num_pages: 10
+        }
+      });
   
-    setResults(response.data.data);
+      setResults(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
   
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  }
 
   const handleLocationChange = (event) => {
     setLocationQuery(event.target.value);
@@ -78,12 +77,6 @@ const Search = () => {
           </div>
         ))}
       </div>
-
-      {/* <div id="pagination-container">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(page => (
-          <div key={page} className={`pagination-button ${page === currentPage ? 'active' : ''}`} onClick={() => handlePageChange(page)}>{page}</div>
-        ))}
-      </div> */}
     </div>
   );
 };
