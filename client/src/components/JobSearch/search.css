@@ -1,0 +1,159 @@
+/* Search component container */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start !important;
+    margin-top: 10px;
+  }
+  
+  /* Search form - Adjust margin,padding and margin top to move boxes*/
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: -300px;
+    padding: 350px;
+    margin-top: -700px;
+  }
+  
+  /* Search input */
+  input[type="text"] {
+    width: 1200px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+  }
+  
+  /* Search button */
+  button[type="submit"] {
+    font-size: 16px;
+    background-color: #008080;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+  }
+  
+  /* Location filter */
+  #location-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+  }
+  
+  /* Location filter label */
+  #location-filter label {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  /* Location filter input */
+  #location-filter input[type="text"] {
+    width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-right: 5px;
+  }
+  
+  /* Search input placeholder */
+  input[type="text"]::placeholder {
+    color: #999;
+  }
+  
+  /* Custom dropdown styles */
+select {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-right: 5px;
+  }
+  
+  
+/* Results container */
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Result box */
+  .result-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    text-align: center;
+    margin-top: -20px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  /* Result box hover effect */
+  .result-box:hover {
+    transform: scale(1.05); /* Adjust the scaling factor as desired */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #00b3b3, #008080); /* Adjust the gradient colors as desired */
+  }
+  
+  /* Result box content */
+  .result-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .result-box p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  #Remote,
+  #JobPosted,
+  #JobExpiry {
+    font-weight: bold;
+  }
+  
+  
+/* Pagination container */
+#pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Pagination button */
+  .pagination-button {
+    background-color: white;
+    border: 1px solid #008080;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  /* Active pagination button */
+  .pagination-button.active {
+    background-color: #008080;
+    color: white;
+  }
+  
+  
+  
