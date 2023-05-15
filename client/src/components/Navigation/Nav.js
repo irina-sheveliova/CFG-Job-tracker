@@ -22,6 +22,9 @@ function Nav() {
           <Link to="/applications">Job Applications</Link>
         </li>
         <li>
+          <Link to="/job-search">Search for Jobs</Link>
+        </li>
+        <li>
           <Link to="/contactus">Contact Us</Link>
         </li>
         <li>
@@ -35,3 +38,4 @@ function Nav() {
   );
 }
 export default Nav;
+
