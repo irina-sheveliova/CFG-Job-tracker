@@ -27,6 +27,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     margin-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* Search button */
@@ -38,6 +39,7 @@
     border-radius: 5px;
     cursor: pointer;
     width: auto;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* Location filter */
@@ -47,12 +49,14 @@
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* Location filter label */
   #location-filter label {
-    font-size: 20px;
+    font-size: 15px;
     margin-right: 5px;
+    font-family:Arial, Helvetica, sans-serif;
   }
   
   /* Location filter input */
@@ -69,6 +73,7 @@
   /* Search input placeholder */
   input[type="text"]::placeholder {
     color: #999;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* Custom dropdown styles */
@@ -90,7 +95,7 @@ select {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 20px;
   }
   
   /* Result box */
@@ -106,7 +111,32 @@ select {
     text-align: center;
     margin-top: -20px;
     font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    margin: 15px;
   }
+  
+  #result-count {
+   font-weight: bold;
+   font-size: 20px; 
+   font-family: Arial, Helvetica, sans-serif;
+   margin-top: 90px;
+   margin: 20px;
+  }
+
+  #Applynow a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5f5f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  #Applynow a:hover {
+    background-color: #e53e3e;
+  }
+  
   
   /* Result box hover effect */
   .result-box:hover {
@@ -133,27 +163,8 @@ select {
   }
   
   
-/* Pagination container */
-#pagination-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
+
   
-  /* Pagination button */
-  .pagination-button {
-    background-color: white;
-    border: 1px solid #008080;
-    padding: 5px 10px;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-  
-  /* Active pagination button */
-  .pagination-button.active {
-    background-color: #008080;
-    color: white;
-  }
   
   
   
