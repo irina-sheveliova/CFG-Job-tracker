@@ -8,6 +8,8 @@ const Search = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [locationQuery, setLocationQuery] = useState(''); // State for location query
   const [radiusQuery, setRadiusQuery] = useState(''); // State for radius query
+  const [resultCount, setResultCount] = useState(0); // State for result count
+
 
   const searchJsearch = async (event) => {
     event.preventDefault();
@@ -15,7 +17,8 @@ const Search = () => {
     try {
       const location = locationQuery ? ` within ${radiusQuery}km of ${locationQuery}` : '';
       const queryParam = `${query}${location}`;
-  
+      console.log(queryParam);
+
       const response = await axios.get(`https://jsearch.p.rapidapi.com/search`, {
         headers: {
           'X-RapidAPI-Key': 'c9f0d150camsh7d9406b60fc5d1ep17996djsna932e8fb918c',
@@ -29,6 +32,7 @@ const Search = () => {
       });
   
       setResults(response.data.data);
+      setResultCount(response.data.total_count);
     } catch (error) {
       console.error(error);
     }
@@ -64,13 +68,15 @@ const Search = () => {
         </div>
       </form>
 
-      <div id="results-container">
+
+     <div id="results-container">
+      <p id="result-count">Results found: {results.length}</p>
         {results.map((result, index) => (
           <div key={result.job_id} className={`result-box fade-in ${index >= (currentPage - 1) * 9 && index < currentPage * 10 ? '' : 'hide'}`}>
             <h2>{result.job_title}</h2>
             <p className="location" id="location-{result.job_id}">Location: {result.location}, {result.job_country}</p>
             <p>Company Website: <a href={result.employer_website} target="_blank" rel="noreferrer">{result.employer_website}</a></p>
-            <p><a href={result.job_apply_link} target="_blank" rel="noreferrer">Apply Now</a></p>
+            <p id="Applynow"><a href={result.job_apply_link} target="_blank" rel="noreferrer">Apply Now</a></p>
             <p>{result.job_description.substring(0, 500)}...</p>
             <p id="Remote">Remote Working: {result.job_is_remote ? 'Yes' : 'No'}</p>
             <p id="JobPosted">Job Posted Date: {new Date(result.job_posted_at_timestamp * 1000).toLocaleDateString()}</p>
@@ -82,3 +88,4 @@ const Search = () => {
 };
 
 export default Search;
+
