@@ -34,8 +34,13 @@ const JobListing = () => {
             {jobs.map((job) => (
               <li
                 key={job.id}
-                className={`item ${selectedJob === job.id ? "selected" : ""}`}
+                className={`item ${
+                  selectedJob !== null && selectedJob.id === job.id
+                    ? "selected"
+                    : ""
+                }`}
               >
+                {console.log(selectedJob, "this is the selected job")}
                 <button
                   onClick={() => handleJobClick(job.id)}
                   className="list-button"

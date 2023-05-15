@@ -61,6 +61,7 @@ h4{
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
-.list-button .selected {
-    background-color: red;
+.selected {
+    background-color: #d8e7ea80;
+    color: black;
 }
