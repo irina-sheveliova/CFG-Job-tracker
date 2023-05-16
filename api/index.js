@@ -1,13 +1,33 @@
 import express from 'express';
-
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import userApi from './routes/users.js';
+import jobsApi from './routes/jobs.js';
+import db from './models/index.js';
 const app = express();
 
-app.use(express.json()); //To parse JSON request bodies
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.send('Hello World! Welcome to the job tracker API');
+  res.json({ message: 'Welcome to the JobFlow API.' });
 });
 
-app.listen(8080, () => {
-  console.log('Server is listening on port 8080');
-});
+app.use('/api', userApi);
+app.use('/api', jobsApi);
+
+const PORT = process.env.PORT || 8080;
+
+// Using the sync() method to sync our models to SQL tables
+// can use 'sync({ force: true })' to drop and recreate any existing tables
+
+// db.sequelize.sync({ force: true })
+db.sequelize.sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}.`);
+    });
+  });
+
