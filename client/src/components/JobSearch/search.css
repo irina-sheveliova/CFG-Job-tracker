@@ -7,8 +7,9 @@
     margin-top: 10px;
   }
   
+
   /* Search form - Adjust margin,padding and margin top to move boxes*/
-  form {
+  #jobsearch-form {
     display: flex;
     flex-direction: row;
     align-items: center;
