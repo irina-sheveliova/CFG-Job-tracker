@@ -51,7 +51,7 @@ const Search = () => {
     <div>
      <h2 id="search-title">Unleash Your Career Potential with <span id="jobflow-text">JobFlow</span></h2>
      <h2 id= "sub-search-title">Find Your <span id="Dream-sub">Dream</span> Job Today!</h2>
-      <form onSubmit={searchJsearch}>
+      <form id = "jobsearch-form" onSubmit={searchJsearch}>
         <input type="text" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Job, Company, Keywords" />
         <button type="submit">Search</button>
         <div id="location-filter">
