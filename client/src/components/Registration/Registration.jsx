@@ -50,7 +50,30 @@ export default function SignUpForm() {
         // User created 
         const user = userCredential.user;
         console.log(user);
-        navigate("/login")
+        console.log("User ID: " + user.uid);
+        console.log("First name: " + firstName);
+        console.log("Last name: " + lastName);
+        console.log("Email: " + email);
+
+        fetch ('http://localhost:8080/api/users', {
+            method: "post",
+            headers: {
+              // needed so express parser says the body is OK to read
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              UID: user.uid,
+              firstName: firstName,
+              lastName: lastName,
+              email: email
+            })
+          })
+        // if (response.status !== 200) {
+        //   TODO: Add error handling.
+        //   return alert("Something went wrong.");
+        // }
+
+        navigate("/login");
       })
       .catch((error) => {
         const errorCode = error.code;
