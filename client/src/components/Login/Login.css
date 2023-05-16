@@ -1,10 +1,8 @@
 .login-form-header {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.loginMessage {
-  color: blue;
+  font-size: 38px;
+    font-weight: bold;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-align: center;
 }
 
 form {
@@ -13,61 +11,109 @@ form {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  /* font-family: 'Barlow', sans-serif;
+      font-family: 'Lobster', cursive;
+      font-family: 'My Soul', cursive;
+      font-family: 'Square Peg', cursive; */
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 400px;
-}
+input::placeholder {
+font-family: 'Yanone Kaffeesatz', sans-serif;}
 
-.form-container{
+
+.form-container {
   max-width: 300px;
+  width: 100%;
   margin: 0 auto;
+  padding-bottom: 120px;
 }
 
 .form-error {
+  display: block;
   color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* or adjust as necessary */
+}
+
+label {
+  margin-bottom: 5px;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 1rem;
 }
 
+.form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
-.form-group button[type="submit"] {
-    width: 100%;
+.form-group input[type="checkbox"] {
+  margin-bottom: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      max-width: 800px;
 }
 
-.form-group input[type="email"],
-.form-group input[type="password"],
 .form-group button[type="submit"] {
-    width: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      max-width: 500px
 }
 
+
+.form-group input[type="password"]{
+  width: 100%;
+  flex-direction: row;
+}
+
+
+input[type="password"]{
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  position: relative;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+input[type="text"],
 input[type="email"],
-input[type="password"] {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
-    position: relative;
+input[type="password"],
+input[type="checkbox"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  position: relative;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+
 
 button[type="submit"] {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4b28d8;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  background-color: #4b28d8;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  width: 100%;
+  /* Center horizontally */
 }
 
 button[type="submit"]:hover {
-    background-color: grey;
+  background-color: grey;
 }

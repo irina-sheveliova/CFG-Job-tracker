@@ -1,5 +1,4 @@
 import React from "react";
-import JobDetails from "../components/JobApplicationDetails/JobDetails.jsx";
 import JobListing from "../components/JobApplicationDetails/JobListing.jsx";
 import "./JobDetailsPage.css";
 

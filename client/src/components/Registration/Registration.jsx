@@ -2,85 +2,74 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Registration.css";
-import { createUserWithEmailAndPassword } from "../../FirebaseAuth/auth";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 export default function SignUpForm() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessages, setErrorMessages] = useState({});
 
   const navigate = useNavigate();
 
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const errors = {
+    emailInUse: "User with this email already exists"
+  };
 
-  function validatePassword() {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
-    const isValidPassword = passwordRegex.test(formData.password);
-    if (!isValidPassword) {
-      setPasswordErrorMessage(
-        "Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter"
-      );
-    } else {
-      setPasswordErrorMessage("");
-    }
-  }
+  // This function is deprecated as password is being validated by type="password" + pattern in input form
+  // function validatePassword() {
+  //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+  //   const isValidPassword = passwordRegex.test(password);
+  //   if (!isValidPassword) {
+  //     setPasswordErrorMessage(
+  //       "Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter"
+  //     );
+  //   } else {
+  //     setPasswordErrorMessage("");
+  //   }
+  // }
 
-  function validateEmail() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(formData.email);
-    if (!isValidEmail) {
-      setEmailErrorMessage("Please enter a valid email address");
-    } else {
-      setEmailErrorMessage("");
-    }
-  }
+  // This function is deprecated as email is being validated by type="email" in input form
+  // function validateEmail() {
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   const isValidEmail = emailRegex.test(email);
+  //   if (!isValidEmail) {
+  //     setEmailErrorMessage("Please enter a valid email address");
+  //   } else {
+  //     setEmailErrorMessage("");
+  //   }
+  // }
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    validatePassword();
-    validateEmail();
-    if (!passwordErrorMessage && !emailErrorMessage) {
-      console.log("Form submitted:", formData);
-      navigate("/");
-    }
 
-    if (passwordErrorMessage === "") {
-      const userData = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-      };
-      const result = await createUserWithEmailAndPassword(
-        formData.email,
-        formData.password,
-        userData
-      );
-      if (result.success) {
-        // Clear the form data
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        });
-      }
-    }
-  };
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // User created 
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/login")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/email-already-in-use') {
+          // Email already in use
+          setErrorMessages({ name: "emailInUse", message: errors.emailInUse });
+        } 
+        else {
+          alert(errorMessage);
+        }
+        console.log(errorCode, errorMessage)
+      });
+  }
 
-  const onInputChange = (event) => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="form-error">{errorMessages.message}</div>
+    );
 
   return (
     <form onSubmit={onSubmit}>
@@ -92,8 +81,8 @@ export default function SignUpForm() {
             type="text"
             name="firstName"
             placeholder="First Name"
-            value={formData.firstName}
-            onChange={onInputChange}
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
             required
           />
         </div>
@@ -102,8 +91,8 @@ export default function SignUpForm() {
             type="text"
             name="lastName"
             placeholder="Last Name"
-            value={formData.lastName}
-            onChange={onInputChange}
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
             required
           />
         </div>
@@ -112,29 +101,24 @@ export default function SignUpForm() {
             type="email"
             name="email"
             placeholder="Email"
-            value={formData.email}
-            onChange={onInputChange}
-            onBlur={validateEmail}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             required
           />
-          {emailErrorMessage && (
-            <div className="form-error">{emailErrorMessage}</div>
-          )}
+          {renderErrorMessage("emailInUse")}
         </div>
         <div className="form-group">
           <input
             type="password"
+            pattern=".{8,}"
             name="password"
             placeholder="Password"
-            value={formData.password}
-            onChange={onInputChange}
-            onBlur={validatePassword}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
             required
           />
-
-          {passwordErrorMessage && (
-            <div className="form-error">{passwordErrorMessage}</div>
-          )}
+          <p style={{fontStyle: "italic", color: "coral", marginBlockStart: "0px"}}>
+            Password must contain at least 8 characters</p>
         </div>
         <div className="form-group">
           <button type="submit" style={{ width: "100%" }}>
@@ -142,7 +126,10 @@ export default function SignUpForm() {
           </button>
         </div>
         <p style={{ textAlign: "center", fontSize: "18px" }}>
-          Already have an account? <a href="/login">Log in</a>
+          Already have an account?{" "}
+          <a href="/login" style={{ color: "#008080" }}>
+            Log in
+          </a>
         </p>
       </div>
     </form>

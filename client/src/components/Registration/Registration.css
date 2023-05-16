@@ -32,7 +32,7 @@ font-family: 'Yanone Kaffeesatz', sans-serif;}
 
 
 .form-container {
-    max-width: 400px;
+    max-width: 300px;
     width: 100%;
     margin: 0 auto;
     padding-bottom: 120px;
@@ -41,11 +41,11 @@ font-family: 'Yanone Kaffeesatz', sans-serif;}
 .form-error {
     display: block;
     color: red;
-    font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 5px;
+    margin-bottom: 5px;
     /* or adjust as necessary */
-}
+  }
 
 label {
     margin-bottom: 5px;
@@ -113,7 +113,7 @@ button[type="submit"] {
     font-weight: bold;
     color: #fff;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    background-color: #4b28d8;
+    background-color: #008080;
     border: none;
     border-radius: 3px;
     cursor: pointer;
