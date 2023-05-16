@@ -43,7 +43,7 @@ function HomePage() {
           <div className="expandable-box" onClick={() => toggleBox(0)}>
             <div className="box-header">
               <i className="fas fa-briefcase"></i>
-              <h2 className="box-title">Job Applications</h2>
+              <h2 className="box-title"> Track Your Job Applications</h2>
             </div>
             <div className={boxState[0] ? 'box-content show' : 'box-content'}>
               <p>
