@@ -21,7 +21,7 @@ app.use('/api', jobsApi);
 const PORT = process.env.PORT || 8080;
 
 // Using the sync() method to sync our models to SQL tables
-// can use 'sync({ force: true })' to drop and recreate any existing tables
+// can use 'db.sequelize.sync({ force: true })' to drop and recreate any existing tables
 
 // db.sequelize.sync({ force: true })
 db.sequelize.sync()
