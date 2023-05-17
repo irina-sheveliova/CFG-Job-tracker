@@ -1,8 +1,7 @@
-import Sequelize from 'sequelize';
+import Sequelize, { HasMany } from 'sequelize';
 import User from './user.js';
 import Job from './job.js';
 import dotenv from 'dotenv';
-
 
 //This file will instantiate our database connection
 // We create a new instance of sequelise and pass in an object with parameters "dialect" and "storage"
@@ -27,5 +26,8 @@ db.sequelize = sequelize;
 
 db.User = User(sequelize, Sequelize);
 db.Job = Job(sequelize, Sequelize);
+
+//defining table relation
+db.User.hasMany(db.Job)
 
 export default db;
