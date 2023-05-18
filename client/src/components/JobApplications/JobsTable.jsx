@@ -1,6 +1,5 @@
 import React from "react";
 import "./JobsTable.css";
-// import axios from 'axios';
 
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 
