@@ -10,7 +10,7 @@ export default (sequelize, Sequelize) => {
 
         },
         lastName: {
-            type: Sequelize.STRING,
+            type: Sequelize.STRING
 
         },
         email: {
