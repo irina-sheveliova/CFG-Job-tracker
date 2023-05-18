@@ -18,7 +18,7 @@ router.get('/jobs/:id', (req, res) => {
     })
         .then(job => res.json(job))
         .catch(err => console.log(err));
-    });
+});
 
 // Create a new job application
 router.post('/jobs', (req, res) => {
@@ -44,13 +44,13 @@ router.post('/jobs/:id', (req, res, next) => {
         salary: req.body.salary,
         status: req.body.status,
         notes: req.body.notes
-        },
+    },
         {
             where: { id: req.params.id }
         })
         .then(res.json('Updated successfully'))
         .catch(next);
-    });
+});
 
 // Delete job application by id
 router.delete('/jobs/:id', (req, res, next) => {
@@ -59,6 +59,6 @@ router.delete('/jobs/:id', (req, res, next) => {
     })
         .then(res.json('Deleted successfully'))
         .catch(next);
-    });
+});
 
 export default router;
