@@ -31,3 +31,4 @@ db.Job = Job(sequelize, Sequelize);
 db.Message = Message(sequelize, Sequelize);
 
 export default db;
+

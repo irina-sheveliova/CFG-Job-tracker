@@ -4,19 +4,23 @@
 export default (sequelize, Sequelize) => {
     const Job = sequelize.define('job', {
         position: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         company: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         doa: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         salary: {
             type: Sequelize.STRING
         },
         status: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         notes: {
             type: Sequelize.STRING
