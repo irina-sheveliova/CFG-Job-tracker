@@ -1,4 +1,4 @@
-import Sequelize, { HasMany } from 'sequelize';
+import Sequelize from 'sequelize';
 import User from './user.js';
 import Job from './job.js';
 import dotenv from 'dotenv';
@@ -27,7 +27,5 @@ db.sequelize = sequelize;
 db.User = User(sequelize, Sequelize);
 db.Job = Job(sequelize, Sequelize);
 
-//defining table relation
-db.User.hasMany(db.Job)
 
 export default db;
