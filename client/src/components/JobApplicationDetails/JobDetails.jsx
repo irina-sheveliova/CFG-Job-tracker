@@ -14,14 +14,12 @@ const JobDetails = ({
   position,
   company,
   location,
-  dateSaved,
+  doa,
   salary,
   status,
-  rating,
+  // rating,
   jobNotes,
 }) => {
-  const params = useParams();
-
   const [selectedStatus, setSelectedStatus] = useState(status);
   const [salaryValue, setSalaryValue] = useState(salary);
   const [salaryFormattedValue, setSalaryFormattedValue] = useState(
@@ -32,14 +30,14 @@ const JobDetails = ({
   const [notes, setNotes] = useState("");
   const [editable, setEditable] = useState(false);
   const [jobnotes, setJobNotes] = useState(jobNotes);
-  const [ratings, setRatings] = useState(rating);
+  // const [ratings, setRatings] = useState(rating);
 
   useEffect(() => {
     setSalaryValue(salary);
     setSelectedStatus(status);
     setSalaryFormattedValue(`£${salary}/yr`);
-    setRatings(rating);
-  }, [salary, status, rating]);
+    // setRatings(rating);
+  }, [salary, status]);
 
   const handleChange = (event) => {
     setSelectedStatus(event.target.value);
@@ -68,9 +66,9 @@ const JobDetails = ({
     setEditable(!editable);
   };
 
-  const handleRatingChange = (newRating) => {
-    setRatings(newRating);
-  };
+  // const handleRatingChange = (newRating) => {
+  //   setRatings(newRating);
+  // };
 
   const formattedSalaryValue = `£${salaryValue}/yr`;
 
@@ -82,9 +80,9 @@ const JobDetails = ({
           <h3>
             <b>{company}</b> <span>- {location}</span>
           </h3>
-          <p>Saved: {dateSaved}</p>
+          <p>Saved: {doa}</p>
           <div className="star-rating">
-            <StarRating rating={ratings} />
+            <StarRating />
           </div>
         </div>
         <div style={{ flex: "1" }}>
@@ -135,6 +133,7 @@ const JobDetails = ({
         </button>
       </div>
       <br />
+
       {showJobInfo && (
         <>
           <p>
@@ -155,6 +154,7 @@ const JobDetails = ({
           </button>
         </>
       )}
+
       {showNotes && (
         <div>
           <textarea value={notes} onChange={handleNotesChange} />
