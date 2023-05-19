@@ -4,6 +4,10 @@ import StarRating from "./StarRating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import "./JobDetails.css";
+import moment from "moment";
+
+moment.locale("en-gb");
+
 
 const JobDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -115,7 +119,7 @@ const JobDetails = () => {
           <h3>
             <b>{content.company}</b>
           </h3>
-          <p>Saved: {content.doa}</p>
+          <p>Saved {moment(content.doa).fromNow()}</p>
           <div className="star-rating">
             <StarRating />
           </div>
