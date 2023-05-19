@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
 import StarRating from "./StarRating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import "./JobDetails.css";
 import moment from "moment";
+import { FirebaseContext } from "../../context/authContext";
 
 moment.locale("en-gb");
-
 
 const JobDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -24,6 +25,7 @@ const JobDetails = () => {
 
   const { pathname } = useLocation();
   const jobId = pathname.split("/")[2];
+  const { currentUser } = useContext(FirebaseContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,6 +115,7 @@ const JobDetails = () => {
 
   return (
     <div className="details-page">
+      {currentUser && `Welcome ${currentUser.email}`}
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div>
           <h2>{content.position}</h2>

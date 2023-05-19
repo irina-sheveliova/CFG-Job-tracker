@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,7 +14,7 @@ const firebaseConfig = {
   projectId: "cfg-job-tracker-74b5a",
   storageBucket: "cfg-job-tracker-74b5a.appspot.com",
   messagingSenderId: "737559043775",
-  appId: "1:737559043775:web:e0eab1877f46638c98700a"
+  appId: "1:737559043775:web:e0eab1877f46638c98700a",
 };
 
 // Initialize Firebase
