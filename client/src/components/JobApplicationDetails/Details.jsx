@@ -26,6 +26,7 @@ const JobDetails = () => {
   const { pathname } = useLocation();
   const jobId = pathname.split("/")[2];
   const { currentUser } = useContext(FirebaseContext);
+  
 
   useEffect(() => {
     const fetchData = async () => {

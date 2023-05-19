@@ -1,20 +1,15 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { auth } from "../firebase.js";
 
-// Create a Firebase context
 const FirebaseContext = createContext();
-
-// Firebase context provider component
 const FirebaseProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
-  // Listen for authentication state changes
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
 
-    // Clean up the listener
     return () => unsubscribe();
   }, []);
 
