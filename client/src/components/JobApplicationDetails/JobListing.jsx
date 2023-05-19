@@ -8,7 +8,7 @@ const JobListing = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const navigate = useNavigate();
   const { jobId } = useParams();
-  const [jobs, setJobs] = useState([]); // this is the array of jobs from the API
+  const [jobs, setJobs] = useState([]);
   const [defaultJobId, setDefaultJobId] = useState(null);
 
   useEffect(() => {

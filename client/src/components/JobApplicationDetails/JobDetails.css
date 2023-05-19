@@ -1,3 +1,7 @@
+#btn-icon {
+    margin-left: 5px;
+}
+
 .status {
  margin-top: 10px;
 
@@ -120,7 +124,7 @@
     font-family: 'Yanone Kaffeesatz', sans-serif;
 } */
 
-.chevron-badge {
+.details-page select {
     position: relative;
     display: inline-block;
     padding: 6px 12px;
@@ -169,5 +173,16 @@
 font-size: 22px;
 line-height: 1.5715;
 margin-left: 10px;
-            ;
+}
+
+#salary-span{
+display: "flex";
+flex-direction: "column";
+justify-content: "center";
+align-items: "flex-end";
+border: "none";
+outline: "none";
+cursor: "pointer";
+font-size: 28px;
+border-radius: 5px;
 }

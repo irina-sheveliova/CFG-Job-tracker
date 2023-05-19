@@ -1,28 +1,22 @@
-import React from "react";
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import StarRating from "./StarRating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-// import { AuthContext } from "../context/authContext";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import "./JobDetails.css";
 
 const JobDetails = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [jobNotes, setJobNotes] = useState("");
+
   const [content, setContent] = useState({
-    selectedStatus: "",
+    status: "",
     company: "",
     position: "",
     salaryValue: 0,
-    salaryFormattedValue: `£${0}/yr`,
     jobnotes: "",
     doa: "",
   });
-
-  const [showJobInfo, setShowJobInfo] = useState(true);
-  const [showNotes, setShowNotes] = useState(false);
-  const [notes, setNotes] = useState("");
-  const [editable, setEditable] = useState(false);
 
   const { pathname } = useLocation();
   const jobId = pathname.split("/")[2];
@@ -35,15 +29,14 @@ const JobDetails = () => {
           const data = await res.json();
           setContent((prevData) => ({
             ...prevData,
-            selectedStatus: data.status,
+            status: data.status,
             position: data.position,
             company: data.company,
             doa: data.doa,
             salaryValue: data.salary,
-            salaryFormattedValue: `£${data.salary}/yr`,
             jobnotes: data.notes,
           }));
-          console.log(data, "this is the data - line 28");
+          setJobNotes(data.notes);
         } else {
           throw new Error("Error fetching data");
         }
@@ -54,33 +47,65 @@ const JobDetails = () => {
     fetchData();
   }, [jobId]);
 
-  const handleNotesClick = () => {
+  const handleStatusChange = (event) => {
     setContent((prevData) => ({
       ...prevData,
-      showNotes: !prevData.showNotes,
+      status: event.target.value,
     }));
   };
 
-  const handleNotesChange = (event) => {
-    setContent((prevData) => ({
-      ...prevData,
-      notes: event.target.value,
-    }));
+  const handleJobNotesClick = () => {
+    setIsEditing(true);
   };
 
-  const jobInfoChange = (event) => {
-    setContent((prevData) => ({
-      ...prevData,
-      jobnotes: event.target.value,
-    }));
+  const handleJobNotesChange = (event) => {
+    setJobNotes(event.target.value);
   };
 
-  const handleEditableClick = () => {
-    setContent((prevData) => ({
-      ...prevData,
-      editable: !prevData.editable,
-    }));
+  const handleJobNotesSave = async () => {
+    try {
+      const res = await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ notes: jobNotes }),
+      });
+
+      if (res.ok) {
+        setIsEditing(false);
+        setContent((prevData) => ({
+          ...prevData,
+          jobnotes: jobNotes,
+        }));
+      } else {
+        throw new Error("Error saving job notes");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    const updateStatus = async () => {
+      try {
+        await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status: content.status,
+          }),
+        });
+        console.log("Status updated successfully");
+      } catch (error) {
+        console.error("Error updating status:", error);
+      }
+    };
+
+    updateStatus();
+  }, [content.status, jobId]);
 
   return (
     <div className="details-page">
@@ -95,74 +120,45 @@ const JobDetails = () => {
             <StarRating />
           </div>
         </div>
+
         <div style={{ flex: "1", marginTop: "20px" }}>
           <p style={{ textAlign: "right" }}>
-            <span
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "flex-end",
-                border: "none",
-                outline: "none",
-                cursor: "pointer",
-                fontSize: "28px",
-                border: "1px solid gold",
-                borderRadius: "5px",
-              }}
-            >
-              {content.salaryValue}
-            </span>
+            <span id="salary-span">{`£${content.salaryValue}/yr`}</span>
           </p>
         </div>
       </div>
+
       <div className="status">
-        <div class="chevron-badge">
-          <span class="chevron-badge-text">{content.selectedStatus}</span>
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <button
-          onClick={() => setShowJobInfo(!showJobInfo)}
-          className="btn-icon"
+        <select
+          value={content.status}
+          onChange={handleStatusChange}
+          className="select-status"
         >
-          <FontAwesomeIcon icon={faLightbulb} />
-        </button>
-        <button onClick={handleNotesClick} style={{ marginLeft: "20px" }}>
-          {showNotes ? (
-            <FontAwesomeIcon icon={faXmark} />
-          ) : (
-            <FontAwesomeIcon icon="fa-solid fa-file" />
-          )}
+          <option value="applied">Applied</option>
+          <option value="not-Applied">Not Applied</option>
+          <option value="interviewing">Interviewing</option>
+          <option value="offer">Offer</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+
+      <div style={{ display: "flex" }}>
+        <button id="btn-icon" onClick={handleJobNotesClick}>
+          <FontAwesomeIcon icon={faEdit} title="Edit Notes" />
         </button>
       </div>
       <br />
-
-      {showJobInfo && (
-        <>
-          <p>
-            {editable ? (
-              <textarea
-                value={content.jobotes}
-                onChange={jobInfoChange}
-                style={{ border: "1px solid black" }}
-              >
-                {content.jobnotes}
-              </textarea>
-            ) : (
-              <span>{content.jobnotes}</span>
-            )}
-          </p>
-          <button onClick={handleEditableClick}>
-            {editable ? "Save" : "Edit job info"}
-          </button>
-        </>
-      )}
-
-      {showNotes && (
+      {isEditing ? (
         <div>
-          <textarea value={notes} onChange={handleNotesChange} />
+          <textarea
+            value={jobNotes}
+            onChange={handleJobNotesChange}
+            style={{ border: "1px solid black" }}
+          />
+          <button onClick={handleJobNotesSave}>Save</button>
         </div>
+      ) : (
+        <p onClick={handleJobNotesClick}>{jobNotes}</p>
       )}
     </div>
   );
