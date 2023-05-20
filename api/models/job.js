@@ -12,8 +12,7 @@ export default (sequelize, Sequelize) => {
             allowNull: false
         },
         doa: {
-            type: Sequelize.STRING,
-            allowNull: false
+            type: Sequelize.STRING
         },
         salary: {
             type: Sequelize.STRING
@@ -23,7 +22,7 @@ export default (sequelize, Sequelize) => {
             allowNull: false
         },
         notes: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT
         }
     });
 
