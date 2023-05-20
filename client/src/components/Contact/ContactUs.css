@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-form {
+.contact-form {
     height: 100vh;
     display: flex;
 

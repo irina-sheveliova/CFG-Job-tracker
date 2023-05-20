@@ -1,5 +1,5 @@
-h1 {
-    padding-bottom: 8px;
+.applications-header {
+    padding: 40px;
 
 }
 
@@ -10,7 +10,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
 
 }
 
@@ -21,7 +21,7 @@ h1 {
 
 .add-btn {
 
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     margin-bottom: 2rem;
     font-size: 1rem;
     font-weight: bold;
@@ -32,4 +32,8 @@ h1 {
     cursor: pointer;
 
 
+}
+
+.add-btn:hover {
+    background-color: #88c9af;
 }

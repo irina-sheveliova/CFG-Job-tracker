@@ -31,7 +31,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
 
     //validation for the form
     const formValidation = () => {
-        if (jobForm.position && jobForm.company && jobForm.doa && jobForm.status) {
+        if (jobForm.position && jobForm.company && jobForm.status) {
             setErrors("");
             console.log("form is valid");
             return true;
@@ -43,7 +43,6 @@ function Modal({ closeModal, addJob, defaultValue }) {
                     !value &&
                     (key === "position" ||
                         key === "company" ||
-                        key === "doa" ||
                         key === "status")
                 ) {
                     errorItems.push(key);
