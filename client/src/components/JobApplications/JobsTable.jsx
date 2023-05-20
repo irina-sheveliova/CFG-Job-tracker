@@ -11,12 +11,12 @@ function JobsTable({ rows, deleteJob, editJob }) {
       <table className="applications_table">
         <thead>
           <tr>
-            <th></th>
-            <th>Job Position</th>
+            {/* <th></th> */}
+            <th>Job Title</th>
             <th>Company</th>
-            <th>Date of Application</th>
-            <th>Salary</th>
             <th>Status</th>
+            <th>Salary</th>
+            <th>Date Applied</th>
             <th>Notes</th>
             <th>Actions</th>
           </tr>
@@ -29,24 +29,31 @@ function JobsTable({ rows, deleteJob, editJob }) {
 
             return (
               <tr key={idx}>
-                <td>{row.id}</td>
-                <Link
-                  to={`/applications/${row.id}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <td>{row.position}</td>
-                  <td>{row.company}</td>
-                </Link>
+                <td>
+                  <Link
+                    to={`/applications/${row.id}`}
+                    style={{ textDecoration: "none", color: "black" }}> {row.position}
+                  </Link>
+                </td>
 
-                <td>{row.doa}</td>
-                <td>{row.salary}</td>
+                <td>
+                  <Link
+                    to={`/applications/${row.id}`}
+                    style={{ textDecoration: "none", color: "black" }}> {row.company}
+                  </Link>
+                </td>
+
                 <td>
                   <span className={`label label-${statusUpper}`}>
                     {statusUpper}
                   </span>
                 </td>
-                <td className="fill-out">{row.notes}</td>
-                <td>
+                <td>{row.salary}</td>
+
+                <td>{row.doa}</td>
+
+                <td className="notes-width">{row.notes}</td>
+                <td className="fill-out">
                   <span className="table-actions">
                     <BsFillPencilFill
                       className="edit-button"

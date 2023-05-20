@@ -130,7 +130,7 @@ function JobsIndex() {
 
   return (
     <div className="index-div">
-      <h1>My Job Applications</h1>
+      <h1 className="applications-header">My Job Applications</h1>
       <button className="add-btn" onClick={() => setModalOpen(true)}>
         {" "}
         Add a Job
