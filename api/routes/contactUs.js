@@ -1,6 +1,5 @@
 import express from 'express';
 import db from '../models/index.js';
-import message from '../models/contactUs.js';
 
 const router = express.Router();
 const Message = db.Message;
