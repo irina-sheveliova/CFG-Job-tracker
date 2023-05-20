@@ -12,7 +12,7 @@ function JobsTable({ rows, deleteJob, editJob }) {
         <thead>
           <tr>
             {/* <th></th> */}
-            <th>Job Position</th>
+            <th>Job Title</th>
             <th>Company</th>
             <th>Status</th>
             <th>Salary</th>
