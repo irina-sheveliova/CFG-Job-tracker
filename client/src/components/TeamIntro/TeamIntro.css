@@ -9,6 +9,7 @@ body {
 }
 
 .member-box {
+  width:100%;
   background-color: #f2f2f2;
   font-size: 18px;
   border-radius: 10px;

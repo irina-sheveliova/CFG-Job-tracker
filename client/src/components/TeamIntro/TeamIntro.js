@@ -66,7 +66,7 @@ const TeamIntro = () => {
           <strong>travelling</strong>
         </p>
         <p>
-          <FontAwesomeIcon icon={faHeart} />I love to explore beautiful and
+          <FontAwesomeIcon icon={faHeart} /> I love to explore beautiful and
           interesting places. It's also a way of escape and helps me unwind.
         </p>
       </div>
