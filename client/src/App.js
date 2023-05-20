@@ -15,6 +15,7 @@ import Login from "./components/Login/Login";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import TeamIntro from "./components/TeamIntro/TeamIntro";
 import Search from "./components/JobSearch/search";
+import { FirebaseProvider } from "./context/authContext";
 
 function App() {
   return (
@@ -26,13 +27,22 @@ function App() {
             Flow!
           </h1>
         </div>
-        <Nav />
+        <FirebaseProvider>
+          <Nav />
+        </FirebaseProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/Applications" element={<JobsIndex />} />
+          <Route
+            path="/Applications"
+            element={
+              <FirebaseProvider>
+                <JobsIndex />
+              </FirebaseProvider>
+            }
+          />
           <Route path="/HowitWorks" element={<HowitWorks />} />
           <Route path="/login" element={<Login />} />
           <Route path="/team-intro" element={<TeamIntro />} />

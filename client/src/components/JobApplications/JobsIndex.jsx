@@ -1,20 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import JobsTable from "./JobsTable";
 import Modal from "./Modal.jsx";
 import "./JobsIndex.css";
 import api from "./api";
+import { FirebaseContext } from "../../context/authContext";
 
 function JobsIndex() {
   const [modalOpen, setModalOpen] = useState(false);
   const [rows, setRows] = useState([]);
   // useEffect runs on application start
   // makes a http request to fetch the data from the api
+  const { currentUser } = useContext(FirebaseContext);
 
   const fetchJobs = async () => {
     try {
       console.log("fetchjobs");
       const response = await api.get("/api/jobs");
       console.log(response.data);
+
+      // const jobsWithUserId = response.data.map((job) => ({
+      //   ...job,
+      //   userId: currentUser.uid,
+      // }));
+      // console.log(jobsWithUserId);
+
+      // setRows(jobsWithUserId);
       setRows(response.data);
       console.log("setRows done");
     } catch (err) {
@@ -135,6 +145,7 @@ function JobsIndex() {
         {" "}
         Add a Job
       </button>
+      {currentUser && <p className="welcome">Welcome {currentUser.email}</p>}
       <JobsTable rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
       {modalOpen && (
         <Modal

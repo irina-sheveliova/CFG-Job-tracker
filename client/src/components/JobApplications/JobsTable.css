@@ -87,6 +87,7 @@
   padding: 6px;
   max-width: 25px;
   max-height: 25px;
+  cursor: pointer;
 }
 
 .edit-button {
@@ -94,7 +95,7 @@
   padding: 6px;
   max-width: 25px;
   max-height: 25px;
-
+  cursor: pointer;
 }
 
 /* this expands the element to fill the table */
@@ -107,4 +108,7 @@
 .notes-width {
   min-width: 200px;
   max-width: 270px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
