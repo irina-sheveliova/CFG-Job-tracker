@@ -14,9 +14,9 @@ function JobsTable({ rows, deleteJob, editJob }) {
             {/* <th></th> */}
             <th>Job Position</th>
             <th>Company</th>
-            <th>Date of Application</th>
-            <th>Salary</th>
             <th>Status</th>
+            <th>Salary</th>
+            <th>Date Applied</th>
             <th>Notes</th>
             <th>Actions</th>
           </tr>
@@ -43,14 +43,15 @@ function JobsTable({ rows, deleteJob, editJob }) {
                   </Link>
                 </td>
 
-
-                <td>{row.doa}</td>
-                <td>{row.salary}</td>
                 <td>
                   <span className={`label label-${statusUpper}`}>
                     {statusUpper}
                   </span>
                 </td>
+                <td>{row.salary}</td>
+
+                <td>{row.doa}</td>
+
                 <td className="notes-width">{row.notes}</td>
                 <td className="fill-out">
                   <span className="table-actions">
