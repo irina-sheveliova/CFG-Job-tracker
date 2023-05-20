@@ -1,68 +1,13 @@
-select {
-    /* -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolygon points='5 7 10 12 15 7'/%3E%3C/svg%3E") no-repeat right center/10px;
-        border: none;
-        padding: 8px;
-        font-size: 16px;
-        color: #333;
-        width: 200px; */
-    /* background-color: #005149;
-    color: #fff;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-    line-height: 1.5715;
-    list-style: none;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    margin-bottom: 10px;
-    height: 30px;
-    width: 10%; */
-};
-
-option {
-    padding: 8px;
-    background-color: #fff;
-    color: #333;
+#btn-icon {
+    margin-left: 5px;
 }
-
-select:not(:focus) {
-    background-color: yellow;
-    color: #000;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
- h2 {
-    font-size: 32px;
-    font-weight: 600;
- }
-
-h3{
-    font-size: 22px;
-    font-weight: 400;
-}
-select:focus {
-    background-color: #eee;
-    color: #000;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
 
 .status {
  margin-top: 10px;
 
 }
 
-.details-page {
+.deetails-page {
     margin: 20px;
     padding: 20px;
     border: 1px solid lightgray;
@@ -76,13 +21,17 @@ select:focus {
 }
 
 .details-page h2 {
-    font-size: 24px;
-    margin: 0 0 10px 0;
+    font-size: 45px;
+        font-weight: 600;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 20px 0 10px 0;
 }
 
 .details-page h3 {
-    font-size: 20px;
-    margin: 0 0 5px 0;
+    font-size: 35px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight:normal;
+    margin: 5px 0 5px 0;
 }
 
 .details-page h3 span {
@@ -108,32 +57,6 @@ select:focus {
     border: 1px solid gold;
 }
 
-.details-page select {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-right: 10px;
-    /* background-color: #005149; */
-    background-color: #008080;
-        color: #fff;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-size: 18px;
-        line-height: 1.5715;
-        list-style: none;
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        margin-bottom: 10px;
-        height: 30px;
-        width: 11%;
-}
 
 .details-page button {
     border: none;
@@ -200,3 +123,66 @@ select:focus {
 /* .details-page {
     font-family: 'Yanone Kaffeesatz', sans-serif;
 } */
+
+.details-page select {
+    position: relative;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #008080;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    /* background-color: #005149; */
+    background-color: #008080;
+    color: #fff;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.5715;
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 9%;
+}
+
+.chevron-badge:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #008080;
+}
+
+.chevron-badge-text {
+font-size: 22px;
+line-height: 1.5715;
+margin-left: 10px;
+}
+
+#salary-span{
+display: "flex";
+flex-direction: "column";
+justify-content: "center";
+align-items: "flex-end";
+border: "none";
+outline: "none";
+cursor: "pointer";
+font-size: 28px;
+border-radius: 5px;
+}

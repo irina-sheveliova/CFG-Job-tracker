@@ -1,14 +1,29 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import JobDetails from "./JobDetails";
+import JobDetails from "./Details";
 import { useNavigate, useParams } from "react-router-dom";
 import "./JobListing.css";
-import jobs from "./jobs";
 
 const JobListing = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const navigate = useNavigate();
   const { jobId } = useParams();
+  const [jobs, setJobs] = useState([]);
+  const [defaultJobId, setDefaultJobId] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/jobs")
+      .then((response) => response.json())
+      .then((data) => {
+        setJobs(data);
+        if (data.length > 0) {
+          setDefaultJobId(data[0].id);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching jobs:", error);
+      });
+  }, []);
 
   useEffect(() => {
     if (jobId) {
@@ -16,8 +31,9 @@ const JobListing = () => {
       setSelectedJob(job);
     } else {
       setSelectedJob(null);
+      setDefaultJobId(jobs.length > 0 ? jobs[0].id : null);
     }
-  }, [jobId]);
+  }, [jobId, jobs]);
 
   const handleJobClick = (jobId) => {
     const job = jobs.find((job) => job.id === jobId);
@@ -35,17 +51,16 @@ const JobListing = () => {
               <li
                 key={job.id}
                 className={`item ${
-                  selectedJob !== null && selectedJob.id === job.id
+                  (selectedJob !== null && selectedJob.id === job.id) ||
+                  (selectedJob === null && defaultJobId === job.id)
                     ? "selected"
                     : ""
                 }`}
               >
-                {console.log(selectedJob, "this is the selected job")}
                 <button
                   onClick={() => handleJobClick(job.id)}
                   className="list-button"
                 >
-                  {console.log(job.position, job.company)}
                   {job.position} - {job.company}
                 </button>
               </li>
@@ -54,18 +69,8 @@ const JobListing = () => {
         </div>
       </div>
       <div className="panel right-panel">
-        {selectedJob ? (
-          <JobDetails {...selectedJob} />
-        ) : (
-          <p>
-            Select a job to see details:{" "}
-            <b>
-              This is a placeholder for the applications_id selected from the
-              applications page, which will be the default page of the user
-              except they click on any other job listings on the left
-            </b>
-          </p>
-        )}
+        {" "}
+        <JobDetails />
       </div>
     </div>
   );

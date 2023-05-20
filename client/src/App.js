@@ -14,7 +14,7 @@ import HowitWorks from "./components/HowitWorks/Howitworks";
 import Login from "./components/Login/Login";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import TeamIntro from "./components/TeamIntro/TeamIntro";
-import Search from './components/JobSearch/search';
+import Search from "./components/JobSearch/search";
 
 function App() {
   return (
@@ -38,7 +38,6 @@ function App() {
           <Route path="/team-intro" element={<TeamIntro />} />
           <Route path="/Applications/:id" element={<JobDetailsPage />} />
           <Route path="/job-search" element={<Search />} />
-
         </Routes>
         <div className="footer">
           <p className="footer-text" style={{ marginLeft: "20px" }}>
@@ -53,8 +52,4 @@ function App() {
   );
 }
 
-
-
 export default App;
-
-
