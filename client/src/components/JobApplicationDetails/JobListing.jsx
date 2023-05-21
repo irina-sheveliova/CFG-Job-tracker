@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import JobDetails from "./Details";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./JobListing.css";
 
 const JobListing = () => {
@@ -43,6 +45,10 @@ const JobListing = () => {
     navigate(`/applications/${jobId}`);
   };
 
+  const handleGoBack = () => {
+    navigate("/applications");
+  };
+
   return (
     <div className="job-listing">
       <div className="panel left-panel">
@@ -63,6 +69,13 @@ const JobListing = () => {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="back-button">
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            onClick={handleGoBack}
+            className="back-icon"
+          />
         </div>
       </div>
       <div className="panel right-panel">
