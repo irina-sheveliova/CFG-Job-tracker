@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import JobsTable from "./JobsTable";
 import Modal from "./Modal.jsx";
 import "./JobsIndex.css";
-import api from "./api";
+import buildApi from "./api";
 import { FirebaseContext } from "../../context/authContext";
 
 function JobsIndex() {
@@ -11,20 +11,20 @@ function JobsIndex() {
   // useEffect runs on application start
   // makes a http request to fetch the data from the api
   const { currentUser } = useContext(FirebaseContext);
+  let api = buildApi('');
+  if (currentUser) {
+    //setup api with accessToken when it is available
+    api = buildApi(currentUser.accessToken);
+  }
 
   const fetchJobs = async () => {
+    if (!currentUser) {
+      return;
+    }
     try {
-      console.log("fetchjobs");
-      const response = await api.get("/api/jobs");
+      const response = await api.get('/api/jobs');
       console.log(response.data);
 
-      // const jobsWithUserId = response.data.map((job) => ({
-      //   ...job,
-      //   userId: currentUser.uid,
-      // }));
-      // console.log(jobsWithUserId);
-
-      // setRows(jobsWithUserId);
       setRows(response.data);
       console.log("setRows done");
     } catch (err) {
@@ -40,7 +40,8 @@ function JobsIndex() {
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+    // make useEffect run when currentUser changes.
+  }, [currentUser]);
 
   // Function to DELETE a row from the table
   // It filters through the set rows array.If the current index is NOT equal to the target index, rows gets added,
