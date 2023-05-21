@@ -1,15 +1,15 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import JobDetails from "./Details";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import JobDetails from "./Details";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./JobListing.css";
 
 const JobListing = () => {
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJobId, setSelectedJobId] = useState(null);
   const navigate = useNavigate();
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
-  const [defaultJobId, setDefaultJobId] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8080/api/jobs")
@@ -17,7 +17,7 @@ const JobListing = () => {
       .then((data) => {
         setJobs(data);
         if (data.length > 0) {
-          setDefaultJobId(data[0].id);
+          setSelectedJobId(data[0].id);
         }
       })
       .catch((error) => {
@@ -27,35 +27,45 @@ const JobListing = () => {
 
   useEffect(() => {
     if (jobId) {
-      const job = jobs.find((job) => job.id === Number(jobId));
-      setSelectedJob(job);
+      setSelectedJobId(Number(jobId));
     } else {
-      setSelectedJob(null);
-      setDefaultJobId(jobs.length > 0 ? jobs[0].id : null);
+      const storedJobId = localStorage.getItem("selectedJobId");
+      setSelectedJobId(
+        storedJobId ? Number(storedJobId) : jobs.length > 0 ? jobs[0].id : null
+      );
     }
   }, [jobId, jobs]);
 
+  useEffect(() => {
+    localStorage.setItem("selectedJobId", selectedJobId);
+  }, [selectedJobId]);
+
   const handleJobClick = (jobId) => {
-    const job = jobs.find((job) => job.id === jobId);
-    setSelectedJob(job);
-    navigate(`/applications/${job.id}`);
+    setSelectedJobId(jobId);
+    navigate(`/applications/${jobId}`);
+  };
+
+  const handleGoBack = () => {
+    navigate("/applications");
   };
 
   return (
     <div className="job-listing">
       <div className="panel left-panel">
+        <div className="back-button">
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            onClick={handleGoBack}
+            className="back-icon"
+          />
+        </div>
         <div className="job-listing-details">
           <h4>Saved Jobs</h4>
           <ul className="listed-items">
             {jobs.map((job) => (
               <li
                 key={job.id}
-                className={`item ${
-                  (selectedJob !== null && selectedJob.id === job.id) ||
-                  (selectedJob === null && defaultJobId === job.id)
-                    ? "selected"
-                    : ""
-                }`}
+                className={`item ${selectedJobId === job.id ? "selected" : ""}`}
               >
                 <button
                   onClick={() => handleJobClick(job.id)}
@@ -69,7 +79,6 @@ const JobListing = () => {
         </div>
       </div>
       <div className="panel right-panel">
-        {" "}
         <JobDetails />
       </div>
     </div>

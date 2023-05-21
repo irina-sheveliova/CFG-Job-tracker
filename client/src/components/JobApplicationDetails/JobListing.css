@@ -65,3 +65,8 @@ h4{
     background-color: #d8e7ea80;
     color: black;
 }
+
+.back-button{
+    margin-left: 20px;
+    cursor: pointer;
+}

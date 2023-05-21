@@ -1,11 +1,16 @@
 import React from "react";
 import "./JobsTable.css";
 import { Link } from "react-router-dom";
-
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
+import { useContext } from "react";
+import { FirebaseContext } from "../../context/authContext";
 
 function JobsTable({ rows, deleteJob, editJob }) {
   // this function accepts the rows, deleteJob and editJob props from JobsIndex
+
+  const { currentUser } = useContext(FirebaseContext);
+  // const currentUserRows = rows.filter((row) => row.userId === currentUser.uid);
+
   return (
     <div className="table-container">
       <table className="applications_table">
@@ -32,14 +37,20 @@ function JobsTable({ rows, deleteJob, editJob }) {
                 <td>
                   <Link
                     to={`/applications/${row.id}`}
-                    style={{ textDecoration: "none", color: "black" }}> {row.position}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    {" "}
+                    {row.position}
                   </Link>
                 </td>
 
                 <td>
                   <Link
                     to={`/applications/${row.id}`}
-                    style={{ textDecoration: "none", color: "black" }}> {row.company}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    {" "}
+                    {row.company}
                   </Link>
                 </td>
 
