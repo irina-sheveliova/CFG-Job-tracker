@@ -52,6 +52,13 @@ const JobListing = () => {
   return (
     <div className="job-listing">
       <div className="panel left-panel">
+        <div className="back-button">
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            onClick={handleGoBack}
+            className="back-icon"
+          />
+        </div>
         <div className="job-listing-details">
           <h4>Saved Jobs</h4>
           <ul className="listed-items">
@@ -69,13 +76,6 @@ const JobListing = () => {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="back-button">
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            onClick={handleGoBack}
-            className="back-icon"
-          />
         </div>
       </div>
       <div className="panel right-panel">
