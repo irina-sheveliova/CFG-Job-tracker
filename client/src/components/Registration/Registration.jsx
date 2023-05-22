@@ -49,7 +49,7 @@ export default function SignUpForm() {
         //   return alert("Something went wrong.");
         // }
 
-        navigate("/login");
+        navigate("/applications");
       })
       .catch((error) => {
         const errorCode = error.code;
