@@ -83,44 +83,33 @@ function HomePage() {
           <div className="expandable-box" onClick={() => toggleBox(2)}>
             <div className="box-header">
               <i className="fas fa-check-square"></i>
-              <h2 className="box-title"> Interview Prep (Coming Soon) </h2>
+              <h2 className="box-title"> Why is JobFlow Good For Recruiters? </h2>
             </div>
             <div className={boxState[2] ? "box-content show" : "box-content"}>
               <p>
-                "Preparing for an interview? Our comprehensive interview prep
-                resources will help you ace your next job interview. From common
-                questions to tips and tricks for acing the interview, our
-                community has everything you need to land your dream job. Join
-                now and start preparing for success.
+              Job Flow offers a unique advantage to recruiters by fostering a community of prepared and 
+              engaged candidates. When job seekers utilize Job Flow's comprehensive search features to 
+              find relevant job opportunities, they also gain access to a wealth of resources and tools 
+              to enhance their job search. By encouraging candidates to sign up for Job Flow, recruiters 
+              can tap into a pool of motivated individuals who are actively seeking career advancement. 
+              With Job Flow, recruiters can attract candidates who are better prepared, well-informed 
+              about the industry, and ready to make a positive impact from day one. 
               </p>{" "}
             </div>
           </div>
           <div className="expandable-box" onClick={() => toggleBox(3)}>
             <div className="box-header">
               <i className="fas fa-graduation-cap"></i>
-              <h2 className="box-title">Education (Coming Soon)</h2>
+              <h2 className="box-title">Why is JobFLow Good for JobSeekers?</h2>
             </div>
             <div className={boxState[3] ? "box-content show" : "box-content"}>
               <p>
-                Get ahead in your career with our education resources. From
-                online courses to industry-specific certifications, we provide
-                the tools you need to stay ahead of the game. Our community of
-                learners will help you find the resources you need to take your
-                skills to the next level{" "}
-              </p>{" "}
-            </div>
-          </div>
-          <div className="expandable-box" onClick={() => toggleBox(4)}>
-            <div className="box-header">
-              <i className="fas fa-users"></i>
-              <h2 className="box-title"> Networking (Coming Soon) </h2>
-            </div>
-            <div className={boxState[4] ? "box-content show" : "box-content"}>
-              <p>
-                Join our job community and expand your professional network!
-                Connect with like-minded individuals and discover new
-                opportunities in your field. Sign up now to start building your
-                career and unlocking exciting job prospects.{" "}
+              Job Flow is a powerful platform that empowers job seekers with efficient job tracking and 
+              search tools. With Job Flow, you can easily track your job applications, stay organized, 
+              and never miss an opportunity. The comprehensive job search feature enables you to explore 
+              a wide range of job openings, refine your search based on your preferences, and discover 
+              the perfect fit. Job Flow simplifies your job search journey, saving you time and helping 
+              you find meaningful employment that aligns with your skills and career goals{" "}
               </p>{" "}
             </div>
           </div>
