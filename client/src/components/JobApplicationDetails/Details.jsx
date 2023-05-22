@@ -7,6 +7,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import "./JobDetails.css";
 import moment from "moment";
 import { FirebaseContext } from "../../context/authContext";
+import buildApi from "../JobApplications/api";
 
 moment.locale("en-gb");
 
@@ -26,33 +27,39 @@ const JobDetails = () => {
   const { pathname } = useLocation();
   const jobId = pathname.split("/")[2];
   const { currentUser } = useContext(FirebaseContext);
-  
+  let api = buildApi("");
+  if (currentUser) {
+    //setup api with accessToken when it is available
+    api = buildApi(currentUser.accessToken);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!currentUser) {
+        return;
+      }
+
       try {
-        const res = await fetch(`http://localhost:8080/api/jobs/${jobId}`);
-        if (res.ok) {
-          const data = await res.json();
-          setContent((prevData) => ({
-            ...prevData,
-            status: data.status,
-            position: data.position,
-            company: data.company,
-            doa: data.doa,
-            salaryValue: data.salary,
-            jobnotes: data.notes,
-          }));
-          setJobNotes(data.notes);
-        } else {
-          throw new Error("Error fetching data");
-        }
+        const res = await api.get(`http://localhost:8080/api/jobs/${jobId}`);
+        console.log(res.data, "json data");
+
+        const data = await res.data;
+        setContent((prevData) => ({
+          ...prevData,
+          status: data.status,
+          position: data.position,
+          company: data.company,
+          doa: data.doa,
+          salaryValue: data.salary,
+          jobnotes: data.notes,
+        }));
+        setJobNotes(data.notes);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, [jobId]);
+  }, [jobId, currentUser]);
 
   const handleStatusChange = (event) => {
     setContent((prevData) => ({
@@ -69,27 +76,21 @@ const JobDetails = () => {
     setJobNotes(event.target.value);
   };
 
-  const handleJobNotesSave = async () => {
+  const handleSaveNotes = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
+      await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ notes: jobNotes }),
+        body: JSON.stringify({
+          notes: jobNotes,
+        }),
       });
-
-      if (res.ok) {
-        setIsEditing(false);
-        setContent((prevData) => ({
-          ...prevData,
-          jobnotes: jobNotes,
-        }));
-      } else {
-        throw new Error("Error saving job notes");
-      }
-    } catch (err) {
-      console.log(err);
+      console.log("Notes saved successfully");
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error saving notes:", error);
     }
   };
 
@@ -117,6 +118,7 @@ const JobDetails = () => {
   return (
     <div className="details-page">
       {currentUser && `Welcome ${currentUser.email}`}
+
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div>
           <h2>{content.position}</h2>
@@ -163,7 +165,7 @@ const JobDetails = () => {
             onChange={handleJobNotesChange}
             style={{ border: "1px solid black" }}
           />
-          <button onClick={handleJobNotesSave}>Save</button>
+          <button onClick={handleSaveNotes}>Save</button>
         </div>
       ) : (
         <p onClick={handleJobNotesClick}>{jobNotes}</p>
