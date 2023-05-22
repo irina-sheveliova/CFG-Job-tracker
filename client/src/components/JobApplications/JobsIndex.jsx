@@ -8,6 +8,7 @@ import { FirebaseContext } from "../../context/authContext";
 function JobsIndex() {
   const [modalOpen, setModalOpen] = useState(false);
   const [rows, setRows] = useState([]);
+  const [userName, setUserName] = useState('');
   // useEffect runs on application start
   // makes a http request to fetch the data from the api
   const { currentUser } = useContext(FirebaseContext);
@@ -38,8 +39,32 @@ function JobsIndex() {
     }
   };
 
+  const fetchUserData = async () => {
+    if (!currentUser) {
+      return;
+    }
+    try {
+      // console.log(currentUser.uid)
+      const response = await api.get('/api/users/'+currentUser.uid);
+      console.log(response.data);
+
+      setUserName(response.data);
+      console.log("Userdata printed");
+      // const userName = response.data.firstName
+    } catch (err) {
+      if (err.response) {
+        //not in the 200 response range
+        console.log(err.response.data);
+        console.log(err.response.status);
+      } else {
+        console.log(`Error: ${err.message}`);
+      }
+    }
+  };
+
   useEffect(() => {
     fetchJobs();
+    fetchUserData();
     // make useEffect run when currentUser changes.
   }, [currentUser]);
 
@@ -141,12 +166,12 @@ function JobsIndex() {
 
   return (
     <div className="index-div">
+      {currentUser && <h2 id="welcome-title">Welcome to <span id="jobflow-text">JobFlow</span>, {userName.firstName} {userName.lastName}!</h2>}
       <h1 className="applications-header">My Job Applications</h1>
       <button className="add-btn" onClick={() => setModalOpen(true)}>
         {" "}
         Add a Job
       </button>
-      {currentUser && <p className="welcome">Welcome {currentUser.email}</p>}
       <JobsTable rows={rows} deleteJob={handleDelete} editJob={handleEdit} />
       {modalOpen && (
         <Modal
