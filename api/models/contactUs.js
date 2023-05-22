@@ -8,7 +8,7 @@ export default (sequelize, Sequelize) => {
       allowNull: false,
     },
     message: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
   });
 
