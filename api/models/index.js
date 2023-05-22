@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import User from './user.js';
 import Job from './job.js';
+import Message from './contactUs.js';
 import dotenv from 'dotenv';
 
 //This file will instantiate our database connection
@@ -11,13 +12,13 @@ dotenv.config();
 
 // get all the strings from a .env file instead
 const sequelize = new Sequelize(
-    process.env.DATABASE,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-        host: process.env.HOST,
-        dialect: process.env.DIALECT
-    });
+  process.env.DATABASE,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.HOST,
+    dialect: process.env.DIALECT,
+  });
 
 const db = {};
 
@@ -26,6 +27,11 @@ db.sequelize = sequelize;
 
 db.User = User(sequelize, Sequelize);
 db.Job = Job(sequelize, Sequelize);
+db.Message = Message(sequelize, Sequelize);
+
+// defining relationship between tables
+db.User.hasMany(db.Job, { as: 'Jobs', foreignKey: 'userId' });
+db.Job.belongsTo(db.User, { as: 'User', foreignKey: 'userId' });
 
 // defining relationship between tables
 db.User.hasMany(db.Job, { as: 'Jobs', foreignKey: 'userId' });
