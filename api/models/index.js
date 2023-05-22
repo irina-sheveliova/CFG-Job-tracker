@@ -18,8 +18,7 @@ const sequelize = new Sequelize(
   {
     host: process.env.HOST,
     dialect: process.env.DIALECT,
-  }
-);
+  });
 
 const db = {};
 
@@ -30,5 +29,9 @@ db.User = User(sequelize, Sequelize);
 db.Job = Job(sequelize, Sequelize);
 db.Message = Message(sequelize, Sequelize);
 
-export default db;
+// defining relationship between tables
+db.User.hasMany(db.Job, { as: 'Jobs', foreignKey: 'userId' });
+db.Job.belongsTo(db.User, { as: 'User', foreignKey: 'userId' });
 
+
+export default db;
