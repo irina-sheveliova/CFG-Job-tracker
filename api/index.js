@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', userApi);
-app.use('/api', jobsApi);
 app.use('/api', contactUsApi);
 
 const PORT = process.env.PORT || 8080;

@@ -33,9 +33,4 @@ db.Message = Message(sequelize, Sequelize);
 db.User.hasMany(db.Job, { as: 'Jobs', foreignKey: 'userId' });
 db.Job.belongsTo(db.User, { as: 'User', foreignKey: 'userId' });
 
-// defining relationship between tables
-db.User.hasMany(db.Job, { as: 'Jobs', foreignKey: 'userId' });
-db.Job.belongsTo(db.User, { as: 'User', foreignKey: 'userId' });
-
-
 export default db;
