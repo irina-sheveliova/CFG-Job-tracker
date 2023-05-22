@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the JobFlow API.' });
 });
-
 app.use('/api', userApi);
 app.use('/api', jobsApi);
 app.use('/api', contactUsApi);
