@@ -52,7 +52,94 @@ body {
   animation: pulse 2s infinite;
 }
 
+/* Applies to Registration.jsx, Login.jsx, ContactUs.jsx. Please test all pages if you make any changes! */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
 
+label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.form-container {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 120px;
+}
+
+.form-header {
+  font-size: 38px;
+  font-weight: bold;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  text-align: center;
+}
+
+.form-error {
+  display: block;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 800px;
+}
+
+.form-group input::placeholder {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #008080;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  width: auto;
+}
+
+button[type="submit"]:hover {
+  background-color: grey;
+}
+
+.form-group button[type="submit"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  width: 100%;
+}
 
 
 

@@ -48,7 +48,7 @@ const Search = () => {
   }
 
   return (
-    <div>
+    <div className='full-search-form'>
      <h2 id="search-title">Unleash Your Career Potential with <span id="jobflow-text">JobFlow</span></h2>
      <h2 id= "sub-search-title">Find Your <span id="Dream-sub">Dream</span> Job Today!</h2>
       <form id = "jobsearch-form" onSubmit={searchJsearch}>

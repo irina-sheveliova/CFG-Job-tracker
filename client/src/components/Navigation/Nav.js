@@ -26,9 +26,6 @@ function Nav() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/team-intro">Team Intro</Link>
-        </li>
-        <li>
           <Link to="/about">About</Link>
         </li>
         <li>
