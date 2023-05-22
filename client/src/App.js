@@ -17,6 +17,8 @@ import TeamIntro from "./components/TeamIntro/TeamIntro";
 import Search from "./components/JobSearch/search";
 import { FirebaseProvider } from "./context/authContext";
 
+
+
 function App() {
   return (
     <Router>
@@ -53,9 +55,6 @@ function App() {
           <p className="footer-text" style={{ marginLeft: "20px" }}>
             Copyright JobFlow.com{" "}
           </p>
-          <button className="subscribe-button" style={{ marginRight: "20px" }}>
-            Subscribe to mailing list
-          </button>
         </div>
       </div>
     </Router>
@@ -63,3 +62,4 @@ function App() {
 }
 
 export default App;
+
