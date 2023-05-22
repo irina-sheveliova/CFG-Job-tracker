@@ -70,7 +70,7 @@ router.put("/jobs/:id", (req, res, next) => {
       salary: req.body.salary,
       status: req.body.status,
       notes: req.body.notes,
-      userId: req.user.user_id
+      userId: req.userId
     },
     {
       where: {

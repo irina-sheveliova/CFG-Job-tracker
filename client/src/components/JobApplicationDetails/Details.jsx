@@ -40,7 +40,7 @@ const JobDetails = () => {
       }
 
       try {
-        const res = await api.get(`http://localhost:8080/api/jobs/${jobId}`);
+        const res = await api.get(`/api/jobs/${jobId}`);
         console.log(res.data, "json data");
 
         const data = await res.data;
@@ -78,15 +78,9 @@ const JobDetails = () => {
 
   const handleSaveNotes = async () => {
     try {
-      await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          notes: jobNotes,
-        }),
-      });
+      await api.put(`/api/jobs/${jobId}`, JSON.stringify({
+        notes: jobNotes,
+      }));
       console.log("Notes saved successfully");
       setIsEditing(false);
     } catch (error) {
@@ -97,15 +91,9 @@ const JobDetails = () => {
   useEffect(() => {
     const updateStatus = async () => {
       try {
-        await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            status: content.status,
-          }),
-        });
+        await api.put(`/api/jobs/${jobId}`, JSON.stringify({
+          status: content.status,
+        }));
         console.log("Status updated successfully");
       } catch (error) {
         console.error("Error updating status:", error);
