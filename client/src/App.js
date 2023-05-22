@@ -17,8 +17,6 @@ import TeamIntro from "./components/TeamIntro/TeamIntro";
 import Search from "./components/JobSearch/search";
 import { FirebaseProvider } from "./context/authContext";
 
-
-
 function App() {
   return (
     <Router>
@@ -62,4 +60,3 @@ function App() {
 }
 
 export default App;
-

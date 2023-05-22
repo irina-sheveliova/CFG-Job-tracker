@@ -1,29 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import JobDetails from "./Details";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./JobListing.css";
+import { FirebaseContext } from "../../context/authContext";
+import buildApi from "../JobApplications/api";
 
 const JobListing = () => {
   const [selectedJobId, setSelectedJobId] = useState(null);
   const navigate = useNavigate();
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
+  const { currentUser } = useContext(FirebaseContext);
+
+  let api = buildApi("");
+  if (currentUser) {
+    //setup api with accessToken when it is available
+    api = buildApi(currentUser.accessToken);
+  }
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/jobs")
-      .then((response) => response.json())
-      .then((data) => {
-        setJobs(data);
-        if (data.length > 0) {
-          setSelectedJobId(data[0].id);
+    const fetchJobs = async () => {
+      if (!currentUser) {
+        return;
+      }
+
+      try {
+        const response = await api.get("/api/jobs");
+        setJobs(response.data);
+
+        if (response.data.length > 0) {
+          setSelectedJobId(response.data[0].id);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching jobs:", error);
-      });
-  }, []);
+      }
+    };
+
+    fetchJobs();
+  }, [currentUser]);
 
   useEffect(() => {
     if (jobId) {
