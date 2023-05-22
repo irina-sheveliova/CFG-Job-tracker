@@ -38,9 +38,14 @@ function Nav() {
           <Link to="/contactus">Contact Us</Link>
         </li>
         {currentUser ? (
-          <li>
-            <Link onClick={handleLogout}>Logout</Link>
-          </li>
+          <>
+            <li>
+              <Link to="/applications">My Applications</Link>
+            </li>
+            <li>
+              <Link onClick={handleLogout}>Logout</Link>
+            </li>
+          </>
         ) : (
           <>
             <li>
