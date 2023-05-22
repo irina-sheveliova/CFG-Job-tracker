@@ -55,14 +55,14 @@ function ContactUs() {
   };
 
   return (
-    <form className="contact-form">
+    <form className="form">
       <div className="form-container">
-        <h2 className="contact-header">Contact Us</h2>
+        <h2 className="form-header">Contact Us</h2>
         <h5 className="contact-form-text">
           If you have any questions, feel free to get in touch!
         </h5>
 
-        <div className="div-section">
+        <div className="form-group">
           <label htmlFor="Name">Full Name</label>
           <input
             id="fullName"
@@ -73,10 +73,10 @@ function ContactUs() {
           />
 
           {errors.name && (
-            <p style={{ color: 'red', fontSize: '13px' }}>{errors.name}</p>
+            <div className="form-error">{errors.name}</div>
           )}
         </div>
-        <div className="div-section">
+        <div className="form-group">
           <label htmlFor="emailAddress">Email Address</label>
 
           <input
@@ -87,10 +87,10 @@ function ContactUs() {
             onChange={handleChange}
           />
           {errors.email && (
-            <p style={{ color: 'red', fontSize: '13px' }}>{errors.email}</p>
+            <div className="form-error">{errors.email}</div>
           )}
         </div>
-        <div className="div-section">
+        <div className="form-group">
           <label htmlFor="message">Message</label>
           <textarea
             id="contactUsMessage"
@@ -100,10 +100,10 @@ function ContactUs() {
             onChange={handleChange}
           />
           {errors.message && (
-            <p style={{ color: 'red', fontSize: '13px' }}>{errors.message}</p>
+            <div className="form-error">{errors.message}</div>
           )}
         </div>
-        <div className="button-container">
+        <div className="form-group">
           <button className="button" type="submit" onClick={handleSubmit}>
             Send
           </button>

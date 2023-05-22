@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
-import "./Login.css";
+// Styling is in the App.css file
 
 function Login() {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ function Login() {
   return (
     <form>
       <div className="form-container">
-        <h2 className="login-form-header">Log in</h2>
+        <h2 className="form-header">Log in</h2>
         <div className="form-group">
           <input
             type="email"
@@ -81,8 +81,7 @@ function Login() {
         </div>
 
         <div className="form-group">
-          <button type="submit" style={{ width: "100%" }}
-            onClick={onLogin}>Continue</button>
+          <button type="submit" onClick={onLogin}>Continue</button>
         </div>
         <p style={{ textAlign: "center", fontSize: "18px" }}>
           Don't have an account? <a href="/signup">Sign Up</a></p>

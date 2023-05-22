@@ -18,30 +18,6 @@ export default function SignUpForm() {
     emailInUse: "User with this email already exists"
   };
 
-  // This function is deprecated as password is being validated by type="password" + pattern in input form
-  // function validatePassword() {
-  //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
-  //   const isValidPassword = passwordRegex.test(password);
-  //   if (!isValidPassword) {
-  //     setPasswordErrorMessage(
-  //       "Password must contain 8-20 characters, two or more numbers, upper case letter and lower case letter"
-  //     );
-  //   } else {
-  //     setPasswordErrorMessage("");
-  //   }
-  // }
-
-  // This function is deprecated as email is being validated by type="email" in input form
-  // function validateEmail() {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   const isValidEmail = emailRegex.test(email);
-  //   if (!isValidEmail) {
-  //     setEmailErrorMessage("Please enter a valid email address");
-  //   } else {
-  //     setEmailErrorMessage("");
-  //   }
-  // }
-
   const onSubmit = async (event) => {
     event.preventDefault();
 
@@ -97,10 +73,12 @@ export default function SignUpForm() {
   return (
     <form onSubmit={onSubmit}>
       <div className="form-container">
-        <h2 className="signup-form-header">Create Your Account</h2>
+        <h2 className="form-header">Create Your Account</h2>
         <h5 className="signup-form-text">Organize your job search!</h5>
+
         <div className="form-group">
           <input
+            id="firstName"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -109,8 +87,10 @@ export default function SignUpForm() {
             required
           />
         </div>
+
         <div className="form-group">
           <input
+            id="lastName"
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -119,6 +99,7 @@ export default function SignUpForm() {
             required
           />
         </div>
+
         <div className="form-group">
           <input
             type="email"
@@ -130,6 +111,7 @@ export default function SignUpForm() {
           />
           {renderErrorMessage("emailInUse")}
         </div>
+
         <div className="form-group">
           <input
             type="password"
@@ -143,11 +125,13 @@ export default function SignUpForm() {
           <p style={{fontStyle: "italic", color: "coral", marginBlockStart: "0px"}}>
             Password must contain at least 8 characters</p>
         </div>
+
         <div className="form-group">
-          <button type="submit" style={{ width: "100%" }}>
+          <button type="submit">
             Sign Up
           </button>
         </div>
+
         <p style={{ textAlign: "center", fontSize: "18px" }}>
           Already have an account?{" "}
           <a href="/login" style={{ color: "#008080" }}>
