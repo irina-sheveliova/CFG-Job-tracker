@@ -8,7 +8,7 @@
   }
 
 .full-search-form{
-  height: 100vh;
+  min-height: 100vh;
 }
   /* Search form - Adjust margin,padding and margin top to move boxes*/
   #jobsearch-form {
@@ -19,7 +19,7 @@
     margin-top: -20px;
       margin-left: 10px;
       margin-right: 10px;
-      height: 100px;
+      height: 10vh;
   }
   
   /* Search input */
@@ -157,7 +157,7 @@ select {
     justify-content: center;
     gap: 1rem;
     margin-top: 20px;
-    height: 600px;
+    flex-grow: 1;
   }
   
   /* Result box */
