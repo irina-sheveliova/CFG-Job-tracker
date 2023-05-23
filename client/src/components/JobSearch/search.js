@@ -21,7 +21,7 @@ const Search = () => {
 
       const response = await axios.get(`https://jsearch.p.rapidapi.com/search`, {
         headers: {
-          'X-RapidAPI-Key': 'c9f0d150camsh7d9406b60fc5d1ep17996djsna932e8fb918c',
+          'X-RapidAPI-Key': 'b9760cd834msh2723e4c7a551b57p1cf509jsnc3d03a4cc136',
           'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
         },
         params: {
