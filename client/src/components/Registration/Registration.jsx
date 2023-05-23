@@ -31,25 +31,24 @@ export default function SignUpForm() {
         console.log("Last name: " + lastName);
         console.log("Email: " + email);
 
-        fetch ('http://localhost:8080/api/users', {
-            method: "post",
-            headers: {
-              // needed so express parser says the body is OK to read
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              UID: user.uid,
-              firstName: firstName,
-              lastName: lastName,
-              email: email
-            })
+        fetch('http://localhost:8080/api/users', {
+          method: "post",
+          headers: {
+            // needed so express parser says the body is OK to read
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            UID: user.uid,
+            firstName: firstName,
+            lastName: lastName,
+            email: email
           })
+        }).then(r => navigate("/applications"));
         // if (response.status !== 200) {
         //   TODO: Add error handling.
         //   return alert("Something went wrong.");
         // }
 
-        navigate("/applications");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -57,7 +56,7 @@ export default function SignUpForm() {
         if (errorCode === 'auth/email-already-in-use') {
           // Email already in use
           setErrorMessages({ name: "emailInUse", message: errors.emailInUse });
-        } 
+        }
         else {
           alert(errorMessage);
         }
@@ -122,7 +121,7 @@ export default function SignUpForm() {
             onChange={(event) => setPassword(event.target.value)}
             required
           />
-          <p style={{fontStyle: "italic", color: "coral", marginBlockStart: "0px"}}>
+          <p style={{ fontStyle: "italic", color: "coral", marginBlockStart: "0px" }}>
             Password must contain at least 8 characters</p>
         </div>
 
