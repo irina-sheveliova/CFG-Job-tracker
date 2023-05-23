@@ -6,17 +6,20 @@
     justify-content: flex-start !important;
     margin-top: 10px;
   }
-  
 
+.full-search-form{
+  height: 100vh;
+}
   /* Search form - Adjust margin,padding and margin top to move boxes*/
   #jobsearch-form {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: -300px;
-    padding: 350px;
-    margin-top: -700px;
+    margin-top: -20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      height: 100px;
   }
   
   /* Search input */
@@ -198,7 +201,7 @@ select {
   
   /* Result box hover effect */
   .result-box:hover {
-    transform: scale(1.05); /* Adjust the scaling factor as desired */
+    transform: scale(1); /* Adjust the scaling factor as desired */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to bottom, #00b3b3, #008080); /* Adjust the gradient colors as desired */
   }
