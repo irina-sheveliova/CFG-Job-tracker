@@ -6,8 +6,6 @@ const Search = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [locationQuery, setLocationQuery] = useState(''); // State for location query
-  const [radiusQuery, setRadiusQuery] = useState(''); // State for radius query
   const [resultCount, setResultCount] = useState(0); // State for result count
 
 
@@ -15,17 +13,13 @@ const Search = () => {
     event.preventDefault();
   
     try {
-      const location = locationQuery ? ` within ${radiusQuery}km of ${locationQuery}` : '';
-      const queryParam = `${query}${location}`;
-      console.log(queryParam);
-
       const response = await axios.get(`https://jsearch.p.rapidapi.com/search`, {
         headers: {
           'X-RapidAPI-Key': 'b9760cd834msh2723e4c7a551b57p1cf509jsnc3d03a4cc136',
           'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
         },
         params: {
-          query: queryParam,
+          query: query,
           page: currentPage,
           num_pages: 10
         }
@@ -39,35 +33,13 @@ const Search = () => {
   }
   
 
-  const handleLocationChange = (event) => {
-    setLocationQuery(event.target.value);
-  }
-
-  const handleRadiusChange = (event) => {
-    setRadiusQuery(event.target.value);
-  }
-
   return (
     <div className='full-search-form'>
      <h2 id="search-title">Unleash Your Career Potential with <span id="jobflow-text">JobFlow</span></h2>
      <h2 id= "sub-search-title">Find Your <span id="Dream-sub">Dream</span> Job Today!</h2>
       <form id = "jobsearch-form" onSubmit={searchJsearch}>
-        <input type="text" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Job, Company, Keywords" />
+        <input type="text" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Please Enter The Desired Job Title and Location e.g. Software Engineer in London" />
         <button type="submit">Search</button>
-        <div id="location-filter">
-          <label>Location:</label>
-          <input type="text" placeholder="City, State, or Postcode" value={locationQuery} onChange={handleLocationChange} />
-          <label>Radius(KM):</label>
-          <select value={radiusQuery} onChange={handleRadiusChange}>
-            <option value="">Select Radius</option>
-            <option value="5">5 </option>
-            <option value="10">10 </option>
-            <option value="25">25 </option>
-            <option value="50">50 </option>
-            <option value="75">75 </option>
-            <option value="100">100  +</option>
-          </select>
-        </div>
       </form>
 
 
@@ -90,5 +62,6 @@ const Search = () => {
 };
 
 export default Search;
+
 
 
