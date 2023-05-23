@@ -18,7 +18,7 @@ function About() {
         <h2>Why is this helpful?</h2>
         <p className="why-text">Looking for a job can be overwhelming, especially when you're juggling multiple applications 
         at once. With JobFlow, you can keep all your applications in one place, and easily track your progress. 
-        Our reminders and notes features also help you stay on top of your job search, making sure that no 
+        Our status updates and notes features also help you stay on top of your job search, making sure that no 
         opportunity falls through the cracks. Plus, our platform is free to use, so you can focus on what 
         matters most - finding your dream job!</p>
       </div>

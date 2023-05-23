@@ -55,8 +55,8 @@ function HomePage() {
                 Say goodbye to scattered notes and endless spreadsheets. Our job
                 search platform provides a centralized hub for you to keep track
                 of all your job applications effortlessly. Stay organized, stay
-                on top of your game. Track application statuses, set reminders
-                for follow-ups, and never miss an important deadline. Our
+                on top of your game. Track application statuses
+                and never miss an important deadline. Our
                 intuitive interface makes it simple to manage multiple
                 applications simultaneously, allowing you to focus on what
                 matters most: landing your dream job.{" "}
@@ -83,33 +83,33 @@ function HomePage() {
           <div className="expandable-box" onClick={() => toggleBox(2)}>
             <div className="box-header">
               <i className="fas fa-check-square"></i>
-              <h2 className="box-title"> Why is JobFlow Good For Recruiters? </h2>
+              <h2 className="box-title"> Why is JobFlow Good For JobSeekers? </h2>
             </div>
             <div className={boxState[2] ? "box-content show" : "box-content"}>
               <p>
-              Job Flow offers a unique advantage to recruiters by fostering a community of prepared and 
-              engaged candidates. When job seekers utilize Job Flow's comprehensive search features to 
-              find relevant job opportunities, they also gain access to a wealth of resources and tools 
-              to enhance their job search. By encouraging candidates to sign up for Job Flow, recruiters 
-              can tap into a pool of motivated individuals who are actively seeking career advancement. 
-              With Job Flow, recruiters can attract candidates who are better prepared, well-informed 
-              about the industry, and ready to make a positive impact from day one. 
+                JobFlow is a powerful platform that empowers job seekers with efficient job tracking and
+                search tools. With JobFlow, you can easily track your job applications, stay organized,
+                and never miss an opportunity. The comprehensive job search feature enables you to explore
+                a wide range of job openings, refine your search based on your preferences, and discover
+                the perfect fit. JobFlow simplifies your job search journey, saving you time and helping
+                you find meaningful employment that aligns with your skills and career goals.
               </p>{" "}
             </div>
           </div>
           <div className="expandable-box" onClick={() => toggleBox(3)}>
             <div className="box-header">
               <i className="fas fa-graduation-cap"></i>
-              <h2 className="box-title">Why is JobFLow Good for JobSeekers?</h2>
+              <h2 className="box-title">Why is JobFLow Good for Recruiters?</h2>
             </div>
             <div className={boxState[3] ? "box-content show" : "box-content"}>
               <p>
-              Job Flow is a powerful platform that empowers job seekers with efficient job tracking and 
-              search tools. With Job Flow, you can easily track your job applications, stay organized, 
-              and never miss an opportunity. The comprehensive job search feature enables you to explore 
-              a wide range of job openings, refine your search based on your preferences, and discover 
-              the perfect fit. Job Flow simplifies your job search journey, saving you time and helping 
-              you find meaningful employment that aligns with your skills and career goals{" "}
+                JobFlow offers a unique advantage to recruiters by fostering a community of prepared and
+                engaged candidates. When job seekers utilize JobFlow's comprehensive search features to
+                find relevant job opportunities, they also gain access to a wealth of resources and tools
+                to enhance their job search. By encouraging candidates to sign up for JobFlow, recruiters
+                can tap into a pool of motivated individuals who are actively seeking career advancement.
+                With JobFlow, recruiters can attract candidates who are better prepared, well-informed
+                about the industry, and ready to make a positive impact from day one. {" "}
               </p>{" "}
             </div>
           </div>

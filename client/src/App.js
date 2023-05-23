@@ -23,8 +23,7 @@ function App() {
       <div>
         <div className="counter-container">
           <h1 className="counter-heading">
-            Join <Counter end={100000} duration={20} /> Users Tracking with Job
-            Flow!
+            Join <Counter end={100000} duration={20} />Users Tracking with JobFlow!
           </h1>
         </div>
         <FirebaseProvider>
