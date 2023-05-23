@@ -22,9 +22,9 @@ function JobsIndex() {
     if (!currentUser) {
       return;
     }
+    api = buildApi(currentUser.accessToken);
     try {
       const response = await api.get('/api/jobs');
-      console.log(response.data);
 
       setRows(response.data);
       console.log("setRows done");
@@ -45,7 +45,7 @@ function JobsIndex() {
     }
     try {
       // console.log(currentUser.uid)
-      const response = await api.get('/api/users/'+currentUser.uid);
+      const response = await api.get('/api/users/' + currentUser.uid);
       console.log(response.data);
 
       setUserName(response.data);

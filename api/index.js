@@ -45,7 +45,8 @@ admin.initializeApp({
 const authenticate = async (req, res, next) => {
   // check for auth header
   if (!req.headers.authorization) {
-    res.status(401)
+    console.log(req.headers);
+    res.status(401).send('unauthorized');
     return;
   }
   try {
@@ -60,7 +61,7 @@ const authenticate = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    res.status(401)
+    res.status(401).send('unauthorized');
     return;
   }
 

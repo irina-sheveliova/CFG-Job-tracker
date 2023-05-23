@@ -38,7 +38,7 @@ const JobDetails = () => {
       if (!currentUser) {
         return;
       }
-
+      api = buildApi(currentUser.accessToken);
       try {
         const res = await api.get(`/api/jobs/${jobId}`);
         console.log(res.data, "json data");
