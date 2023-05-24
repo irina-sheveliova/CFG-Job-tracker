@@ -60,4 +60,32 @@ describe('Modal component', () => {
     expect(closeModal).toHaveBeenCalledTimes(1);
     expect(addJob).toHaveBeenCalledWith(job);
   });
+
+  test('is not submitting the form when not all fields are filled', () => {
+    const job = {
+      position: 'Software Engineer',
+      company: '',
+      doa: '2023-05-23',
+      status: 'applied',
+      salary: '100000',
+      notes: 'test note',
+    };
+
+    render(<Modal defaultValue={job} />);
+
+    userEvent.click(screen.getByRole('button', { name: /Enter/i }));
+    const errorMessage = screen.getByText(/please provide: company/i);
+    expect(errorMessage).toBeInTheDocument();
+  });
+  test('it calls closeModal when clicking the close button', async () => {
+    const closeModal = jest.fn();
+
+    render(<Modal closeModal={closeModal} />);
+
+    const closeButton = screen.getByRole('button', { className: 'close' });
+    userEvent.click(closeButton);
+
+    expect(closeButton).toBeInTheDocument();
+    expect(closeModal).toHaveBeenCalledTimes(1);
+  });
 });
