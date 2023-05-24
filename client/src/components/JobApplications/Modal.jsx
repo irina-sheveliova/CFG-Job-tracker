@@ -84,7 +84,11 @@ function Modal({ closeModal, addJob, defaultValue }) {
         <form className="form-div">
           <div className="main-div">
             {/* <BsXCircle className="close" /> */}
-            <BsXCircle className="close" onClick={() => closeModal()} />
+            <BsXCircle
+              data-testid="close-button"
+              className="close"
+              onClick={() => closeModal()}
+            />
             <div className="form-div">
               <label htmlFor="position-input">
                 Job Position <span className="required">(required)</span>

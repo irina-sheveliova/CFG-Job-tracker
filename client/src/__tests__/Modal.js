@@ -61,7 +61,7 @@ describe('Modal component', () => {
     expect(addJob).toHaveBeenCalledWith(job);
   });
 
-  test('is not submitting the form when not all fields are filled', () => {
+  test('is not submitting the form when not all required fields are filled', () => {
     const job = {
       position: 'Software Engineer',
       company: '',
@@ -82,7 +82,7 @@ describe('Modal component', () => {
 
     render(<Modal closeModal={closeModal} />);
 
-    const closeButton = screen.getByRole('button', { className: 'close' });
+    const closeButton = screen.getByTestId('close-button');
     userEvent.click(closeButton);
 
     expect(closeButton).toBeInTheDocument();
