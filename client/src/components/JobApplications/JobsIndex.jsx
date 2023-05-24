@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-import JobsTable from "./JobsTable";
-import Modal from "./Modal.jsx";
-import "./JobsIndex.css";
-import buildApi from "./api";
-import { FirebaseContext } from "../../context/authContext";
+import { useState, useEffect, useContext } from 'react';
+import JobsTable from './JobsTable';
+import Modal from './Modal.jsx';
+import './JobsIndex.css';
+import buildApi from './api';
+import { FirebaseContext } from '../../context/authContext';
 
 function JobsIndex() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,7 +27,7 @@ function JobsIndex() {
       const response = await api.get('/api/jobs');
 
       setRows(response.data);
-      console.log("setRows done");
+      console.log('setRows done');
     } catch (err) {
       if (err.response) {
         //not in the 200 response range
@@ -49,7 +49,7 @@ function JobsIndex() {
       console.log(response.data);
 
       setUserName(response.data);
-      console.log("Userdata printed");
+      console.log('Userdata printed');
       // const userName = response.data.firstName
     } catch (err) {
       if (err.response) {
@@ -74,7 +74,7 @@ function JobsIndex() {
   const handleDelete = (targetIndex) => {
     const deleteJob = async (id) => {
       try {
-        const response = await api.delete("/api/jobs/" + id);
+        const response = await api.delete('/api/jobs/' + id);
         const newRows = rows.filter((_, idx) => idx !== targetIndex);
         setRows(newRows);
       } catch (err) {
@@ -105,7 +105,7 @@ function JobsIndex() {
 
     const addJob = async (row) => {
       try {
-        const response = await api.post("/api/jobs", row);
+        const response = await api.post('/api/jobs', row);
         fetchJobs();
       } catch (err) {
         if (err.response) {
@@ -119,7 +119,7 @@ function JobsIndex() {
     };
     const updateJob = async (row) => {
       try {
-        const response = await api.post("/api/jobs/" + row.id, row);
+        const response = await api.post('/api/jobs/' + row.id, row);
         const newRows = rows.map((item) => {
           if (item.id !== row.id) {
             return item;
@@ -166,10 +166,15 @@ function JobsIndex() {
 
   return (
     <div className="index-div">
-      {currentUser && <h2 id="welcome-title">Welcome to <span id="jobflow-text">JobFlow</span>, {userName.firstName} {userName.lastName}!</h2>}
+      {currentUser && (
+        <h2 id="welcome-title">
+          Welcome to <span id="jobflow-text">JobFlow</span>,{' '}
+          {userName.firstName} {userName.lastName}!
+        </h2>
+      )}
       <h1 className="applications-header">My Job Applications</h1>
       <button className="add-btn" onClick={() => setModalOpen(true)}>
-        {" "}
+        {' '}
         Add a Job
       </button>
       <JobsTable rows={rows} deleteJob={handleDelete} editJob={handleEdit} />

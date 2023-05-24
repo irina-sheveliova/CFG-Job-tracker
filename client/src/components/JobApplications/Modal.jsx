@@ -1,31 +1,31 @@
-import React from "react";
-import "./Modal.css";
-import { useState } from "react";
-import moment from "moment";
-import { BsXCircle } from "react-icons/bs";
+import React from 'react';
+import './Modal.css';
+import { useState } from 'react';
+import moment from 'moment';
+import { BsXCircle } from 'react-icons/bs';
 
 function Modal({ closeModal, addJob, defaultValue }) {
   //setting state for form errors
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState('');
 
   // state is set to the default value if provided
   // but if it's null, we use our object
   const [jobForm, setJobForm] = useState(
     defaultValue || {
-      position: "",
-      company: "",
-      doa: "",
-      status: "",
-      salary: "",
-      notes: " ",
+      position: '',
+      company: '',
+      doa: '',
+      status: '',
+      salary: '',
+      notes: ' ',
     }
   );
 
-  const currentDate = moment().format("YYYY-MM-DD");
+  const currentDate = moment().format('YYYY-MM-DD');
   const handleFormChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "doa" && moment(value).isAfter(currentDate, "day")) {
+    if (name === 'doa' && moment(value).isAfter(currentDate, 'day')) {
       setJobForm({
         ...jobForm,
         doa: currentDate,
@@ -41,8 +41,8 @@ function Modal({ closeModal, addJob, defaultValue }) {
   //validation for the form
   const formValidation = () => {
     if (jobForm.position && jobForm.company && jobForm.status) {
-      setErrors("");
-      console.log("form is valid");
+      setErrors('');
+      console.log('form is valid');
       return true;
     } else {
       // if the value doesn't exist, we want to push it into our errorItems array
@@ -50,13 +50,13 @@ function Modal({ closeModal, addJob, defaultValue }) {
       for (const [key, value] of Object.entries(jobForm)) {
         if (
           !value &&
-          (key === "position" || key === "company" || key === "status")
+          (key === 'position' || key === 'company' || key === 'status')
         ) {
           errorItems.push(key);
         }
       }
-      setErrors(errorItems.join(", "));
-      console.log("form is invalid");
+      setErrors(errorItems.join(', '));
+      console.log('form is invalid');
       return false;
     }
   };
@@ -74,6 +74,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
 
   return (
     <div
+      data-testid="m-container"
       className="m-container"
       // onClick={(e) => {
       //     if (e.target.className === "close") closeModal();
@@ -85,33 +86,33 @@ function Modal({ closeModal, addJob, defaultValue }) {
             {/* <BsXCircle className="close" /> */}
             <BsXCircle className="close" onClick={() => closeModal()} />
             <div className="form-div">
-              <label htmlFor="position">
+              <label htmlFor="position-input">
                 Job Position <span className="required">(required)</span>
               </label>
               <input
                 id="position-input"
-                // type="text"
+                type="text"
                 name="position"
                 value={jobForm.position}
                 onChange={handleFormChange}
               />
             </div>
             <div className="form-div">
-              <label htmlFor="company">
-                {" "}
+              <label htmlFor="company-input">
+                {' '}
                 Company <span className="required">(required)</span>
               </label>
               <input
                 id="company-input"
-                // type="text"
+                type="text"
                 name="company"
                 value={jobForm.company}
                 onChange={handleFormChange}
               />
             </div>
             <div className="form-div">
-              <label htmlFor="status">
-                {" "}
+              <label htmlFor="status-input">
+                {' '}
                 Status <span className="required">(required)</span>
               </label>
 
@@ -130,7 +131,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
               </select>
             </div>
             <div className="form-div">
-              <label htmlFor="doa"> Date of Job Application</label>
+              <label htmlFor="doa-input"> Date of Job Application</label>
               <input
                 id="doa-input"
                 type="date"
@@ -141,7 +142,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
               />
             </div>
             <div className="form-div">
-              <label htmlFor="salary"> Salary</label>
+              <label htmlFor="salary-input"> Salary</label>
               <input
                 id="salary-input"
                 name="salary"
@@ -150,7 +151,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
               />
             </div>
             <div className="form-div">
-              <label htmlFor="notes"> Notes</label>
+              <label htmlFor="notes-input-plus"> Notes</label>
               <textarea
                 id="notes-input-plus"
                 type="text"
