@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Modal from '../components/JobApplications/Modal';
 
@@ -57,9 +57,7 @@ describe('Modal component', () => {
     const enterButton = screen.getByRole('button', { name: /enter/i });
     userEvent.click(enterButton);
 
-    await waitFor(() => {
-      expect(closeModal).toHaveBeenCalledTimes(1);
-      expect(addJob).toHaveBeenCalledWith(job);
-    });
+    expect(closeModal).toHaveBeenCalledTimes(1);
+    expect(addJob).toHaveBeenCalledWith(job);
   });
 });

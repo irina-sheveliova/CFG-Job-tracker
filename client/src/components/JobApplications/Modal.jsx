@@ -17,7 +17,7 @@ function Modal({ closeModal, addJob, defaultValue }) {
       doa: '',
       status: '',
       salary: '',
-      notes: ' ',
+      notes: '',
     }
   );
 
