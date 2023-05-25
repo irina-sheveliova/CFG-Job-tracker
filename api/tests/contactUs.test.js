@@ -10,8 +10,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
+// can use 'db.sequelize.sync({ force: true })' to drop and recreate any existing tables
 beforeEach(async () => {
-  await db.sequelize.sync({ force: true });
+  await db.sequelize.sync();
 });
 
 const testMessage = {
