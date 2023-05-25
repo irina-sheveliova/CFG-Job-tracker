@@ -59,6 +59,7 @@ h4{
     text-decoration: none;
     cursor: pointer;
     font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-align: left;
 }
 
 .selected {
