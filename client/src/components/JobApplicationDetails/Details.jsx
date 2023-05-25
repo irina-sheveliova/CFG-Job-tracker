@@ -113,7 +113,7 @@ const JobDetails = () => {
           <h3>
             <b>{content.company}</b>
           </h3>
-          <p>Saved {moment(content.doa).fromNow()}</p>
+          <p>Added {moment(content.createdAt).fromNow()}</p>
           <div className="star-rating">
             <StarRating />
           </div>
