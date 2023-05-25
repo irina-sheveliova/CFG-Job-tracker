@@ -6,14 +6,14 @@ const Message = db.Message;
 
 // Get a list of all messages
 router.get('/contactus', (req, res) => {
-  User.findAll()
+  Message.findAll()
     .then((message) => res.json(message))
     .catch((err) => console.log(err));
 });
 
 // Find message by id
 router.get('/contactus/:id', (req, res) => {
-  User.findOne({
+  Message.findOne({
     where: { id: req.params.id },
   })
     .then((message) => res.json(message))
@@ -28,7 +28,7 @@ router.post('/contactus', (req, res, next) => {
     message: req.body.message,
   })
     .then((data) => res.send(data))
-    .catch(next);
+    .catch((err) => console.log(err));
 });
 
 // Update message
@@ -44,7 +44,7 @@ router.post('/contactus/:id', (req, res, next) => {
     }
   )
     .then(res.json('Updated successfully'))
-    .catch(next);
+    .catch((err) => console.log(err));
 });
 
 // Delete message
@@ -53,7 +53,7 @@ router.delete('/contactus/:id', (req, res, next) => {
     where: { id: req.params.id },
   })
     .then(res.json('Deleted successfully'))
-    .catch(next);
+    .catch((err) => console.log(err));
 });
 
 export default router;
