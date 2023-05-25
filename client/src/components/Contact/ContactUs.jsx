@@ -31,7 +31,7 @@ function ContactUs() {
       values.email !== '' &&
       values.message !== ''
     ) {
-      fetch('http://localhost:8080/api/contactus', {
+      fetch('/api/contactus', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -31,7 +31,7 @@ export default function SignUpForm() {
         console.log("Last name: " + lastName);
         console.log("Email: " + email);
 
-        fetch('http://localhost:8080/api/users', {
+        fetch('/api/users', {
           method: "post",
           headers: {
             // needed so express parser says the body is OK to read
