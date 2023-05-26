@@ -78,9 +78,12 @@ const JobDetails = () => {
 
   const handleSaveNotes = async () => {
     try {
-      await api.put(`/api/jobs/${jobId}`, JSON.stringify({
-        notes: jobNotes,
-      }));
+      await api.put(
+        `/api/jobs/${jobId}`,
+        JSON.stringify({
+          notes: jobNotes,
+        })
+      );
       console.log("Notes saved successfully");
       setIsEditing(false);
     } catch (error) {
@@ -91,9 +94,12 @@ const JobDetails = () => {
   useEffect(() => {
     const updateStatus = async () => {
       try {
-        await api.put(`/api/jobs/${jobId}`, JSON.stringify({
-          status: content.status,
-        }));
+        await api.put(
+          `/api/jobs/${jobId}`,
+          JSON.stringify({
+            status: content.status,
+          })
+        );
         console.log("Status updated successfully");
       } catch (error) {
         console.error("Error updating status:", error);
@@ -105,7 +111,7 @@ const JobDetails = () => {
 
   return (
     <div className="details-page">
-      {currentUser && `Welcome ${currentUser.email}`}
+      {/* {currentUser && `Welcome ${currentUser.email}`} */}
 
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div>
