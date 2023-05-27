@@ -39,7 +39,7 @@ const testJob = {
 
 // can use 'db.sequelize.sync({ force: true })' to drop and recreate any existing tables
 beforeEach(async () => {
-  await db.sequelize.sync();
+  await db.sequelize.sync({ force: true });
 });
 
 
