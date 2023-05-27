@@ -66,7 +66,7 @@ describe("JobDetails component", () => {
       });
     };
 
-    const timeoutDuration = jest.setTimeout(500000); // Set a higher timeout duration (in milliseconds)
+    const timeoutDuration = jest.setTimeout(500000); 
 
     await waitFor(
       async () => {
