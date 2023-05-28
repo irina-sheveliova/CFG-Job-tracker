@@ -144,15 +144,6 @@ function JobsIndex() {
     } else {
       updateJob(submittedRow);
     }
-    // setRows(
-    //     rows.map((current, idx) => {
-    //         if (idx !== rowToUpdate) {
-    //             return current
-    //         }
-    //         else {
-    //             return newRow;
-    //         }
-    //     }))
   };
 
   // Function to UPDATE a row in the table

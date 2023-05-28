@@ -99,7 +99,7 @@ function HomePage() {
           <div className="expandable-box" onClick={() => toggleBox(3)}>
             <div className="box-header">
               <i className="fas fa-graduation-cap"></i>
-              <h2 className="box-title">Why is JobFLow Good for Recruiters?</h2>
+              <h2 className="box-title">How does JobFLow benefit the Recruitment Industry?</h2>
             </div>
             <div className={boxState[3] ? "box-content show" : "box-content"}>
               <p>

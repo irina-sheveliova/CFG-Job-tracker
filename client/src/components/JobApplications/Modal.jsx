@@ -76,9 +76,6 @@ function Modal({ closeModal, addJob, defaultValue }) {
     <div
       data-testid="m-container"
       className="m-container"
-      // onClick={(e) => {
-      //     if (e.target.className === "close") closeModal();
-      // }}
     >
       <div className="modal">
         <form className="form-div">
