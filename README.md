@@ -4,7 +4,7 @@ JobFlow is an innovative web application that aims to revolutionize the job sear
 
 When users sign up to Job Flow, they are able to access a Job Application Tracker in order to manage their job applications. They can add details to the table, as well as update and delete them. 
 
-The project comprises a frontend which is built with React and a backend built with Node.js, Express and Sequelize. The API connects to a mySQL database (via Sequelize) and it performs CRUD operations on the database.Job Flow also offers a Job Search page, which allows users to search for jobs via an external API.
+The project comprises a frontend which is built with React and a backend built with Node.js, Express and Sequelize. The API connects to a mySQL database (via Sequelize) and it performs CRUD operations on the database.Job Flow also offers an integrated Job Search page, which allows users to search for jobs via an external API.
 
 
 ## Technologies Used:
@@ -17,7 +17,7 @@ The project comprises a frontend which is built with React and a backend built w
 - Postman
 - Firebase (external API for user management and authentication)
 - Jest (testing)
-- Rapid API (external api)
+- JSearch API (external api)
 
 # Getting Started
 
@@ -34,11 +34,14 @@ This project requires node version 16.4 or later.
 2. **Navigate to the api folder** : 
 - `cd api`
 - Download dependencies for api folder: `npm install`
-- In the `.env` file please enter your mySQL password and ensure the connection details are correct.
+- In the `.env` file please enter your mySQL password and ensure the connection details are correct when using local host.
+![Screenshot of env](env_image.png)
+
+- In the .env file you will see that there is also an optional config for running the database using a cloud service provided by Clever Cloud.
+
 - Run the backend: `npm start`
 - As a result you should see a message in your terminal "Server is running on port 8080". This means the api is running on `http://localhost:8080`.
 
-![Screenshot of env](env_image.png)
 
 3. **Navigate to the client folder** : 
 - Open a second terminal and `cd client`
@@ -50,7 +53,8 @@ The application should now be available on `http://localhost:3000`, but please c
 
 
 ## To run tests
-In the respective api and client folders, you can run:
+Please run the backend unit tests locally, with local host. 
+To run tests in the respective api and client folders, you can enter the command:
 
 ```bash
 npm test
