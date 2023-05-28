@@ -5,6 +5,8 @@ import { FirebaseContext } from '../context/authContext';
 // import Modal from './Modal';
 
 const currentUser = {
+  firstName: 'User',
+  lastName: 'Test',
   email: 'user@test.com',
   password: 'testPassword',
 };
@@ -35,10 +37,22 @@ describe('JobsIndex component', () => {
     expect(outputModal).toBeInTheDocument();
   });
 
-  //   test('is showing a Welcome message with the current user', () => {
-  //     const welcomeElement = screen.getByText(/Welcome user@test.com/i);
-  //     expect(welcomeElement).toBeInTheDocument();
-  //   });
+  test('is showing a Welcome message with the current user', () => {
+    const userName = {
+      firstName: 'User',
+      lastName: 'Test',
+    };
+    render(
+      <FirebaseContext.Provider value={{ currentUser: userName }}>
+        <JobsIndex />
+      </FirebaseContext.Provider>
+    );
+
+    const welcomeElement = screen.getByText(
+      `Welcome to JobFlow, ${userName.firstName} ${userName.lastName}!`
+    );
+    expect(welcomeElement).toBeInTheDocument();
+  });
 
   //   test('is rendering the row with job details updated in the Modal', () => {});
 });
