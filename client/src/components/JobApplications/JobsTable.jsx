@@ -9,7 +9,6 @@ function JobsTable({ rows, deleteJob, editJob }) {
   // this function accepts the rows, deleteJob and editJob props from JobsIndex
 
   const { currentUser } = useContext(FirebaseContext);
-  // const currentUserRows = rows.filter((row) => row.userId === currentUser.uid);
 
   return (
     <div className="table-container">
