@@ -4,7 +4,7 @@ JobFlow is an innovative web application that aims to revolutionize the job sear
 
 When users sign up to JobFlow, they are able to access a Job Application Tracker in order to manage their job applications. They can add details to the table, as well as update and delete them. 
 
-The project comprises a frontend which is built with React and a backend built with Node.js, Express and Firebase. The API connects to a mySQL database (via Sequelize) and it performs CRUD operations on the database.JobFlow also offers an integrated Job Search page, which allows users to search for jobs via an external [JSearch API](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch/details).
+The project comprises a frontend which is built with React and a backend built with Node.js, Express and Firebase. The API connects to a mySQL database (via Sequelize) and it performs CRUD operations on the database. JobFlow also offers an integrated Job Search page, which allows users to search for jobs via an external [JSearch API](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch/details).
 
 
 ## Technologies Used:
