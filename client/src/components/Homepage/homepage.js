@@ -83,7 +83,7 @@ function HomePage() {
           <div className="expandable-box" onClick={() => toggleBox(2)}>
             <div className="box-header">
               <i className="fas fa-check-square"></i>
-              <h2 className="box-title"> Why is JobFlow Good For JobSeekers? </h2>
+              <h2 className="box-title"> Why is JobFlow Good For Job Seekers? </h2>
             </div>
             <div className={boxState[2] ? "box-content show" : "box-content"}>
               <p>
@@ -99,10 +99,11 @@ function HomePage() {
           <div className="expandable-box" onClick={() => toggleBox(3)}>
             <div className="box-header">
               <i className="fas fa-graduation-cap"></i>
-              <h2 className="box-title">How does JobFLow benefit the Recruitment Industry?</h2>
+              <h2 className="box-title">How does JobFlow benefit the Recruitment Industry?</h2>
             </div>
             <div className={boxState[3] ? "box-content show" : "box-content"}>
               <p>
+
                 JobFlow offers a unique advantage to recruiters by fostering a community of prepared and
                 engaged candidates. When job seekers utilize JobFlow's comprehensive search features to
                 find relevant job opportunities, they also gain access to a wealth of resources and tools
