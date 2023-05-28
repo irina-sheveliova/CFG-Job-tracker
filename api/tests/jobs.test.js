@@ -80,19 +80,6 @@ describe('POST /jobs', () => {
 
 });
 
-describe('DELETE /jobs/:id', () => {
-  it('creates a job if the user exists', async () => {
-    await setupApp(1);
-    let response = await request(app).post('/jobs').set({ 'Content-Type': 'application/json' }).send(testJob);
-    expect(response.statusCode).toBe(200);  
-    const jobId = response.body.id;
-    response = await request(app).delete('/jobs/' + jobId);
-    expect(response.statusCode).toBe(200); 
-    response = await request(app).get('/jobs/' + jobId);
-    expect(response.body).toBe(null); 
-  })
-});
-
 describe('PUT /jobs/:id', () => {
   it('creates a job if the user exists', async () => {
     await setupApp(1);
@@ -105,5 +92,18 @@ describe('PUT /jobs/:id', () => {
     expect(response.statusCode).toBe(200); 
     response = await request(app).get('/jobs/' + jobId);
     expect(response.body.notes).toBe('new notes'); 
+  })
+});
+
+describe('DELETE /jobs/:id', () => {
+  it('creates a job if the user exists', async () => {
+    await setupApp(1);
+    let response = await request(app).post('/jobs').set({ 'Content-Type': 'application/json' }).send(testJob);
+    expect(response.statusCode).toBe(200);  
+    const jobId = response.body.id;
+    response = await request(app).delete('/jobs/' + jobId);
+    expect(response.statusCode).toBe(200); 
+    response = await request(app).get('/jobs/' + jobId);
+    expect(response.body).toBe(null); 
   })
 });

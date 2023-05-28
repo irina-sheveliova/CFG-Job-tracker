@@ -15,7 +15,7 @@ const Search = () => {
     try {
       const response = await axios.get(`https://jsearch.p.rapidapi.com/search`, {
         headers: {
-          'X-RapidAPI-Key': 'b9760cd834msh2723e4c7a551b57p1cf509jsnc3d03a4cc136',
+          'X-RapidAPI-Key': '', // <-- enter Rapid API key here
           'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
         },
         params: {
@@ -48,7 +48,7 @@ const Search = () => {
         {results.map((result, index) => (
           <div key={result.job_id} className={`result-box fade-in ${index >= (currentPage - 1) * 9 && index < currentPage * 10 ? '' : 'hide'}`}>
             <h2>{result.job_title}</h2>
-            <p className="location" id="location-{result.job_id}">Location: {result.location}, {result.job_country}</p>
+            <p className="location" id="location-{result.job_id}">Location: {result.job_city}, {result.job_country}</p>
             <p>Company Website: <a href={result.employer_website} target="_blank" rel="noreferrer">{result.employer_website}</a></p>
             <p id="Applynow"><a href={result.job_apply_link} target="_blank" rel="noreferrer">Apply Now</a></p>
             <p>{result.job_description.substring(0, 500)}...</p>
