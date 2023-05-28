@@ -37,7 +37,7 @@ This project requires node version 16.4 or later.
 - Open a terminal and type: `cd api`
 - Download dependencies for api folder: `npm install`
 - In the `.env` file please enter your mySQL password and ensure the connection details are correct when using local host.  
-<img src="env_image.png" width=50% style="padding-top:10px">  
+<img src="env_image.png" width=60% style="padding-top:10px">  
 
 - In the .env file you will see that there is also an optional config for running the database using a cloud service provided by Clever Cloud.
 
