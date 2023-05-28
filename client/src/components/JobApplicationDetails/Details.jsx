@@ -109,7 +109,7 @@ const JobDetails = () => {
 
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div>
-          <h2>{content.position}</h2>
+          <h2 data-testid="position">{content.position}</h2>
           <h3>
             <b>{content.company}</b>
           </h3>
